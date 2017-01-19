@@ -1,3 +1,3 @@
-# PrestigeFrontend
+# Prestige Frontend
 
-dsfdThis project will provide us with a way to give stars to our colleagues
+project will provide us with a way to give stars to our colleagues
