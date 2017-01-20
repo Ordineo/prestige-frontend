@@ -21,9 +21,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.scss"
       ],
-      "scripts": [
-        "../node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js"
-      ],
+      "scripts": [ ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
