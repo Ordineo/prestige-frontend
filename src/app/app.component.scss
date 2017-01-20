@@ -1,5 +1,7 @@
+@import '../styles/variables';
+
 .header {
-  &__container {
+  &__background-image {
     background: url('../assets/images/header.jpg') no-repeat center center;
     background-size: cover;
     height: 115px;
@@ -9,20 +11,13 @@
     height: 50px;
     width: 60px;
     background-size: contain;
-  }
-}
 
-.item-spacer {
-  flex: 1 1 auto;
-}
+    &__link {
 
-nav {
-  padding: 10px;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 25px;
-  width: 95%;
-
-  .nav__item {
-    padding: 0 25px;
+      &:hover {
+        text-decoration: none;
+        color: $accent;
+      }
+    }
   }
 }

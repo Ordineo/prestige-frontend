@@ -3,41 +3,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-import { AppComponent } from './app.component';
-import { PrestigeFeedComponent } from './prestige/prestige-feed/prestige-feed.component';
-import { ProfileDetailComponent } from './employee/employee-detail/profile-detail.component';
-import { SearchComponent } from './shared/search/search.component';
-import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './routes.module';
 
 import {Md2Module} from 'md2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import { AppComponent } from './app.component';
+import { PrestigeFeedComponent } from './prestige/prestige-feed/prestige-feed.component';
+import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
+import { SearchComponent } from './shared/search/search.component';
 import { EmployeeRankingComponent } from './employee/employee-ranking/employee-ranking.component';
-import { PrestigeDetailComponent } from './prestige/prestige-detail/prestige-detail.component';
-
-const appRoutes: Routes = [
-  { path: 'prestige-feed', component: PrestigeFeedComponent },
-  {
-    path: 'prestige-detail',
-    component: PrestigeDetailComponent
-  },
-  { path: '',
-    redirectTo: '/prestige-feed',
-    pathMatch: 'full'
-  }
-];
+import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-detail.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrestigeFeedComponent,
-    ProfileDetailComponent,
-    SearchComponent,
+    EmployeeDetailComponent,
     EmployeeRankingComponent,
-    PrestigeDetailComponent
+    PrestigeDetailComponent,
+    PrestigeFeedComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -45,9 +32,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
     Md2Module.forRoot(),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

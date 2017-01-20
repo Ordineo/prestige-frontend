@@ -1,22 +1,39 @@
-<div class="container-fluid no-padding">
-  <md-toolbar color="primary">
-    <div class="header__logo"></div>
-    <a routerLink="/prestige-feed" routerLinkActive="active">
-      <strong>JWorks</strong><span class="hide-mobile"> Prestige</span>
-    </a>
-    <span class="item-spacer"></span>
-    <search-employees class="col-md-6"></search-employees>
-    <span class="item-spacer"></span>
-    <md-icon>person</md-icon>
-  </md-toolbar>
-  <div class="header__container"></div>
+<md-toolbar [color]="primary">
+  <div class="header__logo"></div>
+  <a class="header__logo__link"
+     routerLink="/prestige-feed" routerLinkActive="active">
+    <strong>JWorks</strong>
+    <span> Prestige</span>
+  </a>
+  <span class="item-spacer"></span>
+  <search-employees class="col-md-6"></search-employees>
+  <span class="item-spacer"></span>
+  <md-icon>person</md-icon>
 
-  <nav class="container-fluid">
-    <a class="nav__item" routerLink="/prestige-feed" routerLinkActive="active">Prestige</a>
-    <a class="nav__item" routerLink="/prestige-detail" routerLinkActive="active">My prestige</a>
-  </nav>
+  <md-toolbar-row class="header__background-image"></md-toolbar-row>
 
-  <div class="container-fluid">
-    <router-outlet></router-outlet>
-  </div>
+  <md-toolbar-row>
+    <md-tab-group (focusChange)="changeTab($event)">
+      <md-tab>
+        <template md-tab-label>
+          <a routerLink="/prestige-feed" routerLinkActive="active">Prestige</a>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>
+          <a routerLink="/prestige-detail" routerLinkActive="active">My prestige</a>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>
+          <a routerLink="/employee-ranking" routerLinkActive="active">Ranking</a>
+        </template>
+      </md-tab>
+    </md-tab-group>
+
+  </md-toolbar-row>
+</md-toolbar>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
 </div>

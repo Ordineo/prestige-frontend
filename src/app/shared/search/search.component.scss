@@ -1,0 +1,26 @@
+@import '../../../styles/variables';
+
+// overwrite md2-autocomplete
+
+.search-component .md2-autocomplete-trigger.is-focused .md2-autocomplete-placeholder,
+md2-autocomplete .md2-autocomplete-placeholder.has-value {
+  transform: translate3d(0, 12px, 0) scale(0.75);
+}
+
+.search-component .md2-autocomplete-placeholder {
+  color: $primary-color;
+}
+
+.search-component .md2-autocomplete-trigger {
+  &.is-focused {
+    border-bottom-color: $accent;
+
+    .md2-autocomplete-placeholder {
+      color: $accent;
+    }
+  }
+
+  svg {
+    background: transparent;
+  }
+}

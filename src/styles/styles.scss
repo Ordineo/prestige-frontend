@@ -1,10 +1,13 @@
-body { color: #333;}
-a { color: #333; }
+@import '_variables';
 
-.no-padding {
-  padding: 0;
+body {
+  color: $primary-color;
 }
 
-.hide-mobile {
-  display: none;
+a {
+  color: $primary-color;
+}
+
+.item-spacer {
+  flex: 1 1 auto;
 }

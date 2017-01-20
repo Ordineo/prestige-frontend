@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ProfileDetailComponent } from './profile-detail.component';
+import { ProfileDetailComponent } from './employee-detail.component';
 
 describe('ProfileDetailComponent', () => {
   let component: ProfileDetailComponent;
