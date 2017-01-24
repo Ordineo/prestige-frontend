@@ -1,4 +1,4 @@
-node {
+node('slave') {
     def dockerHubRepo = 'threece'
     def project = 'prestige-frontend'
     def imageTag = "${dockerHubRepo}/${project}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
