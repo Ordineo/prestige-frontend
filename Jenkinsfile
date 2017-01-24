@@ -1,15 +1,16 @@
 node {
+    def dockerHubRepo = 'threece'
     def project = 'prestige-frontend'
-    def imageTag = "ordina/${project}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+    def imageTag = "${dockerHubRepo}/${project}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
 
     checkout scm
 
     stage ('Build Image') {
-        sh("docker build -t ${imageTag} .")
+        def image = docker.build(${imageTag})
     }
 
     stage ('Push image to registry') {
-        sh("docker push threece/${project}")
+        image.push(${imageTag})
     }
     
     stage ('Deploy Application') {
