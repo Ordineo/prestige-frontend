@@ -6,11 +6,11 @@ node {
     checkout scm
 
     stage ('Build Image') {
-        def image = docker.build(${imageTag})
+        def image = docker.build("${imageTag}")
     }
 
     stage ('Push image to registry') {
-        image.push(${imageTag})
+        image.push("${imageTag}")
     }
     
     stage ('Deploy Application') {
