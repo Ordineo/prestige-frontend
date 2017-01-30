@@ -6,6 +6,7 @@ import {EmployeeDetailComponent} from './employee/employee-detail/employee-detai
 import {EmployeeRankingComponent} from './employee/employee-ranking/employee-ranking.component';
 import {PrestigeDetailComponent} from "./prestige/prestige-detail/prestige-detail.component";
 import {PrestigeFeedComponent} from './prestige/prestige-feed/prestige-feed.component';
+import {CategoriesComponent} from './shared/categories/categories.component';
 import {SearchComponent} from './shared/search/search.component';
 
 const appRoutes: Routes = [
@@ -24,6 +25,10 @@ const appRoutes: Routes = [
   {
     path: 'prestige-feed',
     component: PrestigeFeedComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
   },
   {
     path: '',

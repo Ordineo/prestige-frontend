@@ -16,6 +16,10 @@ import { EmployeeDetailComponent } from './employee/employee-detail/employee-det
 import { SearchComponent } from './shared/search/search.component';
 import { EmployeeRankingComponent } from './employee/employee-ranking/employee-ranking.component';
 import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-detail.component";
+import { CategoriesComponent } from './shared/categories/categories.component';
+
+import { AngularFireModule, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { firebaseConfig } from './firebase.config';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-det
     EmployeeRankingComponent,
     PrestigeDetailComponent,
     PrestigeFeedComponent,
-    SearchComponent
+    SearchComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
@@ -34,9 +39,10 @@ import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-det
     MaterialModule.forRoot(),
     Md2Module.forRoot(),
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

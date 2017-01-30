@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router}  from '@angular/router';
+import {Component} from '@angular/core';
+import {Router}  from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,8 @@ import { Router}  from '@angular/router';
 })
 
 export class AppComponent {
-  constructor(private router : Router) {}
+  constructor(private router: Router) {
+  }
 
   // todo check status for tabs and routing
   // https://github.com/angular/material2/issues/524#issuecomment-257209955
@@ -25,13 +26,11 @@ export class AppComponent {
       case 2:
         this.router.navigateByUrl('/employee-ranking');
         break;
-
-      // case 3:
-      //   this.router.navigateByUrl('/new-route');
-      //   break;
-
+      case 3:
+        this.router.navigateByUrl('/categories');
+        break;
       default:
-        console.debug ('activeTab is: ', at, 'activeTab.index is: ', at.index);
+        console.debug('activeTab is: ', at, 'activeTab.index is: ', at.index);
         break;
     }
   }
