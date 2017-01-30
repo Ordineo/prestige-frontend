@@ -1,0 +1,45 @@
+.prestige {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin: 10px auto;
+  &__employee {
+    text-align: center;
+    &--bold {
+      font-weight: bold;
+    }
+  }
+  &__text {
+    border-left: 1px dashed #e0e0e0;
+  }
+  &__date {
+    font-size: 12px;
+    font-style: italic;
+  }
+  &__reason {
+    font-size: 20px;
+  }
+  &__category {
+    font-weight: bold;
+  }
+  &__url {
+    text-align: right;
+    md-icon {
+      top: 5px;
+      position: relative;
+      font-size: 20px;
+    }
+  }
+  &:after {
+    content: "|";
+    position: absolute;
+    bottom: -20px;
+    right: 50%;
+    color: #e0e0e0;
+  }
+}
+
+.centered {
+  margin: 0 auto;
+  float: none;
+}

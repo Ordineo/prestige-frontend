@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     component: EmployeeRankingComponent
   },
   {
-    path: 'prestige-detail',
+    path: 'prestige-detail/:id',
     component: PrestigeDetailComponent
   },
   {

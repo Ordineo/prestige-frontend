@@ -20,13 +20,13 @@ export class AppComponent {
       case 0:
         this.router.navigateByUrl('/prestige-feed');
         break;
+      // case 1:
+      //   this.router.navigateByUrl('/prestige-detail');
+      //   break;
       case 1:
-        this.router.navigateByUrl('/prestige-detail');
-        break;
-      case 2:
         this.router.navigateByUrl('/employee-ranking');
         break;
-      case 3:
+      case 2:
         this.router.navigateByUrl('/categories');
         break;
       default:

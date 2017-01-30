@@ -1,3 +1,36 @@
-<p>
-  prestige-feed works!
-</p>
+<div class="col-lg-8 centered">
+  <div class="prestige col-lg-12" *ngFor="let prestige of feed | async">
+
+    <div class="col-lg-2 prestige__employee">
+      <a routerLink="/prestige-detail/{{prestige.id}}" routerLinkActive="active">
+        <md-icon>person</md-icon>
+        <div>
+          {{ prestige.dealer }}
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-10 prestige__text">
+      <span class="prestige__date">{{ prestige.date | date }}</span>
+      <div class="prestige__reason">
+
+        {{ prestige.reason }}
+
+        <a href="" *ngFor="let employee of prestige.employees">
+          <span class="prestige__employee--bold">{{ employee }}</span>
+        </a>
+
+        in categorie <span class="prestige__category">{{ prestige.category }}</span>
+
+      </div>
+
+      <div class="prestige__url">
+        <a href="{{prestige.url}}" target="_blank">
+          <md-icon class="">link</md-icon>
+          {{ prestige.url }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
