@@ -17,6 +17,7 @@ import { SearchComponent } from './shared/search/search.component';
 import { EmployeeRankingComponent } from './employee/employee-ranking/employee-ranking.component';
 import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-detail.component";
 import { CategoriesComponent } from './shared/categories/categories.component';
+import { PrestigesComponent } from './shared/prestige/prestige.component';
 
 import { AngularFireModule, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { firebaseConfig } from './firebase.config';
@@ -29,7 +30,8 @@ import { firebaseConfig } from './firebase.config';
     PrestigeDetailComponent,
     PrestigeFeedComponent,
     SearchComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    PrestigesComponent
   ],
   imports: [
     CommonModule,
