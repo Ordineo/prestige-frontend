@@ -1,7 +1,7 @@
 <md-toolbar [color]="primary">
   <div class="header__logo"></div>
   <a class="header__logo__link"
-     routerLink="/prestige-feed" routerLinkActive="active">
+     (click)="switchToFirstTab()" routerLink="/prestige-feed" routerLinkActive="active">
     <strong>JWorks</strong>
     <span> Prestige</span>
   </a>
@@ -18,7 +18,7 @@
   <md-toolbar-row class="header__background-image"></md-toolbar-row>
 
   <md-toolbar-row>
-    <md-tab-group (focusChange)="changeTab($event)">
+    <md-tab-group (focusChange)="changeTab($event)" [(selectedIndex)]="activeTabIndex">
       <md-tab>
         <template md-tab-label>
           <a routerLink="/prestige-feed" routerLinkActive="active">Prestige</a>

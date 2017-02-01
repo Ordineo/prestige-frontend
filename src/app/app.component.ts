@@ -12,11 +12,13 @@ import {AddPrestigeComponent} from "./prestige/add-prestige/add-prestige.compone
 
 export class AppComponent {
   dialogRef: MdDialogRef<any>;
+  private activeTabIndex = 0;
 
   constructor(private router: Router,
               public dialog: MdDialog,
               public viewContainerRef: ViewContainerRef) {
   }
+
 
   // todo check status for tabs and routing
   // https://github.com/angular/material2/issues/524#issuecomment-257209955
@@ -37,6 +39,10 @@ export class AppComponent {
         console.debug('activeTab is: ', at, 'activeTab.index is: ', at.index);
         break;
     }
+  }
+
+  public switchToFirstTab(){
+    this.activeTabIndex = 0;
   }
 
   public openAccountDetail() {
