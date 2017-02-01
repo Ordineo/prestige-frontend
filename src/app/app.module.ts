@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppRoutingModule } from './routes.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import {Md2Module} from 'md2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
