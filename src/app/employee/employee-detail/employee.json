@@ -1,0 +1,148 @@
+{
+  "employees": [
+    {
+      "name": "Ruben Thielemans",
+      "id": 0,
+      "prestiges": [
+        {
+          "category": "Communication",
+          "prestige": 2
+        },
+        {
+          "category": "Blogging",
+          "prestige": 4
+        },
+        {
+          "category": "Teamwork",
+          "prestige": 4
+        },
+        {
+          "category": "Speaking",
+          "prestige": 10
+        },
+        {
+          "category": "test category",
+          "prestige": 1
+        },
+        {
+          "category": "Other category",
+          "prestige": 10
+        },
+        {
+          "category": "Programming",
+          "prestige": 3
+        }
+      ]
+    },
+    {
+      "name": "Pieter De Wachter",
+      "id": 1,
+      "prestiges": [
+        {
+          "category": "Communication",
+          "prestige": 2
+        },
+        {
+          "category": "Blogging",
+          "prestige": 4
+        },
+        {
+          "category": "Teamwork",
+          "prestige": 4
+        },
+        {
+          "category": "Speaking",
+          "prestige": 10
+        },
+        {
+          "category": "test category",
+          "prestige": 1
+        }
+      ]
+    },
+    {
+      "name": "Dirk De Wachter",
+      "id": 2,
+      "prestiges": [
+        {
+          "category": "Communication",
+          "prestige": 2
+        },
+        {
+          "category": "Blogging",
+          "prestige": 4
+        },
+        {
+          "category": "Teamwork",
+          "prestige": 4
+        },
+        {
+          "category": "Speaking",
+          "prestige": 10
+        },
+        {
+          "category": "test category",
+          "prestige": 1
+        }
+      ]
+    },
+    {
+      "name": "Magda De Bosser",
+      "id": 3,
+      "prestiges": [
+        {
+          "category": "Communication",
+          "prestige": 2
+        },
+        {
+          "category": "Speaking",
+          "prestige": 10
+        },
+        {
+          "category": "test category",
+          "prestige": 1
+        }
+      ]
+    },
+    {
+      "name": "Rita De smosser",
+      "id": 4,
+      "prestiges": [
+        {
+          "category": "Communication",
+          "prestige": 2
+        },
+        {
+          "category": "Speaking",
+          "prestige": 10
+        },
+        {
+          "category": "test category",
+          "prestige": 1
+        },
+        {
+          "category": "category",
+          "prestige": 20
+        }
+      ]
+    },
+    {
+      "name": "Administrator",
+      "id": 5,
+      "prestiges": [
+        {
+          "category": "Communication",
+          "prestige": 2
+        },
+        {
+          "category": "Speaking",
+          "prestige": 10
+        },
+        {
+          "category": "test category",
+          "prestige": 1
+        }
+      ]
+    }
+  ]
+}

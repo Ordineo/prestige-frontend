@@ -1,3 +1,17 @@
-<p>
-  employee-ranking works!
-</p>
+<div class="col-lg-12">
+  <h3>Employee Ranking</h3>
+</div>
+
+<div class="col-lg-12">
+  <div class="col-lg-8 center-block">
+    <ul class="rank">
+      <li class="rank-item"
+          [ngClass]="{'rank-item__primary': index == 0, 'rank-item__secondary': index == 1, 'rank-item__thirstary': index == 2, 'col-lg-6 rank-item__row': index > 2}"
+          *ngFor="let prestige of employees; let index=index;">
+        <div class="">
+          <span class="badge">{{ totalPrestige }}</span> {{prestige?.name}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

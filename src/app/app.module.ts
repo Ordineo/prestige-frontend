@@ -18,6 +18,7 @@ import { EmployeeRankingComponent } from './employee/employee-ranking/employee-r
 import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-detail.component";
 import { CategoriesComponent } from './shared/categories/categories.component';
 import { PrestigesComponent } from './shared/prestige/prestige.component';
+import { EmployeeService } from './providers/employee.service';
 
 import { AngularFireModule, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { firebaseConfig } from './firebase.config';
@@ -44,7 +45,7 @@ import { firebaseConfig } from './firebase.config';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [ EmployeeService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

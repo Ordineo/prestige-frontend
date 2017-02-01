@@ -1,8 +1,12 @@
+<div class="col-lg-12">
+  <h3>Prestige Feed</h3>
+</div>
+
 <div class="col-lg-8 centered">
-  <div class="prestige col-lg-12" *ngFor="let prestige of feed | async">
+  <div class="prestige col-lg-12" *ngFor="let prestige of feed">
 
     <div class="col-lg-2 prestige__employee">
-      <a routerLink="/prestige-detail/{{prestige.id}}" routerLinkActive="active">
+      <a routerLink="/employee-detail/{{prestige.id}}" routerLinkActive="active">
         <md-icon>person</md-icon>
         <div>
           {{ prestige.dealer }}

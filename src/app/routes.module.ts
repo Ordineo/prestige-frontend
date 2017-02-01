@@ -11,7 +11,7 @@ import {SearchComponent} from './shared/search/search.component';
 
 const appRoutes: Routes = [
   {
-    path: 'employee-detail',
+    path: 'employee-detail/:id',
     component: EmployeeDetailComponent
   },
   {
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     component: EmployeeRankingComponent
   },
   {
-    path: 'prestige-detail/:id',
+    path: 'prestige-detail',
     component: PrestigeDetailComponent
   },
   {

@@ -10,7 +10,10 @@ export class PrestigeFeedComponent implements OnInit {
   feed: FirebaseObjectObservable<any[]>;
 
   constructor(af: AngularFire) {
-    this.feed = af.database.object('/feed');
+    af.database.object('/feed').subscribe(res => {
+      console.log(res);
+      this.feed = res;
+    });
   }
 
   ngOnInit() {
