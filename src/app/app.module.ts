@@ -22,6 +22,8 @@ import { EmployeeService } from './providers/employee.service';
 
 import { AngularFireModule, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { firebaseConfig } from './firebase.config';
+import { AccountDetailComponent } from './account/account-detail/account-detail.component';
+import {AccountService} from "./providers/account.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { firebaseConfig } from './firebase.config';
     PrestigeFeedComponent,
     SearchComponent,
     CategoriesComponent,
-    PrestigesComponent
+    PrestigesComponent,
+    AccountDetailComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +48,11 @@ import { firebaseConfig } from './firebase.config';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ EmployeeService ],
-  bootstrap: [ AppComponent ]
+  providers: [
+    EmployeeService,
+    AccountService
+  ],
+  bootstrap: [ AppComponent ],
+  entryComponents:[AccountDetailComponent]
 })
 export class AppModule { }

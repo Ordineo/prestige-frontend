@@ -1,0 +1,55 @@
+<div *ngIf="account">
+  <h3>Account</h3>
+  <form (ngSubmit)="saveAccount()" #accountForm="ngForm">
+
+    <md-grid-list cols="6" rowHeight="4em" gutterSize="20px">
+      <md-grid-tile colspan="2">
+        <md-input-container>
+          <input md-input [(ngModel)]="account.firstName" name="firstName">
+          <md-placeholder>First Name</md-placeholder>
+        </md-input-container>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="4">
+        <md-input-container>
+          <input md-input [(ngModel)]="account.lastName" name="lastName">
+          <md-placeholder>Last Name</md-placeholder>
+        </md-input-container>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="6">
+        <md-input-container>
+          <input md-input [(ngModel)]="account.email" name="email">
+          <md-placeholder>Email</md-placeholder>
+        </md-input-container>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="3">
+        <md-input-container>
+          <input md-input type="tel" [(ngModel)]="account.phone" name="phone">
+          <span md-prefix>+32&nbsp;</span>
+          <md-placeholder>Phone</md-placeholder>
+        </md-input-container>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="2">
+        <md-input-container>
+          <input md-input  [(ngModel)]="account.unit" name="unit">
+          <md-placeholder>Unit</md-placeholder>
+        </md-input-container>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <md-input-container>
+          <input md-input [(ngModel)]="account.gender" name="gender">
+          <md-placeholder>Gender</md-placeholder>
+        </md-input-container>
+      </md-grid-tile>
+    </md-grid-list>
+
+    <button md-raised-button>Save</button>
+
+
+  </form>
+
+</div>

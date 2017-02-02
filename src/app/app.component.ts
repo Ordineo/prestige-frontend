@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, ViewContainerRef} from '@angular/core';
 import {Router}  from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {AccountDetailComponent} from "./account/account-detail/account-detail.component";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,11 @@ import {Router}  from '@angular/router';
 })
 
 export class AppComponent {
-  constructor(private router: Router) {
+  dialogRef: MdDialogRef<any>;
+
+  constructor(private router: Router,
+              public dialog: MdDialog,
+              public viewContainerRef: ViewContainerRef) {
   }
 
   // todo check status for tabs and routing
@@ -33,5 +39,17 @@ export class AppComponent {
         console.debug('activeTab is: ', at, 'activeTab.index is: ', at.index);
         break;
     }
+  }
+
+  public openAccountDetail() {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.viewContainerRef;
+    config.width = '80%';
+
+    this.dialogRef = this.dialog.open(AccountDetailComponent, config);
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      this.dialogRef = null;
+    });
   }
 }
