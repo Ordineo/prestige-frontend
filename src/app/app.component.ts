@@ -32,9 +32,6 @@ export class AppComponent {
       case 2:
         this.router.navigateByUrl('/employee-ranking');
         break;
-      case 3:
-        this.router.navigateByUrl('/categories');
-        break;
       default:
         console.debug('activeTab is: ', at, 'activeTab.index is: ', at.index);
         break;

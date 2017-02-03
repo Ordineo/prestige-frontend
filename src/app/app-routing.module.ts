@@ -27,10 +27,6 @@ const appRoutes: Routes = [
     component: PrestigeFeedComponent
   },
   {
-    path: 'categories',
-    component: CategoriesComponent
-  },
-  {
     path: '',
     redirectTo: '/prestige-feed',
     pathMatch: 'full'
