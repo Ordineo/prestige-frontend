@@ -16,8 +16,6 @@ import { EmployeeDetailComponent } from './employee/employee-detail/employee-det
 import { SearchComponent } from './shared/search/search.component';
 import { EmployeeRankingComponent } from './employee/employee-ranking/employee-ranking.component';
 import { PrestigeDetailComponent } from "./prestige/prestige-detail/prestige-detail.component";
-import { CategoriesComponent } from './shared/categories/categories.component';
-import { PrestigesComponent } from './shared/prestige/prestige.component';
 import { EmployeeService } from './providers/employee.service';
 
 import { AngularFireModule, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
@@ -33,8 +31,6 @@ import {AccountService} from "./providers/account.service";
     PrestigeDetailComponent,
     PrestigeFeedComponent,
     SearchComponent,
-    CategoriesComponent,
-    PrestigesComponent,
     AccountDetailComponent
   ],
   imports: [
