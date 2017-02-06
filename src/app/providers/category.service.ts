@@ -12,5 +12,4 @@ export class CategoryService {
     return this.af.database.object('/categories')
       .map(result => (result))
   }
-
 }

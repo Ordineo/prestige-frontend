@@ -2,39 +2,31 @@
   <h3>Prestige Feed</h3>
 </div>
 
-<div class="col-lg-8 centered">
-  <div class="prestige col-lg-12" *ngFor="let prestige of feed">
-
+<div class="col-lg-8 centered" *ngIf="prestiges">
+  <div class="prestige col-lg-12" *ngFor="let prestige of prestiges">
     <div class="col-lg-2 prestige__employee">
       <a routerLink="/employee-detail/{{prestige.id}}" routerLinkActive="active">
         <md-icon>person</md-icon>
-        <div>
+        <div style="word-break: break-all">
           {{ prestige.dealer }}
         </div>
       </a>
     </div>
-
     <div class="col-lg-10 prestige__text">
-      <span class="prestige__date">{{ prestige.date | date }}</span>
+      <span class="prestige__date">{{ prestige.created | date : 'medium' }}</span>
       <div class="prestige__reason">
-
         {{ prestige.reason }}
-
-        <a href="" *ngFor="let employee of prestige.employees">
-          <span class="prestige__employee--bold">{{ employee }}</span>
+        <a href="">
+          <span class="prestige__employee--bold">{{ prestige.receivers }}</span>
         </a>
-
-        in categorie <span class="prestige__category">{{ prestige.category }}</span>
-
+        in category <span class="prestige__category">{{ prestige.categories }}</span>
       </div>
-
-      <div class="prestige__url">
+      <div class="prestige__url" *ngIf="prestige.url">
         <a href="{{prestige.url}}" target="_blank">
           <md-icon class="">link</md-icon>
           {{ prestige.url }}
         </a>
       </div>
-
     </div>
   </div>
 </div>

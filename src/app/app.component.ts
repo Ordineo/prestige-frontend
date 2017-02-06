@@ -2,6 +2,7 @@ import {Component, ViewContainerRef} from '@angular/core';
 import {Router}  from '@angular/router';
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {AccountDetailComponent} from "./account/account-detail/account-detail.component";
+import {AddPrestigeComponent} from "./prestige/add-prestige/add-prestige.component";
 
 @Component({
   selector: 'app-root',
@@ -44,6 +45,18 @@ export class AppComponent {
     config.width = '80%';
 
     this.dialogRef = this.dialog.open(AccountDetailComponent, config);
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      this.dialogRef = null;
+    });
+  }
+
+  public openAddPrestige() {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.viewContainerRef;
+    config.width = '80%';
+
+    this.dialogRef = this.dialog.open(AddPrestigeComponent, config);
 
     this.dialogRef.afterClosed().subscribe(result => {
       this.dialogRef = null;

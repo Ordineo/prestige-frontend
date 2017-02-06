@@ -21,6 +21,7 @@
   }
   &__category {
     font-weight: bold;
+    color: #1b6d85;
   }
   &__url {
     text-align: right;
@@ -30,10 +31,10 @@
       font-size: 20px;
     }
   }
-  &:after {
+  &:before {
     content: "|";
     position: absolute;
-    bottom: -20px;
+    top: -20px;
     right: 50%;
     color: #e0e0e0;
   }

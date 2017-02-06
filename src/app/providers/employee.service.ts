@@ -12,13 +12,16 @@ export class EmployeeService {
   getEmployees() {
     return this.af.database.object('/employees/')
       .map(result => (result))
-      .do(result => (result));
+  }
+
+  getTestData() {
+    return this.af.database.list('/test/')
+      .map(result => (result))
   }
 
   getEmployeeById(id: number) {
     return this.af.database.object('/employees/' + id)
       .map(result => (result))
-      .share();
   }
 
 }

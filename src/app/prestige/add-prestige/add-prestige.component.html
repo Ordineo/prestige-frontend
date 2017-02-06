@@ -1,0 +1,60 @@
+<div *ngIf="prestige">
+  <h3>Add prestige</h3>
+
+  <div class="test">
+    <p-listbox [options]="receivers"
+               [(ngModel)]="selectedReceivers"
+               multiple="multiple"
+               checkbox="checkbox"
+               name="Receiver"
+               filter="filter">
+    </p-listbox>
+    <p>Selected receivers:
+      <span *ngFor="let receiver of selectedReceivers" style="margin-right: 10px">{{receiver}}</span>
+    </p>
+    <button (click)="setTestData()">eentje toevoegen</button>
+  </div>
+
+  <form (ngSubmit)="addPrestige()" #prestigeForm="ngForm">
+
+    <md-grid-list cols="10" rowHeight="4em" gutterSize="5px">
+
+      <md-grid-tile colspan="2">
+        <md-select placeholder="Select co-worker(s)" multiple [(ngModel)]="prestige.receivers" name="Receiver">
+          <md-option *ngFor="let receiver of receivers" [value]="receiver.name">
+            {{receiver.name}}
+          </md-option>
+        </md-select>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="4">
+        <md-input-container>
+          <input md-input [(ngModel)]="prestige.reason" name="Reason">
+          <md-placeholder>Reason</md-placeholder>
+          <md-hint align="end">{{prestige.reason.length}} / 140</md-hint>
+        </md-input-container>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="2">
+        <md-select placeholder="Select a categories" [(ngModel)]="prestige.categories" name="Categories">
+          <md-option *ngFor="let category of categories" [value]="category.name">
+            {{category.name}}
+          </md-option>
+        </md-select>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="2">
+        <md-input-container>
+          <input md-input [(ngModel)]="prestige.url" name="Url">
+          <md-placeholder>Url</md-placeholder>
+          <md-hint align="end">{{prestige.url.length}} / 50</md-hint>
+        </md-input-container>
+      </md-grid-tile>
+
+    </md-grid-list>
+
+    <button md-raised-button>Save</button>
+
+  </form>
+
+</div>
