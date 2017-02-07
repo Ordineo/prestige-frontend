@@ -19,13 +19,13 @@
     }
 
     &__primary {
-      color: $accent;
+      color: #505050;
       font-size: 24px;
       font-weight: bold;
 
       &.badge {
-        color: $accent;
-        border-color: $accent;
+        color: #505050;
+        border-color: #505050;
       }
     }
 

@@ -1,0 +1,40 @@
+md-dialog-container {
+
+  .prestige {
+    &__search-box {
+
+      // override ui-helper
+      .ui-widget-header .ui-widget .ui-helper-hidden-accessible {
+        display: none;
+      }
+      .ui-widget {
+        display: inline;
+      }
+      .ui-helper-hidden-accessible {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .ui-listbox-list {
+        padding: 0;
+        height: 60px;
+        overflow-y: scroll;
+        margin: 10px 0;
+      }
+      .ui-listbox-item span {
+        position: relative;
+      }
+
+      &__suggestion {
+        padding: 0;
+      }
+
+    }
+  }
+
+}
+
+.prestige {
+  &__form {
+    clear: both;
+  }
+}

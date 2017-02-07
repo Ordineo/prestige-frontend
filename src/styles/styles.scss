@@ -1,5 +1,17 @@
+/*
+  VARIABLES
+ */
 @import '_variables';
 
+/**
+  GENERAL COMPONENTS
+ */
+@import 'general/badge';
+@import 'general/modal';
+
+/*
+  STYLES
+ */
 body {
   color: $primary-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -11,10 +23,4 @@ a {
 
 .item-spacer {
   flex: 1 1 auto;
-}
-
-.badge {
-  background: #fff;
-  border: 1px solid #505050;
-  color: #505050;
 }

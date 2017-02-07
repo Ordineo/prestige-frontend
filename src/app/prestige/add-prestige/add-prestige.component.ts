@@ -21,7 +21,6 @@ const Firebase = require('firebase');
 export class AddPrestigeComponent implements OnInit {
 
   // receivers: Observable <any>;
-
   prestige: Prestige;
   categories: Observable <any>;
   dealer: any;
@@ -29,21 +28,33 @@ export class AddPrestigeComponent implements OnInit {
   receivers: SelectItem[];
   selectedReceivers: string[];
 
+  testData: string;
+  materialLook: boolean = false;
+
   constructor(public dialogRef: MdDialogRef<any>,
               private categoryService: CategoryService,
               private employeeService: EmployeeService,
               private prestigeService: PrestigeService,
-              private accountService: AccountService) {}
+              private accountService: AccountService) {
+  }
 
   addPrestige() {
-    // console.log("---- ADD :", this.prestige);
+    this.prestige.receivers = this.selectedReceivers;
+    // console.log("---- ADD :", this.prestige, this.selectedReceivers);
     this.prestigeService.addPrestige(this.prestige);
     this.dialogRef.close();
   }
 
-  setTestData(e) {
-    var data = {label: 'Hopla den', value: 'Hopla den'};
-    this.prestigeService.addTest(data)
+
+  switchMaterialLook() {
+    this.materialLook = !this.materialLook;
+    this.selectedReceivers = [];
+  }
+
+  setTestData() {
+    let data = {label: this.testData, value: this.testData};
+    this.prestigeService.addTest(data);
+    this.testData = "";
   }
 
   ngOnInit() {
@@ -68,7 +79,7 @@ export class AddPrestigeComponent implements OnInit {
     this.prestige = {
       id: 1,
       dealer: "Anonymous Dealer",
-      receivers: this,
+      receivers: this.selectedReceivers,
       categories: this,
       prestige: 1,
       reason: "",

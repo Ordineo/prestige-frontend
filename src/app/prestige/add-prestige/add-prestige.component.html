@@ -1,31 +1,42 @@
-<div *ngIf="prestige">
+<div *ngIf="prestige" class="prestige">
   <h3>Add prestige</h3>
 
-  <div class="test">
-    <p-listbox [options]="receivers"
-               [(ngModel)]="selectedReceivers"
-               multiple="multiple"
-               checkbox="checkbox"
-               name="Receiver"
-               filter="filter">
-    </p-listbox>
-    <p>Selected receivers:
-      <span *ngFor="let receiver of selectedReceivers" style="margin-right: 10px">{{receiver}}</span>
-    </p>
-    <button (click)="setTestData()">eentje toevoegen</button>
-  </div>
+  <!--  <input type="text" [(ngModel)]="testData">
+    {{testData}}
+    <button (click)="setTestData()">add user</button>-->
 
-  <form (ngSubmit)="addPrestige()" #prestigeForm="ngForm">
+  <a (click)="switchMaterialLook()" style="cursor: pointer">multi select</a>
+
+  <form (ngSubmit)="addPrestige()" #prestigeForm="ngForm" class="prestige__form">
 
     <md-grid-list cols="10" rowHeight="4em" gutterSize="5px">
-
-      <md-grid-tile colspan="2">
+      <md-grid-tile colspan="2" [hidden]="materialLook">
         <md-select placeholder="Select co-worker(s)" multiple [(ngModel)]="prestige.receivers" name="Receiver">
-          <md-option *ngFor="let receiver of receivers" [value]="receiver.name">
-            {{receiver.name}}
+          <md-option *ngFor="let receiver of receivers" [value]="receiver.label">
+            {{receiver.value}}
           </md-option>
         </md-select>
       </md-grid-tile>
+
+      <div class="col-lg-4" [hidden]="!materialLook">
+        <div class="prestige__search-box prestige__search-box__container">
+          <p-listbox [options]="receivers"
+                     [(ngModel)]="selectedReceivers"
+                     multiple="multiple"
+                     checkbox="checkbox"
+                     name="Receiver"
+                     filter="filter">
+          </p-listbox>
+          <div class="col-lg-12 prestige__search-box prestige__search-box__suggestion">
+            <p style="font-size: 12px;">
+              Selected receivers:
+              <span *ngFor="let receiver of selectedReceivers; let last = last;">
+            {{!last ? receiver + ',' : receiver}}
+          </span>
+            </p>
+          </div>
+        </div>
+      </div>
 
       <md-grid-tile colspan="4">
         <md-input-container>
@@ -50,11 +61,11 @@
           <md-hint align="end">{{prestige.url.length}} / 50</md-hint>
         </md-input-container>
       </md-grid-tile>
-
     </md-grid-list>
 
-    <button md-raised-button>Save</button>
+    <div class="col-lg-12">
+      <button md-raised-button>Save</button>
+    </div>
 
   </form>
-
 </div>

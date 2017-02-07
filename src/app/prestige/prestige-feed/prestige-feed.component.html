@@ -7,17 +7,18 @@
     <div class="col-lg-2 prestige__employee">
       <a routerLink="/employee-detail/{{prestige.id}}" routerLinkActive="active">
         <md-icon>person</md-icon>
-        <div style="word-break: break-all">
+        <div>
           {{ prestige.dealer }}
         </div>
       </a>
+      <i class="prestige__employee__icon material-icons">keyboard_arrow_right</i>
     </div>
     <div class="col-lg-10 prestige__text">
-      <span class="prestige__date">{{ prestige.created | date : 'medium' }}</span>
+      <span class="prestige__date">On {{ prestige.created | date : 'medium' }}</span>
       <div class="prestige__reason">
         {{ prestige.reason }}
-        <a href="">
-          <span class="prestige__employee--bold">{{ prestige.receivers }}</span>
+        <a href="" *ngFor="let receiver of prestige.receivers; let last = last;">
+          <span class="prestige__employee--bold">{{ !last ? '@' + receiver + ',' : '@' + receiver }}</span>
         </a>
         in category <span class="prestige__category">{{ prestige.categories }}</span>
       </div>

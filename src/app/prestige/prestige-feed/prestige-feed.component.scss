@@ -1,16 +1,25 @@
+@import "../../../styles/variables";
+
 .prestige {
   padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  margin: 10px auto;
+  border: 1px solid $secondary-color;
+  border-radius: 2px;
+  margin: 9px auto;
+
   &__employee {
     text-align: center;
     &--bold {
       font-weight: bold;
     }
+    &__icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $secondary-color;
+    }
   }
   &__text {
-    border-left: 1px dashed #e0e0e0;
+    border-left: 1px dashed $secondary-color;
   }
   &__date {
     font-size: 12px;
@@ -36,7 +45,7 @@
     position: absolute;
     top: -20px;
     right: 50%;
-    color: #e0e0e0;
+    color: $secondary-color;
   }
 }
 

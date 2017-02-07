@@ -8,9 +8,12 @@
   <span class="item-spacer"></span>
   <search-employees class="col-md-6"></search-employees>
   <span class="item-spacer"></span>
-  <md-icon (click)="openAccountDetail()">person</md-icon>
 
-  <md-icon (click)="openAddPrestige()">plus_one</md-icon>
+  <md-icon (click)="openAccountDetail()" class="header__btn header__btn--icon">person</md-icon>
+
+  <div class="header__btn--fixed">
+    <md-icon (click)="openAddPrestige()" class="header__btn header__btn--icon">plus_one</md-icon>
+  </div>
 
   <md-toolbar-row class="header__background-image"></md-toolbar-row>
 

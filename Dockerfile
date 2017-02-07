@@ -1,15 +1,23 @@
-FROM node:boron
+# Create image based on the official Node 6 image from dockerhub
+FROM node:6
 
-# Create app directory
+# Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app
+
+# Change directory so that our commands run inside this new directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
-COPY package_docker.json /usr/src/app/package.json
-COPY server.js /usr/src/app
+# Copy dependency definitions
+COPY package.json /usr/src/app
+
+# Install dependecies
 RUN npm install
 
-# Bundle app source
-COPY www/ /usr/src/app
+# Get all the code needed to run the app
+COPY /dist /usr/src/app
 
-CMD [ "npm", "start" ]
+# Expose the port the app runs in
+EXPOSE 80
+
+# Serve the app
+CMD ["npm", "start"]
