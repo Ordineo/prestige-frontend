@@ -1,33 +1,58 @@
-<div class="col-lg-12">
-  <h3>Prestige Feed</h3>
+<div class="flexContainer">
+  <div fxLayout="row">
+    <h3>Prestige Feed</h3>
+  </div>
 </div>
-
-<div class="col-lg-8 centered" *ngIf="prestiges">
-  <div class="prestige col-lg-12" *ngFor="let prestige of prestiges">
-    <div class="col-lg-2 prestige__employee">
-      <a routerLink="/employee-detail/{{prestige.id}}" routerLinkActive="active">
-        <md-icon>person</md-icon>
-        <div>
-          {{ prestige.dealer }}
-        </div>
-      </a>
-      <i class="prestige__employee__icon material-icons">keyboard_arrow_right</i>
+<div class="flexContainer" *ngIf="prestiges">
+  <div fxLayout="{{even ? 'row' : 'row-reverse'}}"
+       *ngFor="let prestige of prestiges; let index = index; let even = even; let odd = odd;">
+    <div fxFlex="50%"
+         fxFlex.xs="100%"
+         fxLayoutAlign="{{odd ? 'start' : 'end'}}"
+         fxFlexAlign="center">
+      <md-card class="example-card">
+        <md-card-header>
+          <div md-card-avatar class="example-header-image"
+               [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
+          <md-card-title>{{ prestige.dealer }}</md-card-title>
+          <md-card-subtitle class="" style="text-align: right">{{ prestige.created | date: 'dd/MM/yyyy' }}
+          </md-card-subtitle>
+        </md-card-header>
+      </md-card>
     </div>
-    <div class="col-lg-10 prestige__text">
-      <span class="prestige__date">On {{ prestige.created | date : 'medium' }}</span>
-      <div class="prestige__reason">
-        {{ prestige.reason }}
-        <a href="" *ngFor="let receiver of prestige.receivers; let last = last;">
-          <span class="prestige__employee--bold">{{ !last ? '@' + receiver + ',' : '@' + receiver }}</span>
-        </a>
-        in category <span class="prestige__category">{{ prestige.categories }}</span>
+    <div fxFlex="10%"
+         fxLayoutAlign="center">
+      <div [ngStyle]="{'background': 'linear-gradient(0deg, #E98300, #ec971f, #E98300)'}"
+           fxFlex="5%"
+           fxLayoutAlign="center">
+        <md-icon fxFlexAlign="center" style="background: #fff; border-radius: 50%; color: #E98300">radio_button_unchecked</md-icon>
       </div>
-      <div class="prestige__url" *ngIf="prestige.url">
-        <a href="{{prestige.url}}" target="_blank">
-          <md-icon class="">link</md-icon>
-          {{ prestige.url }}
-        </a>
-      </div>
+    </div>
+    <div fxFlex="50%"
+         fxFlex.xs="100%">
+      <md-card class="example-card">
+        <md-card-header>
+          <md-card-title>
+            <md-icon>plus_one</md-icon>
+            <a href="{{prestige.url}}" class="hop" target="_blank" style="position: absolute; right: 10%;">
+              <!--<md-icon>link</md-icon>-->
+              {{ prestige.url }}
+            </a>
+          </md-card-title>
+          <md-card-subtitle>AWESOME JOB! (replace text)</md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+          <div *ngFor="let receiver of prestige.receivers; let last = last;"
+               style="display: inline-block; margin: 0; padding: 10px;">
+            <div mdTooltip="@ '{{receiver}}' " [mdTooltipPosition]="'below'"
+                 md-card-avatar
+                 class="example-header-image"
+                 [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
+          </div>
+          <p [ngStyle]="{'font-size': (prestige.reason.length > 50) ? '1.5em' : '2em' }">{{ prestige.reason }}</p>
+          <md-card-subtitle>Category: {{ prestige.categories }}</md-card-subtitle>
+        </md-card-content>
+      </md-card>
     </div>
   </div>
 </div>

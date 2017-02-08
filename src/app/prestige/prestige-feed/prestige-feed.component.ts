@@ -17,15 +17,27 @@ export class PrestigeFeedComponent implements OnInit {
 
   constructor(af: AngularFire,
               private prestigeService: PrestigeService) {
-    af.database.object('/feed').subscribe(res => {
+    af.database.object('/feed').map(res => {
       this.feed = res;
     });
+  }
+
+  avatar = "";
+
+  randomAvatar() {
+    var avatar = "";
+    var possible = "ABC";
+    for (var i = 0; i < 5; i++)
+      this.avatar += possible.charAt(Math.floor(Math.random() * possible.length));
+    return avatar;
   }
 
   ngOnInit() {
     this.prestigeService.getPrestiges().subscribe(res => {
       this.prestiges = res.reverse(); // reverse Firebase data: https://github.com/angular/angularfire2/issues/283#issuecomment-231511751
-    })
+    });
+
+    this.avatar = this.randomAvatar();
   }
 
 }

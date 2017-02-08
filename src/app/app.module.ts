@@ -27,6 +27,8 @@ import {CategoryService} from "./providers/category.service";
 import {PrestigeService} from "./providers/prestige.service";
 import {SortDatePipe} from './shared/sort/sort-date.pipe';
 
+import {FlexLayoutModule} from "@angular/flex-layout";
+
 import {ListboxModule} from 'primeng/primeng';
 
 @NgModule({
@@ -51,6 +53,7 @@ import {ListboxModule} from 'primeng/primeng';
     NgbModule.forRoot(),
     AppRoutingModule,
     ListboxModule,
+    FlexLayoutModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [

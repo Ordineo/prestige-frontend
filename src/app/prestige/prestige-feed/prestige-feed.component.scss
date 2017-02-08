@@ -1,5 +1,17 @@
 @import "../../../styles/variables";
 
+md-card {
+  margin: 10px;
+}
+
+.flexContainer {
+  box-sizing: content-box !important;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
 .prestige {
   padding: 10px;
   border: 1px solid $secondary-color;
