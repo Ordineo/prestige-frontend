@@ -53,7 +53,7 @@ import {ListboxModule} from 'primeng/primeng';
     NgbModule.forRoot(),
     AppRoutingModule,
     ListboxModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
