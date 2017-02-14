@@ -1,4 +1,23 @@
-.employee {
+md-card {
+  margin-bottom: 2% !important;
+
+  md-card-header {
+    div {
+      background-size: contain;
+    }
+  }
+
+  md-card-content {
+    .prestige {
+      margin-bottom: 2%;
+      md-progress-bar {
+        height: 10px;
+      }
+    }
+  }
+}
+
+/*.employee {
   &__detail {
     text-align: center;
 
@@ -60,8 +79,9 @@
       }
     }
   }
-}
+}*/
 
 .center-block {
   float: none;
 }
+
