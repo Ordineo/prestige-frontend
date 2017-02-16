@@ -6,6 +6,7 @@
 
 # dependencies
 /node_modules
+gatekeeper
 
 # IDEs and editors
 /.idea
