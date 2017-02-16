@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
   }
 
   accessToken: any;
-
+  
   public getToken(code) {
     this.accessToken = this.http.get(gatekeeperConfig.development.gatekeeper + '/authenticate/' + code)
       .map((res: Response) => {

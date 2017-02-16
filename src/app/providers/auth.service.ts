@@ -6,7 +6,9 @@ import {gatekeeperConfig} from "../node.config";
 
 @Injectable()
 export class AuthService {
-
+  private _loggedInUser: any;
+  private _userLoggedIn: boolean;
+  
   constructor(private http: Http,
               private router: Router) {
   }
@@ -17,7 +19,9 @@ export class AuthService {
 
       return this.http.get("https://api.github.com/user", options)
         .map((res: Response) => {
-          return res.json()
+          this._loggedInUser = res.json();
+          this._userLoggedIn = true;
+          return this._loggedInUser;
         })
         .catch(this.handleError);
   }
@@ -33,6 +37,14 @@ export class AuthService {
   }
 
   ngOnInit() {
+  }
+  
+  get loggedInUser(): any{
+    return this._loggedInUser;
+  }
+  
+  get userLoggedIn(){
+    return this._userLoggedIn;
   }
 
 }

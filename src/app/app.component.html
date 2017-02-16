@@ -11,13 +11,13 @@
 
   <md-icon (click)="openAccountDetail()" class="header__btn header__btn--icon">person</md-icon>
 
-  <p style="position: relative; top: 5px;">{{ currentUser?.name }}</p>
+  <p style="position: relative; top: 5px;">{{ authService.loggedInUser?.name }}</p>
 
-  <a href="" (click)="logout()" [hidden]="!show">
+  <a href="" (click)="logout()" [hidden]="!authService.userLoggedIn">
     <md-icon class="header__btn header__btn--icon">panorama_fish_eye</md-icon>
   </a>
 
-  <a href="{{githubUrl}}" [hidden]="show">
+  <a href="{{githubUrl}}" [hidden]="authService.userLoggedIn">
     <md-icon class="header__btn header__btn--icon">lens</md-icon>
   </a>
 

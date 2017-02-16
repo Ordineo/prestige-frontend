@@ -23,8 +23,7 @@ export class AppComponent implements OnInit {
   }
 
   githubUrl = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
-  currentUser: any;
-  show : boolean = false;
+  
 
   // todo check status for tabs and routing
   // https://github.com/angular/material2/issues/524#issuecomment-257209955
@@ -78,16 +77,7 @@ export class AppComponent implements OnInit {
   public logout() {
     this.authService.logout();
   }
-
-  public getCurrentUser(){
-    this.authService.getProfile().subscribe(user => {
-      this.show = true;
-      this.currentUser = user
-    });
-  }
-
-  ngOnInit() {
-    this.getCurrentUser();
-  }
+  
+  ngOnInit(){}
 
 }
