@@ -38,20 +38,20 @@
         </div>
       </div>
 
-      <md-grid-tile colspan="4">
-        <md-input-container>
-          <input md-input [(ngModel)]="prestige.reason" name="Reason">
-          <md-placeholder>Reason</md-placeholder>
-          <md-hint align="end">{{prestige.reason.length}} / 140</md-hint>
-        </md-input-container>
-      </md-grid-tile>
-
       <md-grid-tile colspan="2">
         <md-select placeholder="Select a categories" [(ngModel)]="prestige.categories" name="Categories">
           <md-option *ngFor="let category of categories" [value]="category.name">
             {{category.name}}
           </md-option>
         </md-select>
+      </md-grid-tile>
+
+      <md-grid-tile colspan="4">
+        <md-input-container>
+          <input md-input [(ngModel)]="prestige.reason" name="Reason">
+          <md-placeholder>Reason</md-placeholder>
+          <md-hint align="end">{{prestige.reason.length}} / 140</md-hint>
+        </md-input-container>
       </md-grid-tile>
 
       <md-grid-tile colspan="2">
