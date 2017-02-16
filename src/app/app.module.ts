@@ -18,7 +18,7 @@ import {EmployeeRankingComponent} from './employee/employee-ranking/employee-ran
 import {PrestigeDetailComponent} from "./prestige/prestige-detail/prestige-detail.component";
 import {EmployeeService} from './providers/employee.service';
 
-import {AngularFireModule, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {AngularFireModule} from 'angularfire2';
 import {firebaseConfig} from './firebase.config';
 import {AccountDetailComponent} from './account/account-detail/account-detail.component';
 import {AccountService} from "./providers/account.service";
@@ -30,6 +30,9 @@ import {SortDatePipe} from './shared/sort/sort-date.pipe';
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {ListboxModule} from 'primeng/primeng';
+import { AuthComponent } from './shared/auth/auth.component';
+import { LoginComponent } from './login/login.component';
+import {AuthService} from "./providers/auth.service";
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import {ListboxModule} from 'primeng/primeng';
     AccountDetailComponent,
     AddPrestigeComponent,
     SortDatePipe,
+    AuthComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +66,7 @@ import {ListboxModule} from 'primeng/primeng';
     AccountService,
     CategoryService,
     PrestigeService,
+    AuthService,
     { provide: LOCALE_ID, useValue: "nl-NL" }
   ],
   bootstrap: [AppComponent],

@@ -1,8 +1,10 @@
-import {Component, ViewContainerRef} from '@angular/core';
+import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {Router}  from '@angular/router';
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {AccountDetailComponent} from "./account/account-detail/account-detail.component";
 import {AddPrestigeComponent} from "./prestige/add-prestige/add-prestige.component";
+import {gatekeeperConfig} from "./node.config";
+import {AuthService} from "./providers/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -10,15 +12,19 @@ import {AddPrestigeComponent} from "./prestige/add-prestige/add-prestige.compone
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   dialogRef: MdDialogRef<any>;
   private activeTabIndex = 0;
 
   constructor(private router: Router,
               public dialog: MdDialog,
-              public viewContainerRef: ViewContainerRef) {
+              public viewContainerRef: ViewContainerRef,
+              private authService: AuthService) {
   }
 
+  githubUrl = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
+  currentUser: any;
+  show : boolean = false;
 
   // todo check status for tabs and routing
   // https://github.com/angular/material2/issues/524#issuecomment-257209955
@@ -28,7 +34,7 @@ export class AppComponent {
       case 0:
         this.router.navigateByUrl('/prestige-feed');
         break;
-        // change this with ID of loggedin user
+      // change this with ID of loggedin user
       case 1:
         this.router.navigateByUrl('/employee-detail/0');
         break;
@@ -41,7 +47,7 @@ export class AppComponent {
     }
   }
 
-  public switchToFirstTab(){
+  public switchToFirstTab() {
     this.activeTabIndex = 0;
   }
 
@@ -68,4 +74,20 @@ export class AppComponent {
       this.dialogRef = null;
     });
   }
+
+  public logout() {
+    this.authService.logout();
+  }
+
+  public getCurrentUser(){
+    this.authService.getProfile().subscribe(user => {
+      this.show = true;
+      this.currentUser = user
+    });
+  }
+
+  ngOnInit() {
+    this.getCurrentUser();
+  }
+
 }

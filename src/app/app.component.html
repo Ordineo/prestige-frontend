@@ -11,7 +11,17 @@
 
   <md-icon (click)="openAccountDetail()" class="header__btn header__btn--icon">person</md-icon>
 
-  <div class="header__btn--fixed">
+  <p style="position: relative; top: 5px;">{{ currentUser?.name }}</p>
+
+  <a href="" (click)="logout()" [hidden]="!show">
+    <md-icon class="header__btn header__btn--icon">panorama_fish_eye</md-icon>
+  </a>
+
+  <a href="{{githubUrl}}" [hidden]="show">
+    <md-icon class="header__btn header__btn--icon">lens</md-icon>
+  </a>
+
+  <div class="">
     <md-icon (click)="openAddPrestige()" class="header__btn header__btn--icon">plus_one</md-icon>
   </div>
 

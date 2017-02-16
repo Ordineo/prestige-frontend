@@ -7,6 +7,8 @@ import {EmployeeRankingComponent} from './employee/employee-ranking/employee-ran
 import {PrestigeDetailComponent} from "./prestige/prestige-detail/prestige-detail.component";
 import {PrestigeFeedComponent} from './prestige/prestige-feed/prestige-feed.component';
 import {SearchComponent} from './shared/search/search.component';
+import {AuthComponent} from "./shared/auth/auth.component";
+import {LoginComponent} from "./login/login.component";
 
 const appRoutes: Routes = [
   {
@@ -26,8 +28,16 @@ const appRoutes: Routes = [
     component: PrestigeFeedComponent
   },
   {
+    path: 'auth',
+    component: AuthComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
-    redirectTo: '/prestige-feed',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];
