@@ -1,9 +1,12 @@
 @import '../../../styles/variables';
 
-.rank-item{
+.rank-item {
+  display: block;
   padding: 0.8em !important;
-  background-color: #A5ACAF !important;
   font-size: 14px !important;
+  img {
+    width: 5%;
+  }
 }
 
 .rank-item.rank-item__primary {
@@ -19,10 +22,17 @@
 }
 
 .rank-item.rank-item__row {
-  background: rgba(245, 245, 245, 1.0);
   border-left: 1px solid $white;
   width: 50%;
   display: inline-block !important;
+}
+
+.right-alignment {
+  text-align: right !important;
+}
+
+.left-alignment {
+  text-align: left !important;
 }
 
 /*.rank {
