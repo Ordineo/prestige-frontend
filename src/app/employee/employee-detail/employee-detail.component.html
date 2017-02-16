@@ -23,27 +23,3 @@
     </div>
   </md-card-content>
 </md-card>
-
-<!--
-<div class="col-lg-12" *ngIf="employee">
-  <div class="center-block center">
-    <div class="col-lg-8 center-block">
-      <div class="employee__detail">
-        <div class="employee__detail&#45;&#45;circled">
-          <span class="custom-circle"></span>
-          <md-icon>person</md-icon>
-        </div>
-      </div>
-      <div class="employee__categories">
-        <div class="employee__categories__item"
-             *ngFor="let prestige of employee?.prestiges; let odd=odd; let even=even;"
-             [ngClass]="{ 'employee__categories__item&#45;&#45;right': odd, 'employee__categories__item&#45;&#45;left': even }">
-          <span [hidden]="odd" [ngClass]="{ 'badge': even, '': odd}">{{ even ? prestige.prestige : '' }}</span>
-          {{ prestige.category }}
-          <span [hidden]="even" [ngClass]="{ 'badge': odd, '': even}">{{ odd ? prestige.prestige : '' }}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
