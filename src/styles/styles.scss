@@ -2,7 +2,6 @@
   VARIABLES
  */
 @import '_variables';
-
 /**
   GENERAL COMPONENTS
  */
@@ -21,7 +20,30 @@ a {
   color: $primary-color;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #565A5C;
+}
+
 .item-spacer {
   flex: 1 1 auto;
+}
+
+.center-block {
+  float: none;
+}
+
+.none {
+  display: none !important;
+}
+
+md-card {
+  margin-bottom: 2% !important;
+  margin-top: 1% !important;
+}
+
+md-card-header md-card-title {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: #565A5C !important;
 }
 

@@ -1,6 +1,31 @@
 @import '../../../styles/variables';
 
-.rank {
+.rank-item{
+  padding: 0.8em !important;
+  background-color: #A5ACAF !important;
+  font-size: 14px !important;
+}
+
+.rank-item.rank-item__primary {
+  font-size: 20px !important;
+}
+
+.rank-item.rank-item__secondary {
+  font-size: 18px !important;
+}
+
+.rank-item.rank-item__thirstary {
+  font-size: 16px !important;
+}
+
+.rank-item.rank-item__row {
+  background: rgba(245, 245, 245, 1.0);
+  border-left: 1px solid $white;
+  width: 50%;
+  display: inline-block !important;
+}
+
+/*.rank {
   list-style: none;
 
   &-item {
@@ -13,10 +38,7 @@
       margin-right: 10px;
     }
 
-    &__row {
-      background: rgba(245, 245, 245, 1.0);
-      border-left: 1px solid $white;
-    }
+
 
     &__primary {
       color: #505050;
@@ -39,8 +61,4 @@
     }
   }
 
-}
-
-.center-block {
-  float: none;
-}
+}*/
