@@ -2,73 +2,30 @@
 
 .rank-item {
   display: block;
-  padding: 0.8em !important;
-  font-size: 14px !important;
-  img {
-    width: 5%;
+  padding: 0.8em;
+  font-size: 14px;
+
+  &__primary {
+    font-size: 20px;
+  }
+  &__secondary {
+    font-size: 18px;
+  }
+  &__thirstary {
+    font-size: 16px;
+  }
+  &__row {
+    border-left: 1px solid $white;
+    width: 50%;
+    display: inline-block;
+  }
+  &__img {
+    margin-right: 10px;
+    &--large {
+      width: 5%;
+    }
+    &--small {
+      width: 15%;
+    }
   }
 }
-
-.rank-item.rank-item__primary {
-  font-size: 20px !important;
-}
-
-.rank-item.rank-item__secondary {
-  font-size: 18px !important;
-}
-
-.rank-item.rank-item__thirstary {
-  font-size: 16px !important;
-}
-
-.rank-item.rank-item__row {
-  border-left: 1px solid $white;
-  width: 50%;
-  display: inline-block !important;
-}
-
-.right-alignment {
-  text-align: right !important;
-}
-
-.left-alignment {
-  text-align: left !important;
-}
-
-/*.rank {
-  list-style: none;
-
-  &-item {
-    font-size: 14px;
-    padding: 10px;
-    margin: 5px 0;
-    background: linear-gradient(90deg, $white, #e0e0e0);
-
-    .badge {
-      margin-right: 10px;
-    }
-
-
-
-    &__primary {
-      color: #505050;
-      font-size: 24px;
-      font-weight: bold;
-
-      &.badge {
-        color: #505050;
-        border-color: #505050;
-      }
-    }
-
-    &__secondary {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    &__thirstary {
-      font-size: 15px;
-    }
-  }
-
-}*/
