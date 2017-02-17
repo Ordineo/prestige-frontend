@@ -9,17 +9,14 @@
   <search-employees class="col-md-6"></search-employees>
   <span class="item-spacer"></span>
 
-  <md-icon (click)="openAccountDetail()" class="header__btn header__btn--icon">person</md-icon>
-
-  <p style="position: relative; top: 5px;">{{ authService.loggedInUser?.name }}</p>
-
-  <a href="" (click)="logout()" [hidden]="!authService.userLoggedIn">
-    <md-icon class="header__btn header__btn--icon">panorama_fish_eye</md-icon>
+  <a class="header__avatar" (click)="openAccountDetail()">
+    <img class="header__avatar__image" src="{{authService.loggedInUser?.avatar_url }}" alt="">
+    <p class="header__avatar__name">{{ authService.loggedInUser?.name }}</p>
   </a>
 
-  <!--<a href="{{githubUrl}}" [hidden]="authService.userLoggedIn">
-    <md-icon class="header__btn header__btn&#45;&#45;icon">lens</md-icon>
-  </a>-->
+  <a href="" (click)="logout()" [hidden]="!authService.userLoggedIn">
+    <md-icon class="header__btn header__btn--icon">cancel</md-icon>
+  </a>
 
   <div class="">
     <md-icon (click)="openAddPrestige()" class="header__btn header__btn--icon">plus_one</md-icon>
