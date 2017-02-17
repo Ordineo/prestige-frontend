@@ -1,4 +1,4 @@
-<md-toolbar [color]="primary">
+<md-toolbar *ngIf="authService.userLoggedIn && authService.loggedInUser?.name" [color]="primary">
   <div class="header__logo"></div>
   <a class="header__logo__link"
      (click)="switchToFirstTab()" routerLink="/prestige-feed" routerLinkActive="active">
@@ -17,9 +17,9 @@
     <md-icon class="header__btn header__btn--icon">panorama_fish_eye</md-icon>
   </a>
 
-  <a href="{{githubUrl}}" [hidden]="authService.userLoggedIn">
-    <md-icon class="header__btn header__btn--icon">lens</md-icon>
-  </a>
+  <!--<a href="{{githubUrl}}" [hidden]="authService.userLoggedIn">
+    <md-icon class="header__btn header__btn&#45;&#45;icon">lens</md-icon>
+  </a>-->
 
   <div class="">
     <md-icon (click)="openAddPrestige()" class="header__btn header__btn--icon">plus_one</md-icon>
@@ -48,6 +48,7 @@
   </md-toolbar-row>
 </md-toolbar>
 
-<div class="container-fluid">
+<div class="container-fluid" [ngClass]="{'loginBackground': !authService.userLoggedIn}">
+  <div [ngClass]="{'transparentOverlay': !authService.userLoggedIn}"></div>
   <router-outlet></router-outlet>
 </div>

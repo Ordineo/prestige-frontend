@@ -21,10 +21,7 @@ export class AppComponent implements OnInit {
               public viewContainerRef: ViewContainerRef,
               private authService: AuthService) {
   }
-
-  githubUrl = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
   
-
   // todo check status for tabs and routing
   // https://github.com/angular/material2/issues/524#issuecomment-257209955
 
