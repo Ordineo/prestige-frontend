@@ -45,7 +45,7 @@
   </md-toolbar-row>
 </md-toolbar>
 
-<div class="container-fluid" [ngClass]="{'loginBackground': !authService.userLoggedIn}">
+<div class="container-fluid no-padding" [ngClass]="{'loginBackground': !authService.userLoggedIn}">
   <div [ngClass]="{'transparentOverlay': !authService.userLoggedIn}"></div>
   <router-outlet></router-outlet>
 </div>
