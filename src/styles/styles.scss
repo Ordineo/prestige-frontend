@@ -37,8 +37,10 @@ body {
   padding: 0;
 }
 
-.md-card-header-text {
-  margin: 0 auto !important;
+.md-card-header__center {
+  .md-card-header-text {
+    margin: 0 auto !important;
+  }
 }
 
 .center-block {
