@@ -7,7 +7,6 @@
 
 # dependencies
 /node_modules
-gatekeeper
 
 # IDEs and editors
 /.idea
@@ -16,8 +15,10 @@ gatekeeper
 .c9/
 *.launch
 .settings/
+<<<<<<< HEAD
 *.sublime-workspace
-.iml
+=======
+>>>>>>> updated gitignore
 .iml
 
 # IDE - VSCode
@@ -40,6 +41,6 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
-#System Files
+# System Files
 .DS_Store
 Thumbs.db
