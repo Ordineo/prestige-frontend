@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { DatePipe } from "@angular/common";
 import { SortDatePipe } from "../../shared/sort/sort-date.pipe";
 import { AuthService } from "../../providers/auth.service";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'prestige-feed',
@@ -12,23 +13,26 @@ import { AuthService } from "../../providers/auth.service";
   styleUrls: ['./prestige-feed.component.scss']
 })
 export class PrestigeFeedComponent implements OnInit {
-  
-  feed: FirebaseObjectObservable<any[]>;
-  prestiges: Observable <any>;
+
+  feed: any;
+  prestiges: Observable<any>;
   currentUser: any;
   show: boolean = false;
-  
-  constructor(af: AngularFire,
+
+  constructor(private http: Http,
               private prestigeService: PrestigeService,
               private authService: AuthService) {
-    af.database.object('/feed').map(res => {
+    /*af.database.object('/feed').map(res => {
       this.feed = res;
-    });
+    });*/
+    // http.get("localhost:8585/employee-service/prestiges").map(res => {
+    //   this.feed = res;
+    // });
   }
-  
+
   avatar = "";
-  
-  
+
+
   randomAvatar() {
     var avatar = "";
     var possible = "ABC";
@@ -36,16 +40,24 @@ export class PrestigeFeedComponent implements OnInit {
       this.avatar += possible.charAt(Math.floor(Math.random() * possible.length));
     return avatar;
   }
-  
+
   ngOnInit() {
-    this.prestigeService.getPrestiges().subscribe(res => {
-      this.prestiges = res.reverse(); // reverse Firebase data: https://github.com/angular/angularfire2/issues/283#issuecomment-231511751
+    // this.prestigeService.getPrestiges().subscribe(res => {
+    //   this.prestiges = res.reverse();//res.reverse(); // reverse Firebase data: https://github.com/angular/angularfire2/issues/283#issuecomment-231511751
+    //   console.log(res);
+    //   this.getCurrentUser();
+    // });
+
+    this.prestigeService.get().subscribe(result => {
+      this.prestiges = result.prestiges;
       this.getCurrentUser();
     });
-    
+
     this.avatar = this.randomAvatar();
   }
-  
+
+
+
   public getCurrentUser() {
     this.authService.getProfile().subscribe(user => {
       this.show = true;
@@ -53,5 +65,4 @@ export class PrestigeFeedComponent implements OnInit {
       console.log(this.currentUser);
     });
   }
-  
 }
