@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Account} from "../../models/account";
 import {AccountService} from "../../providers/account.service";
 import {MdDialogRef} from "@angular/material";
+import {EmployeeService} from "../../providers/employee.service";
 
 @Component({
   selector: 'app-account-detail',
@@ -12,10 +13,10 @@ export class AccountDetailComponent implements OnInit {
   account: Account;
 
   constructor(private accountService: AccountService,
-              public dialogRef: MdDialogRef<any>) { }
+              public dialogRef: MdDialogRef<any>, private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.accountService.getAccountById(0).subscribe(account => {
+    /*this.accountService.getAccountById(0).subscribe(account => {
       this.account = {
         id: account.id,
         firstName: account.firstName,
@@ -25,7 +26,18 @@ export class AccountDetailComponent implements OnInit {
         unit: account.unit,
         gender: account.gender
       }
-    })
+    })*/
+    this.employeeService.getById(1).subscribe(account => {
+      this.account = {
+        id: account.id,
+        firstName: account.firstName,
+        lastName: account.lastName,
+        email: account.email,
+        unit: account.unit,
+        phone: account.phone,
+        gender: account.gender
+      }
+    });
   }
 
   saveAccount() {

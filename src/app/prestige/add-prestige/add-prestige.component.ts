@@ -62,20 +62,23 @@ export class AddPrestigeComponent implements OnInit {
     /**
      * test
      */
-    this.employeeService.getTestData()
+    /*this.employeeService.getTestData()
       .subscribe(result => {
         this.receivers = result;
+      });*/
+
+    this.categoryService.get()
+      .subscribe(result => {
+        this.categories = result.categories;
       });
 
-    this.categoryService.getCategories()
+    this.employeeService.get()
       .subscribe(result => {
-        this.categories = result;
+        this.receivers = result.users;
+        console.log(result.users);
       });
 
-    this.employeeService.getEmployees()
-      .subscribe(result => {
-        this.receivers = result;
-      });
+    // todo: remove multiple choice
 
     this.prestige = {
       id: 1,

@@ -10,8 +10,8 @@
     <div class="rank-item"
          *ngFor="let employee of employees, let index=index"
          [ngClass]="{'rank-item__primary': index == 0, 'rank-item__secondary': index == 1, 'rank-item__thirstary': index == 2, 'none': index > 2}">
-      <img class="rank-item__img rank-item__img--large" src="{{employee.imageurl}}">
-      {{employee.name}}
+      <img class="rank-item__img rank-item__img--large" src="{{employee.avatar}}">
+      {{employee.username}}
     </div>
   </md-card-content>
 </md-card>
@@ -21,8 +21,8 @@
            [ngClass]="{'none': index < 3 }">
     <md-card-content>
       <div class="rank-item" >
-        <img class="rank-item__img rank-item__img--small" src="{{employee.imageurl}}">
-        {{employee.name}}
+        <img class="rank-item__img rank-item__img--small" src="{{employee.avatar}}">
+        {{employee.username}}
       </div>
     </md-card-content>
   </md-card>

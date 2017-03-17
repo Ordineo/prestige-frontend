@@ -1,16 +1,17 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {AngularFire} from  'angularfire2';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Http} from "@angular/http";
 
 import 'rxjs/add/operator/map';
+import {IAppConfig, APP_CONFIG} from "../app.config";
 
 const limit: BehaviorSubject<number> = new BehaviorSubject<number>(10); // import 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class PrestigeService {
 
-  constructor(private af: AngularFire, private http: Http) {
+  constructor(private af: AngularFire, private http: Http, @Inject(APP_CONFIG) private config) {
   }
 
   getPrestiges() {
@@ -32,7 +33,7 @@ export class PrestigeService {
   }
 
   get() {
-    return this.http.get("http://localhost:8585/employee-service/prestiges")
+    return this.http.get(this.config.apiPrestigesEndpoint)
       .map(result => {
         return result.json()._embedded;
       });

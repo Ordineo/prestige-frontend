@@ -21,16 +21,16 @@ export class EmployeeRankingComponent implements OnInit {
     { name: 'Accent', color: 'accent' },
     { name: 'Warn', color: 'warn' }
   ];
-  
+
   constructor(private employeeService: EmployeeService) {
-    
+
   }
-  
+
   ngOnInit() {
-    this.employeeService.getEmployees()
+    this.employeeService.get()
       .subscribe(result => {
-        this.employees = result;
+        this.employees = result.users;
       });
   }
-  
+
 }

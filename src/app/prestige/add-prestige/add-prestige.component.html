@@ -13,7 +13,7 @@
       <md-grid-tile colspan="2" [hidden]="materialLook">
         <md-select placeholder="Select co-worker(s)" multiple [(ngModel)]="prestige.receivers" name="Receiver">
           <md-option *ngFor="let receiver of receivers" [value]="receiver.label">
-            {{receiver.value}}
+            {{receiver.username}}
           </md-option>
         </md-select>
       </md-grid-tile>
