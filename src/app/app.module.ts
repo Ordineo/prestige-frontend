@@ -17,6 +17,7 @@ import {EmployeeRankingComponent} from './employee/employee-ranking/employee-ran
 import {PrestigeDetailComponent} from "./prestige/prestige-detail/prestige-detail.component";
 import {EmployeeService} from './providers/employee.service';
 
+import {APP_CONFIG, AppConfig} from './app.config';
 import {AngularFireModule} from 'angularfire2';
 import {firebaseConfig} from './firebase.config';
 import {AccountDetailComponent} from './account/account-detail/account-detail.component';
@@ -66,7 +67,8 @@ import {AuthService} from "./providers/auth.service";
     CategoryService,
     PrestigeService,
     AuthService,
-    { provide: LOCALE_ID, useValue: "nl-NL" }
+    { provide: LOCALE_ID, useValue: "nl-NL" },
+    { provide: APP_CONFIG, useValue: AppConfig }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AccountDetailComponent, AddPrestigeComponent]
