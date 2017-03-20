@@ -9,8 +9,9 @@ import {PrestigeService} from "../../providers/prestige.service";
 
 import {ListboxModule} from 'primeng/primeng';
 import {SelectItem} from "primeng/components/common/api";
+import * as Firebase from 'firebase';
 
-const Firebase = require('firebase');
+// const Firebase = require('firebase');
 
 @Component({
   selector: 'app-add-prestige',

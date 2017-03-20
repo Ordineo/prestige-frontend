@@ -27,19 +27,19 @@
   <md-toolbar-row>
     <md-tab-group (focusChange)="changeTab($event)" [(selectedIndex)]="activeTabIndex">
       <md-tab>
-        <template md-tab-label>
+        <ng-template md-tab-label>
           <a routerLink="/prestige-feed" routerLinkActive="active">Prestige</a>
-        </template>
+        </ng-template>
       </md-tab>
       <md-tab>
-        <template md-tab-label>
+        <ng-template md-tab-label>
           <a routerLink="/employee-detail" routerLinkActive="active">My prestige</a>
-        </template>
+        </ng-template>
       </md-tab>
       <md-tab>
-        <template md-tab-label>
+        <ng-template md-tab-label>
           <a routerLink="/employee-ranking" routerLinkActive="active">Ranking</a>
-        </template>
+        </ng-template>
       </md-tab>
     </md-tab-group>
   </md-toolbar-row>

@@ -8,7 +8,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {Md2Module} from 'md2';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MaterialModule} from '@angular/material';
-import 'hammerjs';
 
 import {AppComponent} from './app.component';
 import {PrestigeFeedComponent} from './prestige/prestige-feed/prestige-feed.component';

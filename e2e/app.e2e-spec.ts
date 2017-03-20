@@ -1,6 +1,6 @@
 import { PrestigeFrontendPage } from './app.po';
 
-describe('prestige-frontend App', function() {
+describe('prestige-frontend App', () => {
   let page: PrestigeFrontendPage;
 
   beforeEach(() => {
