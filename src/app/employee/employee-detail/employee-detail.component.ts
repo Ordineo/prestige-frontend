@@ -20,7 +20,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   // todo: correcte id weergeven
   getUser() {
-    console.log(this.route.snapshot.params['id'], "id => user?")
+    console.log(this.route.snapshot.params['id'], "id => user?");
     this.employeeService.getById(this.route.snapshot.params['id']).subscribe(result => {
       this.employee = result;
     });

@@ -39,4 +39,8 @@ export class PrestigeService {
       });
   }
 
+  add(prestige: any) {
+    return this.http.post(this.config.apiPrestigesEndpoint, prestige);
+  }
+
 }

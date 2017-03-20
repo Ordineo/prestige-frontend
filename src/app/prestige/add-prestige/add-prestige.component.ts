@@ -42,7 +42,7 @@ export class AddPrestigeComponent implements OnInit {
   addPrestige() {
     this.prestige.receivers = this.selectedReceivers;
     // console.log("---- ADD :", this.prestige, this.selectedReceivers);
-    this.prestigeService.addPrestige(this.prestige);
+    this.prestigeService.add(JSON.stringify(this.prestige));
     this.dialogRef.close();
   }
 
