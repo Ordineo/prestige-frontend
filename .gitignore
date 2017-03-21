@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-gatekeeper
+/gatekeeper
 
 # IDEs and editors
 /.idea
@@ -17,7 +17,6 @@ gatekeeper
 *.launch
 .settings/
 *.sublime-workspace
-.iml
 .iml
 
 # IDE - VSCode
