@@ -1,20 +1,20 @@
-import {OpaqueToken} from "@angular/core";
+import { OpaqueToken } from '@angular/core';
 
-export let APP_CONFIG = new OpaqueToken("app.config");
+export let APP_CONFIG = new OpaqueToken('app.config');
 
 
-let protocol = "http";
-let domain = "localhost";
+let protocol = 'http';
+let domain = 'localhost';
 
 // Back-end config
-// var port = "8585";
-// var baseEndpoint = "/employee-service";
+// var port = '8585';
+// var baseEndpoint = '/employee-service';
 
 // Node-Red Config
-let port = "1880";
-let baseEndpoint = "";
+let port = '1880';
+let baseEndpoint = '';
 
-let url = protocol + "://" + domain + ":" + port + baseEndpoint;
+let url = protocol + '://' + domain + ':' + port + baseEndpoint;
 
 export interface IAppConfig {
   apiUsersEndpoint: string;
@@ -25,10 +25,10 @@ export interface IAppConfig {
   apiProfileEndpoint: string;
 }
 export const AppConfig: IAppConfig = {
-  apiUsersEndpoint: url + "/users",
-  apiPrestigesEndpoint: url + "/prestiges",
-  apiRolesEndpoint: url + "/roles",
-  apiPrestigeLikesEndpoint: url + "/prestigeLikes",
-  apiCategoriesEndpoint: url + "/categories",
-  apiProfileEndpoint: url + "/profiles"
+  apiUsersEndpoint: url + '/users',
+  apiPrestigesEndpoint: url + '/prestiges',
+  apiRolesEndpoint: url + '/roles',
+  apiPrestigeLikesEndpoint: url + '/prestigeLikes',
+  apiCategoriesEndpoint: url + '/categories',
+  apiProfileEndpoint: url + '/profiles'
 };
