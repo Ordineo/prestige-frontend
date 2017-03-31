@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router,
               public dialog: MdDialog,
               public viewContainerRef: ViewContainerRef,
-              private authService: AuthService) {
+              public authService: AuthService) {
   }
   
   // todo check status for tabs and routing
