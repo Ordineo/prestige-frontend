@@ -1,0 +1,14 @@
+{
+  "name": "connected-fe-docker",
+  "version": "1.0.0",
+  "description": "Prestige front-end dockerized",
+  "author": "Vierbergen Tim <Vierbergen.Tim.Work@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "connect-modrewrite": "0.9.0"
+  }
+}
