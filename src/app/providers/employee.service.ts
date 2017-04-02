@@ -2,13 +2,13 @@ import {Injectable, Inject} from '@angular/core';
 import {AngularFire} from  'angularfire2';
 import {share} from "rxjs/operator/share";
 import {Http} from "@angular/http";
-import {APP_CONFIG, IAppConfig} from "../app.config";
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class EmployeeService {
 
-  constructor(private af: AngularFire, private http: Http, @Inject(APP_CONFIG) private config) {
+  constructor(private af: AngularFire, private http: Http) {
   }
 
   getEmployees() {
@@ -27,14 +27,14 @@ export class EmployeeService {
   }
 
   get() {
-    return this.http.get(this.config.apiUsersEndpoint)
+    return this.http.get(environment.apiUsersEndpoint)
       .map(result => {
         return result.json()._embedded;
       });
   }
 
   getById(id: number) {
-    return this.http.get(this.config.apiUsersEndpoint + '/search/findById?id=' + id)
+    return this.http.get(environment.apiUsersEndpoint + '/search/findById?id=' + id)
       .map(result => (result.json()._embedded));
   }
 
