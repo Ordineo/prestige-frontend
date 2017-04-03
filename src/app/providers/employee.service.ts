@@ -36,6 +36,7 @@ export class EmployeeService {
   getById(id: number) {
     return this.http.get(environment.apiUsersEndpoint + '/search/findById?id=' + id)
       .map(result => (result.json()));
+
   }
 
 }
