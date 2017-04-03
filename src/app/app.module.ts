@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule, LOCALE_ID} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -50,6 +51,7 @@ import {AuthService} from "./providers/auth.service";
   imports: [
     CommonModule,
     BrowserModule,
+    NoopAnimationsModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),

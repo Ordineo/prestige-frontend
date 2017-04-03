@@ -4,13 +4,14 @@
 
 <md-card class="center-block center col-lg-8" *ngIf="employee">
   <md-card-header>
-    <div md-card-avatar [style.background-image]="'url(' + employee.imageurl + ')'"></div>
-    <md-card-title>{{ employee.name }}</md-card-title>
-    <md-card-subtitle></md-card-subtitle>
+    <div md-card-avatar [style.background-image]="'url(' + employee.avatar + ')'"></div>
+    <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
+    <md-card-subtitle>{{ employee.roles }}</md-card-subtitle>
   </md-card-header>
   <md-card-content>
     <p>
-      {{ employee.summary }}
+      <!--{{ employee.summary }}-->
+      Summary needs to be implemented?
     </p>
   </md-card-content>
 </md-card>

@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
               public viewContainerRef: ViewContainerRef,
               public authService: AuthService) {
   }
-  
+
   // todo check status for tabs and routing
   // https://github.com/angular/material2/issues/524#issuecomment-257209955
 
@@ -30,9 +30,9 @@ export class AppComponent implements OnInit {
       case 0:
         this.router.navigateByUrl('/prestige-feed');
         break;
-      // change this with ID of loggedin user
+      // todo change this with ID of logged in user dynamically
       case 1:
-        this.router.navigateByUrl('/employee-detail/0');
+        this.router.navigateByUrl('/employee-detail/1');
         break;
       case 2:
         this.router.navigateByUrl('/employee-ranking');
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
   public logout() {
     this.authService.logout();
   }
-  
+
   ngOnInit(){}
 
 }
