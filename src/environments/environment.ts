@@ -8,7 +8,7 @@ let domain = 'localhost';
 
 // Node-Red Config
 let port = '8585';
-let baseEndpoint = '';
+let baseEndpoint = '/employee-service';
 
 let url = protocol + '://' + domain + ':' + port + baseEndpoint;
 
