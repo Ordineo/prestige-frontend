@@ -25,20 +25,20 @@
   <md-toolbar-row class="header__background-image"></md-toolbar-row>
 
   <md-toolbar-row>
-    <md-tab-group (focusChange)="changeTab($event)" [(selectedIndex)]="activeTabIndex">
+    <md-tab-group [(selectedIndex)]="activeTabIndex">
       <md-tab>
         <ng-template md-tab-label>
-          <a>Prestige</a>
+          <a routerLink="/prestige-feed">Prestige</a>
         </ng-template>
       </md-tab>
       <md-tab>
         <ng-template md-tab-label>
-          <a>My prestige</a>
+          <a routerLink="/employee-detail/1">My prestige</a>
         </ng-template>
       </md-tab>
       <md-tab>
         <ng-template md-tab-label>
-          <a>Ranking</a>
+          <a routerLink="/employee-ranking">Ranking</a>
         </ng-template>
       </md-tab>
     </md-tab-group>

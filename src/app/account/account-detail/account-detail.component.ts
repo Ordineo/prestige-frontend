@@ -39,7 +39,7 @@ export class AccountDetailComponent implements OnInit {
     });
   }
 
-  // todo call account update function
+  // TODO call account update function
   saveAccount() {
     // this.accountService.updateAccount(this.account);
     console.log("THIS HAS TO UPDATE THE ACCOUNT")

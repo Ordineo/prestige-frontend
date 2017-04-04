@@ -14,37 +14,11 @@ import {AuthService} from "./providers/auth.service";
 
 export class AppComponent implements OnInit {
   dialogRef: MdDialogRef<any>;
-  private activeTabIndex = 0;
 
   constructor(private router: Router,
               public dialog: MdDialog,
               public viewContainerRef: ViewContainerRef,
               public authService: AuthService) {
-  }
-
-  // todo check status for tabs and routing
-  // https://github.com/angular/material2/issues/524#issuecomment-257209955
-
-  public changeTab(at) {
-    switch (at.index) {
-      case 0:
-        this.router.navigateByUrl('/prestige-feed');
-        break;
-      // todo change this with ID of logged in user dynamically
-      case 1:
-        this.router.navigateByUrl('/employee-detail/1');
-        break;
-      case 2:
-        this.router.navigateByUrl('/employee-ranking');
-        break;
-      default:
-        console.debug('activeTab is: ', at, 'activeTab.index is: ', at.index);
-        break;
-    }
-  }
-
-  public switchToFirstTab() {
-    this.activeTabIndex = 0;
   }
 
   public openAccountDetail() {
