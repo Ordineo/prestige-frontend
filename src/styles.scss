@@ -1,33 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~md2/core/theming/prebuilt/deeppurple-amber.css';
 
-// FIX TODO @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
-
-// FIX TODO @import '~@angular/material/core/theming/all-theme';
+@import '~md2/core/theming/all-theme';
 
 // Plus imports for other components in your app.
 
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 
-// FIX TODO @include mat-core();
+@include mat-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
-// FIX TODO $candy-app-primary: mat-palette($mat-orange);
-// FIX TODO $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-primary: mat-palette($mat-orange);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-// FIX TODO $candy-app-warn:    mat-palette($mat-red);
+$candy-app-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-// FIX TODO  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-// FIX TODO  @include angular-material-theme($candy-app-theme);
+@include angular-material-theme($candy-app-theme);
 @import 'styles/styles';

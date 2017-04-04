@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule, LOCALE_ID} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -17,7 +18,6 @@ import {EmployeeRankingComponent} from './employee/employee-ranking/employee-ran
 import {PrestigeDetailComponent} from "./prestige/prestige-detail/prestige-detail.component";
 import {EmployeeService} from './providers/employee.service';
 
-import {APP_CONFIG, AppConfig} from './app.config';
 import {AngularFireModule} from 'angularfire2';
 import {firebaseConfig} from './firebase.config';
 import {AccountDetailComponent} from './account/account-detail/account-detail.component';
@@ -51,6 +51,7 @@ import {AuthService} from "./providers/auth.service";
   imports: [
     CommonModule,
     BrowserModule,
+    NoopAnimationsModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
@@ -67,8 +68,7 @@ import {AuthService} from "./providers/auth.service";
     CategoryService,
     PrestigeService,
     AuthService,
-    { provide: LOCALE_ID, useValue: "nl-NL" },
-    { provide: APP_CONFIG, useValue: AppConfig }
+    { provide: LOCALE_ID, useValue: "nl-NL" }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AccountDetailComponent, AddPrestigeComponent]

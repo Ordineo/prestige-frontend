@@ -29,7 +29,6 @@ export class AccountDetailComponent implements OnInit {
     })*/
     this.employeeService.getById(1).subscribe(account => {
       this.account = {
-        id: account.id,
         firstName: account.firstName,
         lastName: account.lastName,
         email: account.email,
@@ -40,8 +39,10 @@ export class AccountDetailComponent implements OnInit {
     });
   }
 
+  // TODO call account update function
   saveAccount() {
-    this.accountService.updateAccount(this.account);
+    // this.accountService.updateAccount(this.account);
+    console.log("THIS HAS TO UPDATE THE ACCOUNT")
     this.dialogRef.close();
   }
 
