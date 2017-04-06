@@ -9,6 +9,8 @@
 /node_modules
 gatekeeper/
 results/
+testresults/
+screenshots/
 
 # IDEs and editors
 /.idea

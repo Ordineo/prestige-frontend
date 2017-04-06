@@ -2,14 +2,10 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
-// var ConsoleReporter = require('jasmine-spec-reporter');
 var jasmineReporters = require('jasmine-reporters');
 var HTMLReport = require('protractor-html-reporter');
 var path = require('path');
 var screenshotsUtil = require('jasmine2-protractor-utils');
-
-// var consoleReporter = new ConsoleReporter({
-// })
 
 exports.config = {
   allScriptsTimeout: 11000,
@@ -47,10 +43,11 @@ exports.config = {
   // },
   onPrepare: function () {
     browser.driver.manage().window().maximize();
-    require('ts-node').register({
-      project: 'e2e'
-    });
-    jasmine.getEnv().addReporter(consoleReporter);
+    // require('ts-node').register({
+    //   project: 'e2e'
+    // });
+    // jasmine.getEnv().addReporter(consoleReporter);
+    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
       consolidateAll: true,
       savePath: './e2e/testresults',

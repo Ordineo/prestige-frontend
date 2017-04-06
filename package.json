@@ -39,7 +39,7 @@
   "devDependencies": {
     "@angular/cli": "1.0.0",
     "@types/hammerjs": "^2.0.34",
-    "@types/jasmine": "2.5.47",
+    "@types/jasmine": "2.5.45",
     "@types/node": "~7.0.11",
     "@types/selenium-webdriver": "^3.0.1",
     "codelyzer": "~3.0.0-beta.4",
