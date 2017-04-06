@@ -20,9 +20,8 @@ exports.config = {
   // baseUrl: "https://portal.connectmy.car",
   baseUrl: 'http://localhost:4200/',
   // seleniumServerJar: './node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar',
-  // framework: 'jasmine2',
+  framework: 'jasmine2',
   // useAllAngular2AppRoots: true,
-  framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
@@ -38,9 +37,6 @@ exports.config = {
   },
   afterLaunch: function (exitCode) {
   },
-  // onPrepare() {
-  //   jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
-  // },
   onPrepare: function () {
     browser.driver.manage().window().maximize();
     // require('ts-node').register({
@@ -51,7 +47,7 @@ exports.config = {
     jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
       consolidateAll: true,
       savePath: './e2e/testresults',
-      filePrefix: 'Portal-e2e-testresults'
+      filePrefix: 'e2e-testresults'
     }));
   },
   onComplete: function () {
