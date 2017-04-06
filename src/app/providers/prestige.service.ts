@@ -1,5 +1,4 @@
 import {Injectable, Inject} from '@angular/core';
-import {AngularFire} from  'angularfire2';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Http} from "@angular/http";
 
@@ -11,25 +10,25 @@ const limit: BehaviorSubject<number> = new BehaviorSubject<number>(10); // impor
 @Injectable()
 export class PrestigeService {
 
-  constructor(private af: AngularFire, private http: Http) {
+  constructor(private http: Http) {
   }
 
   getPrestiges() {
-    return this.af.database.list('/prestiges', {
-      query: {
-        orderByChild: 'created',
-        // limitToFirst: 5 // todo: add pagination
-      }
-    })
-      .map(result => (result));
+    // return this.af.database.list('/prestiges', {
+    //   query: {
+    //     orderByChild: 'created',
+    //     // limitToFirst: 5 // todo: add pagination
+    //   }
+    // })
+    //   .map(result => (result));
   }
 
   addPrestige(prestige: any) {
-    return this.af.database.list('/prestiges').push(prestige)
+    // return this.af.database.list('/prestiges').push(prestige)
   }
 
   addTest(data: any) {
-    return this.af.database.list('/test').push(data)
+    // return this.af.database.list('/test').push(data)
   }
 
   get() {

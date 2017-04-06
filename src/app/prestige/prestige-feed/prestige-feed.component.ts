@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseObjectObservable } from  'angularfire2';
 import { PrestigeService } from "../../providers/prestige.service";
 import { Observable } from "rxjs";
 import { DatePipe } from "@angular/common";

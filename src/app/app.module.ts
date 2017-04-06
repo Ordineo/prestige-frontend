@@ -18,8 +18,6 @@ import {EmployeeRankingComponent} from './employee/employee-ranking/employee-ran
 import {PrestigeDetailComponent} from "./prestige/prestige-detail/prestige-detail.component";
 import {EmployeeService} from './providers/employee.service';
 
-import {AngularFireModule} from 'angularfire2';
-import {firebaseConfig} from './firebase.config';
 import {AccountDetailComponent} from './account/account-detail/account-detail.component';
 import {AccountService} from "./providers/account.service";
 import {AddPrestigeComponent} from './prestige/add-prestige/add-prestige.component';
@@ -29,10 +27,10 @@ import {SortDatePipe} from './shared/sort/sort-date.pipe';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 
-import {ListboxModule} from 'primeng/primeng';
+import { ListboxModule } from 'primeng/primeng';
 import { AuthComponent } from './shared/auth/auth.component';
 import { LoginComponent } from './login/login.component';
-import {AuthService} from "./providers/auth.service";
+import { AuthService } from "./providers/auth.service";
 
 @NgModule({
   declarations: [
@@ -59,8 +57,7 @@ import {AuthService} from "./providers/auth.service";
     NgbModule.forRoot(),
     AppRoutingModule,
     ListboxModule,
-    FlexLayoutModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    FlexLayoutModule
   ],
   providers: [
     EmployeeService,

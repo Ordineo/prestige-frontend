@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 
 import 'rxjs/add/operator/merge';
 
-import { FirebaseObjectObservable } from "angularfire2";
 import { forEach } from "@angular/router/src/utils/collection";
 
 @Component({
