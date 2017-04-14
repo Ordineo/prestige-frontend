@@ -16,7 +16,7 @@
     }
   }
 
-  &--overlay {
+  &__overlay {
     height: 100%;
     width: 100%;
     background: url(../../assets/images/login-background.jpg) no-repeat center center fixed;
@@ -24,6 +24,11 @@
     position: absolute;
     opacity: 0.8;
     filter: blur(3px);
+  }
+
+  md-input-container {
+    margin: 1% auto;
+    width: 100%;
   }
 
   md-card-header {

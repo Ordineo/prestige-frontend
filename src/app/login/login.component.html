@@ -1,6 +1,6 @@
 <div class="login">
   <div class="login__container">
-    <div class="login--overlay"></div>
+    <div class="login__overlay"></div>
     <div fxLayout="row"
          fxLayoutAlign="center center" style="min-height: 500px">
       <md-card>
@@ -10,10 +10,20 @@
           </md-card-title>
         </md-card-header>
         <md-card-content>
-          <p>Please login with your <strong>GitHub account</strong>.</p>
-          <a href="{{githubUrl}}" class="login__btn login__btn--full" md-raised-button="primary">
-            Login
-          </a>
+          <form novalidate [formGroup]="form">
+            <p>Looks like you aren't a member of the jworks-community on Github please contact one of the admins.</p>
+            <p>Looks like this is the first time you login to prestige please verify your password.</p>
+            <md-input-container>
+              <input mdInput formControlName="login" class="login__input" placeholder="Github handle">
+            </md-input-container>
+            <md-input-container>
+              <input mdInput formControlName="password" class="login__input" placeholder="Password" type="password">
+            </md-input-container>
+            <md-input-container>
+              <input mdInput formControlName="verification" class="login__input" placeholder="Verify password" type="password">
+            </md-input-container>
+            <button class="login__btn login__btn--full" md-raised-button="primary">Login</button>
+          </form>
         </md-card-content>
       </md-card>
     </div>

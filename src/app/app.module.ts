@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule, LOCALE_ID} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 
@@ -57,7 +57,8 @@ import { AuthService } from "./providers/auth.service";
     NgbModule.forRoot(),
     AppRoutingModule,
     ListboxModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [
     EmployeeService,
