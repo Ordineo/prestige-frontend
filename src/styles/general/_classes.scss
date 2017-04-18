@@ -1,0 +1,29 @@
+.hint {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+}
+
+.item-spacer {
+  flex: 1 1 auto;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.md-card-header__center {
+  .mat-card-header-text {
+    margin: 0 auto !important;
+  }
+}
+
+.center-block {
+  float: none;
+}
+
+.none {
+  display: none !important;
+}
