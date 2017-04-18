@@ -13,7 +13,7 @@
           <form novalidate [formGroup]="loginForm" (submit)="login()">
             <p *ngIf="notInCommunity">Looks like you aren't a member of the jworks-community on Github please contact
               one of the admins.</p>
-            <p *ngIf="incorrect">Looks like the your handle and/or password are incorrect.</p>
+            <p *ngIf="incorrect">Looks like your handle and/or password are incorrect.</p>
             <md-input-container
               [ngClass]="{'red': loginForm.controls['handle'].touched && (loginForm.controls['handle'].hasError('required') || errors.email)}">
               <input mdInput required formControlName="handle" class="login__input" id="handle" name="handle"
