@@ -11,17 +11,21 @@
         </md-card-header>
         <md-card-content>
           <form novalidate [formGroup]="loginForm" (submit)="login()">
-            <p *ngIf="notInCommunity">Looks like you aren't a member of the jworks-community on Github please contact one of the admins.</p>
+            <p *ngIf="notInCommunity">Looks like you aren't a member of the jworks-community on Github please contact
+              one of the admins.</p>
             <p *ngIf="incorrect">Looks like the your handle and/or password are incorrect.</p>
-            <md-input-container>
+            <md-input-container
+              [ngClass]="{'red': loginForm.controls['handle'].touched && (loginForm.controls['handle'].hasError('required') || errors.email)}">
               <input mdInput required formControlName="handle" class="login__input" id="handle" name="handle"
                      placeholder="Github handle" (blur)="emailCheck($event.target.value)">
               <md-hint *ngIf="loginForm.controls['handle'].hasError('required') && loginForm.controls['handle'].touched"
                        class="hint red">Login is required.
               </md-hint>
-              <md-hint *ngIf="errors.email && loginForm.controls['handle'].touched">{{errors.email}}</md-hint>
+              <md-hint *ngIf="errors.email && loginForm.controls['handle'].touched" class="hint red">{{errors.email}}
+              </md-hint>
             </md-input-container>
-            <md-input-container>
+            <md-input-container
+              [ngClass]="{'red': loginForm.controls['password'].touched && (loginForm.controls['password'].hasError('required') || loginForm.controls['password'].hasError('minlength'))}">
               <input mdInput required formControlName="password" class="login__input" id="password" name="password"
                      placeholder="Password" type="password">
               <md-hint
