@@ -12,23 +12,25 @@ export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
   private register: FormGroup;
   private errors: any;
+  private incorrect: boolean = true;
+  private notInCommunity: boolean = true;
 
   constructor(private _formBuilder: FormBuilder) {
     this.errors = {};
 
     this.loginForm = this._formBuilder.group({
-      login: [''],
+      handle: [''],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
 
     this.register = this._formBuilder.group({
-      login: [''],
+      handle: [''],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       verification: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
   }
 
-  check(){
+  check() {
     console.log(this.errors);
   }
 
