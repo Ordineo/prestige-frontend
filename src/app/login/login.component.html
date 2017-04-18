@@ -10,7 +10,7 @@
           </md-card-title>
         </md-card-header>
         <md-card-content>
-          <form novalidate [formGroup]="loginForm">
+          <form novalidate [formGroup]="loginForm" (submit)="login()">
             <p *ngIf="notInCommunity">Looks like you aren't a member of the jworks-community on Github please contact one of the admins.</p>
             <p *ngIf="incorrect">Looks like the your handle and/or password are incorrect.</p>
             <md-input-container>

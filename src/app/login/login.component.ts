@@ -48,4 +48,14 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
+  login() {
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.getRawValue().handle);
+      console.log(this.loginForm.getRawValue().password);
+      this.loginForm.reset();
+    } else {
+      console.log("form error");
+    }
+  }
 }
