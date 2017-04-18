@@ -30,11 +30,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  check() {
-    console.log(this.errors);
-  }
-
   ngOnInit() {
   }
 
+  validateEmail(email) {
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  emailCheck(value: string) {
+    if (value.indexOf('@') > -1) {
+      this.errors.email = '';
+      if (value.length < 6) {
+        this.errors.email = 'Email should have at least 5 characters!';
+      } else if (!this.validateEmail(value)) {
+        this.errors.email = 'Email is invalid!';
+      }
+    }
+  }
 }

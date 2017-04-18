@@ -15,10 +15,11 @@
             <p *ngIf="incorrect">Looks like the your handle and/or password are incorrect.</p>
             <md-input-container>
               <input mdInput required formControlName="handle" class="login__input" id="handle" name="handle"
-                     placeholder="Github handle">
+                     placeholder="Github handle" (blur)="emailCheck($event.target.value)">
               <md-hint *ngIf="loginForm.controls['handle'].hasError('required') && loginForm.controls['handle'].touched"
                        class="hint red">Login is required.
               </md-hint>
+              <md-hint *ngIf="errors.email && loginForm.controls['handle'].touched">{{errors.email}}</md-hint>
             </md-input-container>
             <md-input-container>
               <input mdInput required formControlName="password" class="login__input" id="password" name="password"
