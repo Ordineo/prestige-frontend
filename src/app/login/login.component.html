@@ -10,19 +10,17 @@
           </md-card-title>
         </md-card-header>
         <md-card-content>
-          <form novalidate [formGroup]="form">
+          <form novalidate [formGroup]="login">
             <p>Looks like you aren't a member of the jworks-community on Github please contact one of the admins.</p>
-            <p>Looks like this is the first time you login to prestige please verify your password.</p>
+            <p>Looks like the your handle and/or password are incorrect.</p>
             <md-input-container>
               <input mdInput formControlName="login" class="login__input" placeholder="Github handle">
             </md-input-container>
             <md-input-container>
               <input mdInput formControlName="password" class="login__input" placeholder="Password" type="password">
             </md-input-container>
-            <md-input-container>
-              <input mdInput formControlName="verification" class="login__input" placeholder="Verify password" type="password">
-            </md-input-container>
             <button class="login__btn login__btn--full" md-raised-button="primary">Login</button>
+            <a (click)="switch('register')" class="register">Register?</a>
           </form>
         </md-card-content>
       </md-card>

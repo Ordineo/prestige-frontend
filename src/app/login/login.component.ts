@@ -9,10 +9,16 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
   //githubUrl: string = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
-  private form: FormGroup;
+  private login: FormGroup;
+  private register: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) {
-    this.form = this._formBuilder.group({
+    this.login = this._formBuilder.group({
+      login: [''],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    });
+
+    this.register = this._formBuilder.group({
       login: [''],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       verification: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
