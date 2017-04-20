@@ -15,12 +15,12 @@ let url = protocol + '://' + domain;
 export const environment = {
   production: false,
 
-  apiUsersEndpoint: url + '/users',
-  apiPrestigesEndpoint: url + '/prestiges',
-  apiRolesEndpoint: url + '/roles',
-  apiPrestigeLikesEndpoint: url + '/prestigeLikes',
-  apiCategoriesEndpoint: url + '/categories',
-  apiProfileEndpoint: url + '/profiles',
+  apiUsersEndpoint: url + ':8081/employee',
+  apiPrestigesEndpoint: url + ':8082/endorsement',
+  apiRolesEndpoint: url + ':8081/role',
+  apiPrestigeLikesEndpoint: url + ':8082/prestigeLike',
+  apiCategoriesEndpoint: url + ':8082/categorie',
+  apiProfileEndpoint: url + ':8082/profile',
 
   apiLoginEndpoint: url + ':8081/login',
   apiRegisterEndpoint: url + ':8081/register'
