@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {gatekeeperConfig} from "../node.config";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AccountService} from "../providers/account.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   private incorrect: boolean = true;
   private notInCommunity: boolean = true;
 
-  constructor(private _formBuilder: FormBuilder, private _accountService: AccountService) {
+  constructor(private _formBuilder: FormBuilder, private _accountService: AccountService, private _router: Router) {
     this.errors = {};
 
     this.loginForm = this._formBuilder.group({
@@ -53,8 +54,9 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password);
-      this.loginForm.reset();
+      this._router.navigate(['/prestige-feed'])
     } else {
+      this.loginForm.reset();
       console.log("form error");
     }
   }
