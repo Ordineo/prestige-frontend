@@ -33,7 +33,7 @@ describe('AccountService', () => {
       status: 200
     }));
 
-    let httpMock = HelpFunctions.getMockHttp({post: mockResponse});
+    let httpMock = getMockHttp({post: mockResponse});
     let accountService = new AccountService(httpMock);
 
     accountService.login("test", "password").subscribe((result) => {
