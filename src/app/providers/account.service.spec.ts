@@ -1,6 +1,5 @@
 import {TestBed, async, inject} from '@angular/core/testing';
 import {AccountService} from './account.service';
-import {HelpFunctions} from "../shared/helpers/helpFunctions";
 import {ResponseOptions, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 
