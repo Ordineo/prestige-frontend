@@ -11,13 +11,13 @@ export class AccountService {
 
   login(username: string, password: string) {
     let body = {
-      handle: username,
+      username: username,
       password: password
     };
 
     return this._http.post(environment.apiLoginEndpoint, body)
       .map(result => {
-        return result.json();
+        return result;
       });
   }
 

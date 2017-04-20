@@ -10,7 +10,7 @@ let domain = 'localhost';
 let port = '8585';
 let baseEndpoint = '/employee-service';
 
-let url = protocol + '://' + domain + ':' + port + baseEndpoint;
+let url = protocol + '://' + domain;
 
 export const environment = {
   production: false,
@@ -21,5 +21,7 @@ export const environment = {
   apiPrestigeLikesEndpoint: url + '/prestigeLikes',
   apiCategoriesEndpoint: url + '/categories',
   apiProfileEndpoint: url + '/profiles',
-  apiLoginEndpoint: url + '/login'
+
+  apiLoginEndpoint: url + ':8081/login',
+  apiRegisterEndpoint: url + ':8081/register'
 };
