@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {gatekeeperConfig} from "../node.config";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AccountService} from "../providers/account.service";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   private incorrect: boolean = true;
   private notInCommunity: boolean = true;
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, private _accountService: AccountService) {
     this.errors = {};
 
     this.loginForm = this._formBuilder.group({
@@ -51,8 +52,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.getRawValue().handle);
-      console.log(this.loginForm.getRawValue().password);
+      this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password);
       this.loginForm.reset();
     } else {
       console.log("form error");
