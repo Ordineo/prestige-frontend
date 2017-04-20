@@ -20,5 +20,6 @@ export const environment = {
   apiRolesEndpoint: url + '/roles',
   apiPrestigeLikesEndpoint: url + '/prestigeLikes',
   apiCategoriesEndpoint: url + '/categories',
-  apiProfileEndpoint: url + '/profiles'
+  apiProfileEndpoint: url + '/profiles',
+  apiLoginEndpoint: url + '/login'
 };
