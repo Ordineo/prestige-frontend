@@ -10,9 +10,14 @@ export class AccountService {
   }
 
   login(username: string, password: string) {
-    return this._http.get(environment.apiLoginEndpoint)
+    let body = {
+      handle: username,
+      password: password
+    };
+
+    return this._http.post(environment.apiLoginEndpoint, body)
       .map(result => {
-        return result.json()._embedded;
+        return result.json();
       });
   }
 
