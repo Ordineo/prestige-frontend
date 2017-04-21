@@ -13,12 +13,12 @@ export class LoginComponent implements OnInit {
   //githubUrl: string = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
   private loginForm: FormGroup;
   private register: FormGroup;
-  private errors: any;
+  private _errors: any;
   private incorrect: boolean = true;
   private notInCommunity: boolean = true;
 
   constructor(private _formBuilder: FormBuilder, private _accountService: AccountService, private _router: Router) {
-    this.errors = {};
+    this._errors = {};
 
     this.loginForm = this._formBuilder.group({
       handle: [''],
@@ -42,11 +42,11 @@ export class LoginComponent implements OnInit {
 
   emailCheck(value: string) {
     if (value.indexOf('@') > -1) {
-      this.errors.email = '';
+      this._errors.email = '';
       if (value.length < 6) {
-        this.errors.email = 'Email should have at least 5 characters!';
+        this._errors.email = 'Email should have at least 6 characters!';
       } else if (!this.validateEmail(value)) {
-        this.errors.email = 'Email is invalid!';
+        this._errors.email = 'Email is invalid!';
       }
     }
   }
@@ -59,5 +59,9 @@ export class LoginComponent implements OnInit {
       this.loginForm.reset();
       console.log("form error");
     }
+  }
+
+  get errors(): any {
+    return this._errors;
   }
 }
