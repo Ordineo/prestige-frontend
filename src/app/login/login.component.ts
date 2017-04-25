@@ -14,11 +14,13 @@ export class LoginComponent implements OnInit {
   private register: FormGroup;
   private _errors: any;
   private incorrect: boolean;
+  private error: boolean;
   private notInCommunity: boolean;
 
   constructor(private _formBuilder: FormBuilder, private _accountService: AccountService, private _router: Router) {
     this.incorrect = false;
     this.notInCommunity = false;
+    this.error = false;
     this._errors = {};
 
     this.loginForm = this._formBuilder.group({
@@ -56,6 +58,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.notInCommunity = false;
       this.incorrect = false;
+      this.error = false;
 
       this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password).subscribe((result) => {
         this._router.navigate(['/prestige-feed'])
@@ -64,6 +67,8 @@ export class LoginComponent implements OnInit {
           this.notInCommunity = true;
         } else if (error.json().message === 'Authentication Failed: Bad credentials') {
           this.incorrect = true;
+        } else if (error.status === 0) {
+          this.error = true;
         }
       });
     } else {
