@@ -17,11 +17,8 @@ export class AccountService {
 
     return this._http.post(environment.apiLoginEndpoint, body)
       .map((result) => {
-        console.log(result);
         return result;
       }).catch((err) => {
-        console.log('error');
-        console.log(err);
         return Observable.throw(err);
       });
   }

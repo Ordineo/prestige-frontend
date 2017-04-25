@@ -54,13 +54,20 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+      this.notInCommunity = false;
+      this.incorrect = false;
+
       this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password).subscribe((result) => {
-        console.log(result);
+        this._router.navigate(['/prestige-feed'])
+      }, (error) => {
+        if (error.json().message === 'Authentication Failed: Cannot pass null or empty values to constructor') {
+          this.notInCommunity = true;
+        } else if (error.json().message === 'Authentication Failed: Bad credentials') {
+          this.incorrect = true;
+        }
       });
-      // this._router.navigate(['/prestige-feed'])
     } else {
       this.loginForm.reset();
-      console.log('form error');
     }
   }
 
