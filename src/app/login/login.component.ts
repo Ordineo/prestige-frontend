@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {gatekeeperConfig} from "../node.config";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AccountService} from "../providers/account.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AccountService} from '../providers/account.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +9,16 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  //githubUrl: string = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
+  // githubUrl: string = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
   private loginForm: FormGroup;
   private register: FormGroup;
   private _errors: any;
-  private incorrect: boolean = true;
-  private notInCommunity: boolean = true;
+  private incorrect: boolean;
+  private notInCommunity: boolean;
 
   constructor(private _formBuilder: FormBuilder, private _accountService: AccountService, private _router: Router) {
+    this.incorrect = false;
+    this.notInCommunity = false;
     this._errors = {};
 
     this.loginForm = this._formBuilder.group({
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   validateEmail(email) {
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
 
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
       // this._router.navigate(['/prestige-feed'])
     } else {
       this.loginForm.reset();
-      console.log("form error");
+      console.log('form error');
     }
   }
 

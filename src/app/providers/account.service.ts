@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Account} from "../models/account";
-import {environment} from "../../environments/environment";
-import {Http} from "@angular/http";
+import {environment} from '../../environments/environment'
+import {Http} from '@angular/http'
+import {Observable} from 'rxjs/Observable'
 
 @Injectable()
 export class AccountService {
@@ -19,6 +19,10 @@ export class AccountService {
       .map((result) => {
         console.log(result);
         return result;
+      }).catch((err) => {
+        console.log('error');
+        console.log(err);
+        return Observable.throw(err);
       });
   }
 

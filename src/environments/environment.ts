@@ -3,14 +3,14 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-let protocol = 'http';
-let domain = 'localhost';
+const protocol = 'http';
+const domain = 'localhost';
 
 // Node-Red Config
-let port = '8585';
-let baseEndpoint = '/employee-service';
+const port = '8585';
+const baseEndpoint = '/employee-service';
 
-let url = protocol + '://' + domain;
+const url = protocol + '://' + domain;
 
 export const environment = {
   production: false,
