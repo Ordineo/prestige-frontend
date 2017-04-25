@@ -53,8 +53,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password);
-      this._router.navigate(['/prestige-feed'])
+      this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password).subscribe((result) => {
+        console.log(result);
+      });
+      // this._router.navigate(['/prestige-feed'])
     } else {
       this.loginForm.reset();
       console.log("form error");
