@@ -19,7 +19,6 @@ export class AccountService {
       .map((result) => {
         return result;
       }).catch((err) => {
-        console.log(err);
         return Observable.throw(err);
       });
   }
