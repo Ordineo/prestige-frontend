@@ -48,7 +48,7 @@ export class PrestigeFeedComponent implements OnInit {
     // });
 
     this.prestigeService.get().subscribe(result => {
-      this.prestiges = result.prestiges;
+      this.prestiges = result.endorsements;
       this.getCurrentUser();
     });
 

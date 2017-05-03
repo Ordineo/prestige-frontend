@@ -6,17 +6,13 @@
 const protocol = 'http';
 const domain = 'localhost';
 
-// Node-Red Config
-const port = '8585';
-const baseEndpoint = '/employee-service';
-
 const url = protocol + '://' + domain;
 
 export const environment = {
   production: false,
 
   apiUsersEndpoint: url + ':9900/employees-service/employees',
-  apiPrestigesEndpoint: url + ':9900/endorsements-service/endorsements',
+  apiEndorsementsEndpoint: url + ':9900/endorsements-service/endorsements',
   apiRolesEndpoint: url + ':9900/employees-service/roles',
   apiPrestigeLikesEndpoint: url + ':9900/endorsements-service/prestigeLikes',
   apiCategoriesEndpoint: url + ':9900/endorsements-service/categories',

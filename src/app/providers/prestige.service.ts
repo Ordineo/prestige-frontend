@@ -1,6 +1,6 @@
 import {Injectable, Inject} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {Http} from "@angular/http";
+import {Http, RequestOptions} from "@angular/http";
 
 import 'rxjs/add/operator/map';
 import {environment} from '../../environments/environment';
@@ -10,7 +10,8 @@ const limit: BehaviorSubject<number> = new BehaviorSubject<number>(10); // impor
 @Injectable()
 export class PrestigeService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private requestOptions: RequestOptions) {
+    requestOptions.headers.append('Authorization', sessionStorage.getItem('Authorization'));
   }
 
   getPrestiges() {
@@ -32,14 +33,14 @@ export class PrestigeService {
   }
 
   get() {
-    return this.http.get(environment.apiPrestigesEndpoint)
+    return this.http.get(environment.apiEndorsementsEndpoint, this.requestOptions)
       .map(result => {
         return result.json()._embedded;
       });
   }
 
   add(prestige: any) {
-    return this.http.post(environment.apiPrestigesEndpoint, prestige);
+    return this.http.post(environment.apiEndorsementsEndpoint, prestige);
   }
 
 }

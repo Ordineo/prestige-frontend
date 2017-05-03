@@ -11,7 +11,7 @@ export const environment = {
   production: false,
 
   apiUsersEndpoint: url + '/users',
-  apiPrestigesEndpoint: url + '/prestiges',
+  apiEndorsementsEndpoint: url + '/prestiges',
   apiRolesEndpoint: url + '/roles',
   apiPrestigeLikesEndpoint: url + '/prestigeLikes',
   apiCategoriesEndpoint: url + '/categories',

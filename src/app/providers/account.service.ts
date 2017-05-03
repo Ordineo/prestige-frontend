@@ -16,9 +16,11 @@ export class AccountService {
     };
 
     return this._http.post(environment.apiLoginEndpoint, body)
-      .map((result) => {
+      .map(result => {
+        sessionStorage.setItem('Authorization', 'Bearer ' + result.text());
         return result;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         return Observable.throw(err);
       });
   }
