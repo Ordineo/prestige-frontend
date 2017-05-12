@@ -27,7 +27,7 @@ export class AccountDetailComponent implements OnInit {
         gender: account.gender
       }
     })*/
-    this.employeeService.getById(1).subscribe(account => {
+    this.employeeService.getByUsername("admin").subscribe(account => {
       this.account = {
         firstName: account.firstName,
         lastName: account.lastName,

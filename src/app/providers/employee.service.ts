@@ -32,8 +32,8 @@ export class EmployeeService {
       });
   }
 
-  getById(id: number) {
-    return this.http.get(environment.apiUsersEndpoint + '/search/findById?id=' + id)
+  getByUsername(username: string) {
+    return this.http.get(environment.apiUsersEndpoint + '/' + username)
       .map(result => (result.json()));
 
   }

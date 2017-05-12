@@ -18,12 +18,12 @@ import {SelectItem} from "primeng/components/common/api";
 
 export class AddPrestigeComponent implements OnInit {
 
-  // receivers: Observable <any>;
+  receivers: Observable <any>;
   prestige: Prestige;
   categories: Observable <any>;
   dealer: any;
 
-  receivers: SelectItem[];
+  // receivers: SelectItem[];
   selectedReceivers: string[];
 
   testData: string;
@@ -71,8 +71,8 @@ export class AddPrestigeComponent implements OnInit {
 
     this.employeeService.get()
       .subscribe(result => {
-        this.receivers = result.users;
-        console.log(result.users);
+        this.receivers = result.employees;
+        console.log(result.employees);
       });
 
     // todo: remove multiple choice
@@ -80,7 +80,7 @@ export class AddPrestigeComponent implements OnInit {
     this.prestige = {
       id: 1,
       dealer: "Anonymous Dealer",
-      receivers: this.selectedReceivers,
+      receivers: this,
       categories: this,
       prestige: 1,
       reason: "",
