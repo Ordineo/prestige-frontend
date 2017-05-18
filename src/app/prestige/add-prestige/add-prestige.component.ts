@@ -21,10 +21,7 @@ export class AddPrestigeComponent implements OnInit {
   receivers: Observable <any>;
   prestige: Prestige;
   categories: Observable <any>;
-  dealer: any;
-
-  // receivers: SelectItem[];
-  selectedReceivers: string[];
+  granter: any;
 
   testData: string;
   materialLook: boolean = false;
@@ -37,16 +34,10 @@ export class AddPrestigeComponent implements OnInit {
   }
 
   addPrestige() {
-    this.prestige.receivers = this.selectedReceivers;
-    // console.log("---- ADD :", this.prestige, this.selectedReceivers);
-    this.prestigeService.add(JSON.stringify(this.prestige));
+    //this.prestige.receiver = this.selectedReceivers;
+    console.log("---- ADD :", this.prestige);
+    this.prestigeService.add(this.prestige).subscribe();
     this.dialogRef.close();
-  }
-
-
-  switchMaterialLook() {
-    this.materialLook = !this.materialLook;
-    this.selectedReceivers = [];
   }
 
   setTestData() {
@@ -78,12 +69,10 @@ export class AddPrestigeComponent implements OnInit {
     // todo: remove multiple choice
 
     this.prestige = {
-      id: 1,
-      dealer: "Anonymous Dealer",
-      receivers: this,
+      receiver: this,
       categories: this,
       prestige: 1,
-      reason: "",
+      reason: "lol",
       url: "",
       created: new Date().toISOString()
     }

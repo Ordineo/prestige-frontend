@@ -52,7 +52,7 @@ import { AuthService } from "./providers/auth.service";
     NoopAnimationsModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     Md2Module.forRoot(),
     NgbModule.forRoot(),
     AppRoutingModule,

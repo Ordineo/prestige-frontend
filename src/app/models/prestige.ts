@@ -1,8 +1,6 @@
 export interface Prestige {
-    id: number;
-    receivers: any;
+    receiver: any;
     categories: any;
-    dealer: any;
     reason: string;
     prestige: number;
     created: any;

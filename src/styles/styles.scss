@@ -44,3 +44,15 @@ md-card-header md-card-title {
   color: #565A5C !important;
 }
 
+md-dialog-container {
+  background-color: white;
+}
+
+
+md-option {
+  background-color: white;
+}
+
+.mat-option:hover:not(.mat-option-disabled), .mat-option:hover:not(.mat-option-disabled) {
+  background-color: #F1F1F1;
+}

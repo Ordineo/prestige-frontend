@@ -40,6 +40,8 @@ export class PrestigeService {
   }
 
   add(prestige: any) {
+    console.log(prestige);
+    prestige.categories = Array(prestige.categories);
     return this.http.post(environment.apiEndorsementsEndpoint, prestige);
   }
 

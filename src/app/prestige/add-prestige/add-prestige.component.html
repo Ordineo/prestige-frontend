@@ -11,7 +11,7 @@
 
     <md-grid-list cols="10" rowHeight="4em" gutterSize="5px">
       <md-grid-tile colspan="2" [hidden]="materialLook">
-        <md-select placeholder="Select co-worker(s)" [(ngModel)]="prestige.receivers" name="Receiver">
+        <md-select placeholder="Select co-worker" [(ngModel)]="prestige.receiver" name="Receiver">
           <md-option *ngFor="let receiver of receivers" [value]="receiver.username">
             {{receiver.username}}
           </md-option>
