@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(result => {
       this.dialogRef = null;
+      // TODO: reload page
     });
   }
 

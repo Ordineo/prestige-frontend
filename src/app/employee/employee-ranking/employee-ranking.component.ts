@@ -28,7 +28,7 @@ export class EmployeeRankingComponent implements OnInit {
   ngOnInit() {
     this.employeeService.get()
       .subscribe(result => {
-        this.employees = result.users;
+        this.employees = result.employees;
       });
   }
 

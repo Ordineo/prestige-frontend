@@ -66,8 +66,6 @@ export class AddPrestigeComponent implements OnInit {
         console.log(result.employees);
       });
 
-    // todo: remove multiple choice
-
     this.prestige = {
       receiver: this,
       categories: this,
