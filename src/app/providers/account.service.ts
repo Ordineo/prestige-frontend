@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment'
 import {Http} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
+import {Account} from "../models/account";
 
 @Injectable()
 export class AccountService {
@@ -18,6 +19,7 @@ export class AccountService {
     return this._http.post(environment.apiLoginEndpoint, body)
       .map(result => {
         sessionStorage.setItem('Authorization', 'Bearer ' + result.text());
+        sessionStorage.setItem('username', body.username);
         return result;
       })
       .catch((err) => {
@@ -32,7 +34,7 @@ export class AccountService {
   }
 
   // todo implement account update function
-  /*updateAccount(account: Account) {
-   return this.af.database.object('/accounts/' + account.id).set( account);
-   }*/
+  updateAccount(account: Account) {
+    return this._http.put(environment.apiUsersEndpoint + '/' + account.username, account);
+  }
 }

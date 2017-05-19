@@ -16,19 +16,9 @@ export class AccountDetailComponent implements OnInit {
               public dialogRef: MdDialogRef<any>, private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    /*this.accountService.getAccountById(0).subscribe(account => {
+    this.employeeService.getByUsername(sessionStorage.getItem('username')).subscribe(account => {
       this.account = {
-        id: account.id,
-        firstName: account.firstName,
-        lastName: account.lastName,
-        email: account.email,
-        phone: account.phone,
-        unit: account.unit,
-        gender: account.gender
-      }
-    })*/
-    this.employeeService.getByUsername("admin").subscribe(account => {
-      this.account = {
+        username: sessionStorage.getItem('username'),
         firstName: account.firstName,
         lastName: account.lastName,
         email: account.email,
@@ -41,8 +31,7 @@ export class AccountDetailComponent implements OnInit {
 
   // TODO call account update function
   saveAccount() {
-    // this.accountService.updateAccount(this.account);
-    console.log("THIS HAS TO UPDATE THE ACCOUNT")
+    this.accountService.updateAccount(this.account).subscribe();
     this.dialogRef.close();
   }
 

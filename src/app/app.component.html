@@ -1,4 +1,4 @@
-<md-toolbar *ngIf="authService.userLoggedIn && authService.loggedInUser?.name" [color]="primary">
+<md-toolbar *ngIf="authService.userLoggedIn && authService.loggedInUser?.username" [color]="primary">
   <div class="header__logo"></div>
   <a class="header__logo__link"
      (click)="switchToFirstTab()" routerLink="/prestige-feed" routerLinkActive="active">
@@ -10,8 +10,8 @@
   <span class="item-spacer"></span>
 
   <a class="header__avatar" (click)="openAccountDetail()">
-    <img class="header__avatar__image" src="{{authService.loggedInUser?.avatar_url }}" alt="">
-    <p class="header__avatar__name">{{ authService.loggedInUser?.name }}</p>
+    <img class="header__avatar__image" src="{{authService.loggedInUser?.avatar }}" alt="">
+    <p class="header__avatar__name">{{ authService.loggedInUser?.username }}</p>
   </a>
 
   <a href="" (click)="logout()" [hidden]="!authService.userLoggedIn">
