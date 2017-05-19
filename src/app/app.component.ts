@@ -14,6 +14,7 @@ import {AuthService} from "./providers/auth.service";
 
 export class AppComponent implements OnInit {
   dialogRef: MdDialogRef<any>;
+  username: string;
 
   constructor(private router: Router,
               public dialog: MdDialog,
@@ -49,6 +50,8 @@ export class AppComponent implements OnInit {
     this.authService.logout();
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.username = sessionStorage.getItem('username');
+  }
 
 }

@@ -45,4 +45,14 @@ export class PrestigeService {
     return this.http.post(environment.apiEndorsementsEndpoint, prestige);
   }
 
+  findByGranter(username: string) {
+    return this.http.get(environment.apiEndorsementsEndpoint + '/search/findByGranterUsername?username=' + username)
+      .map(result => (result.json()._embedded));
+  }
+
+  findByReceiver(username: string) {
+    return this.http.get(environment.apiEndorsementsEndpoint + '/search/findByReceiverUsername?username=' + username)
+      .map(result => (result.json()._embedded));
+  }
+
 }
