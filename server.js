@@ -11,7 +11,7 @@ app.get('/', function (req, res) {
 });
 
 app.use(modRewrite([
-    '!/api|/assets|\\.html|\\.js|\\.css|\\woff|\\ttf|\\swf$ /index.html'
+    '!/api|/assets|\\.html|\\.js|\\.css|\\.jpg|\\.png|\\woff|\\ttf|\\swf$ /index.html'
   ]));
 
 app.use(express.static(__dirname + '/'));
