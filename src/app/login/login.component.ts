@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AccountService} from '../providers/account.service';
 import {Router} from '@angular/router';
+import {register} from "ts-node/dist";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   // githubUrl: string = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
   public loginForm: FormGroup;
-  private register: FormGroup;
+  public register: FormGroup;
+  public registering: boolean;
   private _errors: any;
   public incorrect: boolean;
   public error: boolean;
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
     this.notInCommunity = false;
     this.error = false;
     this._errors = {};
+    this.registering = false;
 
     this.loginForm = this._formBuilder.group({
       handle: [''],
@@ -29,9 +32,9 @@ export class LoginComponent implements OnInit {
     });
 
     this.register = this._formBuilder.group({
-      handle: [''],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      verification: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+      registerHandle: [''],
+      registerPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      // verification: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
   }
 
@@ -57,8 +60,6 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       this.notInCommunity = false;
-      this.incorrect = false;
-      this.error = false;
 
       this._accountService.login(this.loginForm.getRawValue().handle, this.loginForm.getRawValue().password).subscribe((result) => {
         this._router.navigate(['/prestige-feed'])
@@ -74,6 +75,25 @@ export class LoginComponent implements OnInit {
     } else {
       this.loginForm.reset();
     }
+  }
+
+  doRegister() {
+    if (this.register.valid) {
+      this.notInCommunity = false;
+      this.incorrect = false;
+      this.error = false;
+
+      this._accountService.register(this.register.getRawValue().registerHandle, this.register.getRawValue().registerPassword).subscribe((result) => {
+        this.registering = false;
+      }, (error) => {
+        if (error.status === 0) {
+          this.error = true;
+        }
+      });
+    } else {
+      this.register.reset();
+    }
+    console.log('dit moet registreren');
   }
 
   get errors(): any {

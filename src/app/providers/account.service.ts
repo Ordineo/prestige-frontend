@@ -27,6 +27,14 @@ export class AccountService {
       });
   }
 
+  register(username: string, password: string) {
+    return this._http.post(environment.apiRegisterEndpoint + '?username=' + username + '&password=' + password, '')
+      .map(result => result)
+      .catch((err) => {
+        return Observable.throw(err);
+      });
+  }
+
   // todo link github account with user from database
   getAccountById(id: number) {
     // return this.af.database.object('/accounts/' + id)
