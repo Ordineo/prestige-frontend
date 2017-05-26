@@ -13,7 +13,7 @@ export const environment = {
   apiUsersEndpoint: url + '/users',
   apiEndorsementsEndpoint: url + '/prestiges',
   apiRolesEndpoint: url + '/roles',
-  apiPrestigeLikesEndpoint: url + '/prestigeLikes',
+  apiPrestigeLikesEndpoint: url + '/likes',
   apiCategoriesEndpoint: url + '/categories',
-  apiProfileEndpoint: url + '/profiles'
+  // apiProfileEndpoint: url + '/profiles'
 };

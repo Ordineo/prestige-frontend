@@ -14,9 +14,9 @@ export const environment = {
   apiUsersEndpoint: url + ':9900/employees-service/employees',
   apiEndorsementsEndpoint: url + ':9900/endorsements-service/endorsements',
   apiRolesEndpoint: url + ':9900/employees-service/roles',
-  apiPrestigeLikesEndpoint: url + ':9900/endorsements-service/prestigeLikes',
+  apiPrestigeLikesEndpoint: url + ':9900/endorsements-service/likes',
   apiCategoriesEndpoint: url + ':9900/endorsements-service/categories',
-  apiProfileEndpoint: url + ':8082/profile',
+  // apiProfileEndpoint: url + ':8082/profile',
 
   apiLoginEndpoint: url + ':9900/employees-service/login',
   apiRegisterEndpoint: url + ':9900/employees-service/register'
