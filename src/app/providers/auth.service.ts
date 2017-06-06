@@ -4,56 +4,46 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { gatekeeperConfig } from '../node.config';
 import { EmployeeService } from './employee.service';
+import { CookieService } from 'ngx-cookie';
+import { Account } from '../models/account';
 
 @Injectable()
 export class AuthService {
 
-  private _loggedInUser: any;
-  private _userLoggedIn: boolean;
+  private _loggedInUser: Account;
 
   constructor(private http: Http,
     private router: Router,
+    private cookieService: CookieService,
     private employeeService: EmployeeService) {
   }
 
   public getProfile() {
-    // let headers = new Headers({'Authorization': sessionStorage.getItem("Authorization")}); // ... Set content type to JSON
-    // let options = new RequestOptions({headers: headers}); // Create a request option
-
-    return this.employeeService.getByUsername(sessionStorage.getItem('username'))
-      .map((res: Response) => {
-        this._loggedInUser = res;
-        this._userLoggedIn = true;
+    return this.employeeService
+      .getByUsername(this.cookieService.get('username'))
+      .map((user: Account) => {
+        this._loggedInUser = user;
         return this._loggedInUser;
       })
       .catch(this.handleError);
-
-    // return this.http.get("https://api.github.com/user", options)
-    //   .map((res: Response) => {
-    //     this._loggedInUser = res.json();
-    //     this._userLoggedIn = true;
-    //     return this._loggedInUser;
-    //   })
-    //   .catch(this.handleError);
   }
 
   public logout() {
-    this._userLoggedIn = false;
-    sessionStorage.removeItem('Authorization');
+    this.cookieService.remove('jwt');
+    this.cookieService.remove('username');
     return this.router.navigate(['/login']);
   }
 
-  private handleError(error: Response) {
-    console.error(error);
+  private handleError(error: Response): Observable<any> {
     return Observable.throw(error || 'Server error');
   }
 
-  get loggedInUser(): any {
-    return this._loggedInUser;
+  get userLoggedIn(): boolean {
+    return this.cookieService.get('jwt') !== undefined;
   }
 
-  get userLoggedIn() {
-    return this._userLoggedIn;
+  get loggedInUser(): Account {
+    return this._loggedInUser;
   }
 
 }

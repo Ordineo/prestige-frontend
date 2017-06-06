@@ -10,4 +10,5 @@ export interface Account {
     phone: string;
     unit: string;
     gender: string;
+    avatar: string;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../providers/auth.service';
-import {RouterLinkActive} from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
+
 
 @Component({
     selector: 'app-navigationbar',

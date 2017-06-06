@@ -1,8 +1,9 @@
-import {Injectable, Inject} from '@angular/core';
-import {share} from "rxjs/operator/share";
-import {Http} from "@angular/http";
-import {environment} from '../../environments/environment';
-
+import { Injectable, Inject } from '@angular/core';
+import { share } from 'rxjs/operator/share';
+import { Http } from '@angular/http';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Rx';
+import { Account } from '../models/account';
 
 @Injectable()
 export class EmployeeService {
@@ -32,9 +33,10 @@ export class EmployeeService {
       });
   }
 
-  getByUsername(username: string) {
-    return this.http.get(environment.apiUsersEndpoint + '/' + username)
-      .map(result => (result.json()));
+  getByUsername(username: string): Observable<Account> {
+    return this.http
+      .get(environment.apiUsersEndpoint + '/' + username)
+      .map(result => result.json());
 
   }
 

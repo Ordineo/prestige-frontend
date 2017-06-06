@@ -10,7 +10,7 @@ export class LoginGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        throw new Error('Method not implemented.');
+        return this.authService.userLoggedIn;
     }
 
 }

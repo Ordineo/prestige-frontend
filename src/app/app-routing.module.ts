@@ -10,27 +10,28 @@ import { SearchComponent } from './shared/search/search.component';
 import { AuthComponent } from './shared/auth/auth.component';
 import { LoginFormComponent } from './authentication/login-form/login-form.component';
 import { RegistrationFormComponent } from './authentication/registration-form/registration-form.component';
+import { LoginGuard } from './providers/login.guard';
 
 const appRoutes: Routes = [
   {
     path: 'employee-detail/:id',
-    component: EmployeeDetailComponent
+    component: EmployeeDetailComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'employee-ranking',
-    component: EmployeeRankingComponent
+    component: EmployeeRankingComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'prestige-detail',
-    component: PrestigeDetailComponent
+    component: PrestigeDetailComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'prestige-feed',
-    component: PrestigeFeedComponent
-  },
-  {
-    path: 'auth',
-    component: AuthComponent
+    component: PrestigeFeedComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'login',

@@ -1,9 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import { Observable} from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
+import { Account } from '../../models/account';
 
 import { EmployeeService } from '../../providers/employee.service';
-import {PrestigeService} from "../../providers/prestige.service";
+import { PrestigeService } from '../../providers/prestige.service';
 
 @Component({
   selector: 'employee-detail',
@@ -12,23 +13,24 @@ import {PrestigeService} from "../../providers/prestige.service";
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  employee: Observable<any>;
+  employee: Account;
   grantedEndorsements: Observable<any>;
   receivedEndorsements: Observable<any>;
   // EmployeeId = this.route.snapshot.params['id'];
 
   constructor(private route: ActivatedRoute,
-              private employeeService : EmployeeService,
-              private endorsementsService: PrestigeService) {
+    private employeeService: EmployeeService,
+    private endorsementsService: PrestigeService) {
   }
 
   // todo: correcte id weergeven
   getUser() {
-    console.log(this.route.snapshot.params['id'], "id => user?");
-    this.employeeService.getByUsername(this.route.snapshot.params['id']).subscribe(result => {
-      this.employee = result;
-      console.log(result);
-    });
+    console.log(this.route.snapshot.params['id'], 'id => user?');
+    this.employeeService
+      .getByUsername(this.route.snapshot.params['id'])
+      .subscribe(result => {
+        this.employee = result;
+      });
   }
 
   getGrantedEndorsements() {
