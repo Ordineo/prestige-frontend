@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment'
-import { Http } from '@angular/http'
-import { Observable } from 'rxjs/Observable'
+import { environment } from '../../environments/environment';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import { Account } from '../models/account';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable()
 export class AccountService {
 
-  constructor(private _http: Http) {
+  constructor(
+    private http: Http,
+    private cookieService: CookieService) {
   }
 
   login(username: string, password: string) {
@@ -15,10 +18,10 @@ export class AccountService {
       username: username,
       password: password
     };
-    return this._http.post(environment.apiLoginEndpoint, body)
+    return this.http.post(environment.apiLoginEndpoint, body)
       .map(result => {
-        sessionStorage.setItem('Authorization', 'Bearer ' + result.text());
-        sessionStorage.setItem('username', body.username);
+        this.cookieService.put('jwt', result.text());
+        this.cookieService.put('username', body.username);
         return result;
       })
       .catch((err) => {
@@ -27,7 +30,7 @@ export class AccountService {
   }
 
   register(username: string, password: string) {
-    return this._http.post(environment.apiRegisterEndpoint + '?username=' + username + '&password=' + password, '')
+    return this.http.post(environment.apiRegisterEndpoint + '?username=' + username + '&password=' + password, '')
       .map(result => result)
       .catch((err) => {
         return Observable.throw(err);
@@ -42,6 +45,6 @@ export class AccountService {
 
   // todo implement account update function
   updateAccount(account: Account) {
-    return this._http.put(environment.apiUsersEndpoint + '/' + account.username, account);
+    return this.http.put(environment.apiUsersEndpoint + '/' + account.username, account);
   }
 }

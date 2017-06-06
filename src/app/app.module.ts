@@ -4,6 +4,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { CookieModule } from 'ngx-cookie';
 import { AppRoutingModule } from './app-routing.module';
 
 import { Md2Module } from 'md2';
@@ -34,8 +35,23 @@ import { NavigationBarComponent } from './layout/navigationbar/navigationbar.com
 import { RegistrationFormComponent } from './authentication/registration-form/registration-form.component';
 import { LoginFormComponent } from './authentication/login-form/login-form.component';
 import { AuthenticationPageComponent } from './authentication/authentication-page/authentication-page.component';
+import { LoginGuard } from './providers/login.guard';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    BrowserModule,
+    NoopAnimationsModule,
+    FormsModule,
+    HttpModule,
+    MaterialModule,
+    Md2Module.forRoot(),
+    AppRoutingModule,
+    ListboxModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    CookieModule.forRoot()
+  ],
   declarations: [
     AppComponent,
     EmployeeDetailComponent,
@@ -53,25 +69,13 @@ import { AuthenticationPageComponent } from './authentication/authentication-pag
     RegistrationFormComponent,
     AuthenticationPageComponent
   ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    NoopAnimationsModule,
-    FormsModule,
-    HttpModule,
-    MaterialModule,
-    Md2Module.forRoot(),
-    AppRoutingModule,
-    ListboxModule,
-    FlexLayoutModule,
-    ReactiveFormsModule
-  ],
   providers: [
     EmployeeService,
     AccountService,
     CategoryService,
     PrestigeService,
     AuthService,
+    LoginGuard,
     { provide: LOCALE_ID, useValue: 'nl-NL' }
   ],
   bootstrap: [AppComponent],
