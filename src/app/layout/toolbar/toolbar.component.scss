@@ -1,0 +1,67 @@
+@import '../../../styles/variables';
+
+.header {
+  &__background-image {
+    background: url('../../../assets/images/header.jpg') no-repeat center center;
+    background-size: cover;
+    height: 115px;
+  }
+
+  &__btn {
+    cursor: pointer;
+
+    &:hover {
+      color: $accent;
+    }
+
+    &--icon {
+      margin: 8px;
+    }
+  }
+
+  &__avatar {
+    margin: 8px;
+
+    &:hover {
+      color: $accent;
+      cursor: pointer;
+      text-decoration: none;
+
+      .header__avatar__name {
+        margin-top: 1px;
+        border-bottom: 2px solid $accent;
+      }
+    }
+
+    &__image {
+      height: 30px;
+      width: 30px;
+      border-radius: 50px;
+      margin: auto 10px;
+    }
+
+    &__name {
+      position: relative;
+      top: 5px;
+      display: inline-block;
+    }
+  }
+
+  &__logo {
+    background: url('../../../assets/images/jworks-logo.png') no-repeat left top;
+    height: 50px;
+    width: 60px;
+    background-size: contain;
+
+    &__link {
+
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        color: $accent;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,30 @@
+<md-toolbar *ngIf="isUserLoggedIn() && getLoggedInUsername()">
+
+    <div class="header__logo"></div>
+    <a class="header__logo__link" routerLink="/prestige-feed" routerLinkActive="active">
+        <strong>JWorks</strong>
+        <span> Prestige</span>
+    </a>
+
+    <span class="item-spacer"></span>
+    <search-employees class="col-md-6"></search-employees>
+    <span class="item-spacer"></span>
+
+    <a class="header__avatar" (click)="openAccountDetail()">
+        <img class="header__avatar__image" src="{{getLoggedInUserAvatar()}}" alt="">
+        <p class="header__avatar__name">{{ getLoggedInUsername() }}</p>
+    </a>
+
+    <a href="" (click)="logout()" [hidden]="!isUserLoggedIn()">
+        <md-icon class="header__btn header__btn--icon">cancel</md-icon>
+    </a>
+
+    <div class="">
+        <md-icon (click)="openAddPrestige()" class="header__btn header__btn--icon">plus_one</md-icon>
+    </div>
+
+    <md-toolbar-row>
+        <app-navigationbar></app-navigationbar>
+    </md-toolbar-row>
+
+</md-toolbar>

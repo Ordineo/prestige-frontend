@@ -1,9 +1,9 @@
-import { ActivatedRoute, Router } from "@angular/router";
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
-import { Observable } from "rxjs";
-import { Injectable } from "@angular/core";
-import { gatekeeperConfig } from "../node.config";
-import {EmployeeService} from "./employee.service";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
+import { gatekeeperConfig } from '../node.config';
+import { EmployeeService } from './employee.service';
 
 @Injectable()
 export class AuthService {
@@ -11,8 +11,8 @@ export class AuthService {
   private _userLoggedIn: boolean;
 
   constructor(private http: Http,
-              private router: Router,
-              private employeeService: EmployeeService) {
+    private router: Router,
+    private employeeService: EmployeeService) {
   }
 
   public getProfile() {
@@ -20,12 +20,12 @@ export class AuthService {
     // let options = new RequestOptions({headers: headers}); // Create a request option
 
     return this.employeeService.getByUsername(sessionStorage.getItem('username'))
-          .map((res: Response) => {
-            this._loggedInUser = res;
-            this._userLoggedIn = true;
-            return this._loggedInUser;
-          })
-          .catch(this.handleError);
+      .map((res: Response) => {
+        this._loggedInUser = res;
+        this._userLoggedIn = true;
+        return this._loggedInUser;
+      })
+      .catch(this.handleError);
 
     // return this.http.get("https://api.github.com/user", options)
     //   .map((res: Response) => {
