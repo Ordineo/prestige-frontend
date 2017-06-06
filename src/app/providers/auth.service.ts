@@ -7,6 +7,7 @@ import { EmployeeService } from './employee.service';
 
 @Injectable()
 export class AuthService {
+
   private _loggedInUser: any;
   private _userLoggedIn: boolean;
 
@@ -45,9 +46,6 @@ export class AuthService {
   private handleError(error: Response) {
     console.error(error);
     return Observable.throw(error || 'Server error');
-  }
-
-  ngOnInit() {
   }
 
   get loggedInUser(): any {

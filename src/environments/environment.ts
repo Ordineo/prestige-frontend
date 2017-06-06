@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 const protocol = 'http';
-const domain = '104.40.147.238';
+const domain = 'prestige.westeurope.cloudapp.azure.com';
 
 const url = protocol + '://' + domain;
 

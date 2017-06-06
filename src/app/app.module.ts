@@ -28,10 +28,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ListboxModule } from 'primeng/primeng';
 import { AuthComponent } from './shared/auth/auth.component';
-import { LoginComponent } from './login/login.component';
 import { AuthService } from './providers/auth.service';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { NavigationBarComponent } from './layout/navigationbar/navigationbar.component';
+import { RegistrationFormComponent } from './authentication/registration-form/registration-form.component';
+import { LoginFormComponent } from './authentication/login-form/login-form.component';
+import { AuthenticationPageComponent } from './authentication/authentication-page/authentication-page.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { NavigationBarComponent } from './layout/navigationbar/navigationbar.com
     AddPrestigeComponent,
     SortDatePipe,
     AuthComponent,
-    LoginComponent,
     ToolbarComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
+    AuthenticationPageComponent
   ],
   imports: [
     CommonModule,

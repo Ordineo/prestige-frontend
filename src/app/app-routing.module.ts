@@ -8,7 +8,8 @@ import { PrestigeDetailComponent } from './prestige/prestige-detail/prestige-det
 import { PrestigeFeedComponent } from './prestige/prestige-feed/prestige-feed.component';
 import { SearchComponent } from './shared/search/search.component';
 import { AuthComponent } from './shared/auth/auth.component';
-import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './authentication/login-form/login-form.component';
+import { RegistrationFormComponent } from './authentication/registration-form/registration-form.component';
 
 const appRoutes: Routes = [
   {
@@ -33,7 +34,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginFormComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationFormComponent
   },
   {
     path: '',
