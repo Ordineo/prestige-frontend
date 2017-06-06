@@ -1,35 +1,21 @@
-<div class="flexContainer">
-  <div fxLayout="row">
-    <h3>Prestige Feed</h3>
-  </div>
-</div>
 <div class="flexContainer" *ngIf="prestiges">
-  <div fxLayout="{{even ? 'row' : 'row-reverse'}}"
-       *ngFor="let prestige of prestiges; let index = index; let even = even; let odd = odd;">
-    <div fxFlex="50%"
-         fxFlex.xs="100%"
-         fxLayoutAlign="{{odd ? 'start' : 'end'}}"
-         fxFlexAlign="center">
+  <div fxLayout="{{even ? 'row' : 'row-reverse'}}" *ngFor="let prestige of prestiges; let index = index; let even = even; let odd = odd;">
+    <div fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="{{odd ? 'start' : 'end'}}" fxFlexAlign="center">
       <md-card class="example-card">
         <md-card-header>
-          <div md-card-avatar class="example-header-image"
-               [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
+          <div md-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
           <md-card-title>{{ prestige.granterUsername }}</md-card-title>
           <md-card-subtitle class="" style="text-align: right">{{ prestige.created | date: 'dd/MM/yyyy' }}
           </md-card-subtitle>
         </md-card-header>
       </md-card>
     </div>
-    <div fxFlex="10%"
-         fxLayoutAlign="center">
-      <div [ngStyle]="{'background': 'linear-gradient(0deg, #E98300, #ec971f, #E98300)'}"
-           fxFlex="5%"
-           fxLayoutAlign="center">
+    <div fxFlex="10%" fxLayoutAlign="center">
+      <div [ngStyle]="{'background': 'linear-gradient(0deg, #E98300, #ec971f, #E98300)'}" fxFlex="5%" fxLayoutAlign="center">
         <md-icon fxFlexAlign="center" style="background: #fff; border-radius: 50%; color: #E98300">radio_button_unchecked</md-icon>
       </div>
     </div>
-    <div fxFlex="50%"
-         fxFlex.xs="100%">
+    <div fxFlex="50%" fxFlex.xs="100%">
       <md-card class="example-card">
         <md-card-header>
           <md-card-title>
@@ -44,10 +30,8 @@
         <md-card-content>
           <!--<div *ngFor="let receiver of prestige.receivers; let last = last;"
                style="display: inline-block; margin: 0; padding: 10px;">-->
-            <div mdTooltip="@ '{{prestige.receiverUsername}}' " [mdTooltipPosition]="'below'"
-                 md-card-avatar
-                 class="example-header-image"
-                 [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
+          <div mdTooltip="@ '{{prestige.receiverUsername}}' " [mdTooltipPosition]="'below'" md-card-avatar class="example-header-image"
+            [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
           <!--</div>-->
           <p [ngStyle]="{'font-size': (prestige.reason.length > 50) ? '1.5em' : '2em' }">{{ prestige.reason }}</p>
           <md-card-subtitle>Category: {{ prestige.categories }}</md-card-subtitle>

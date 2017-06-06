@@ -1,28 +1,19 @@
-<div class="col-lg-8 center-block center">
-  <h3>Employee Ranking</h3>
-</div>
-
 <md-card class="col-lg-8 center-block center ">
   <md-card-header class="md-card-header__center">
     <md-card-title>Top 3</md-card-title>
   </md-card-header>
   <md-card-content>
-    <div class="rank-item"
-         *ngFor="let employee of employees, let index=index"
-         [ngClass]="{'rank-item__primary': index == 0, 'rank-item__secondary': index == 1, 'rank-item__thirstary': index == 2, 'none': index > 2}">
-      <img class="rank-item__img rank-item__img--large" src="{{employee.avatar}}">
-      {{employee.username}}
+    <div class="rank-item" *ngFor="let employee of employees, let index=index" [ngClass]="{'rank-item__primary': index == 0, 'rank-item__secondary': index == 1, 'rank-item__thirstary': index == 2, 'none': index > 2}">
+      <img class="rank-item__img rank-item__img--large" src="{{employee.avatar}}"> {{employee.username}}
     </div>
   </md-card-content>
 </md-card>
 
 <div class="col-lg-8 center-block center no-padding">
-  <md-card class="col-lg-4" *ngFor="let employee of employees, let index=index"
-           [ngClass]="{'none': index < 3 }">
+  <md-card class="col-lg-4" *ngFor="let employee of employees, let index=index" [ngClass]="{'none': index < 3 }">
     <md-card-content>
-      <div class="rank-item" >
-        <img class="rank-item__img rank-item__img--small" src="{{employee.avatar}}">
-        {{employee.username}}
+      <div class="rank-item">
+        <img class="rank-item__img rank-item__img--small" src="{{employee.avatar}}"> {{employee.username}}
       </div>
     </md-card-content>
   </md-card>
