@@ -1,72 +1,70 @@
 @import '../../../styles/variables';
+.toolbar {
 
-.header {
-  &__background-image {
-    background: url('../../../assets/images/header.jpg') no-repeat center center;
-    background-size: cover;
-    height: 115px;
-  }
+    background-color: #ecf0f1;
 
-  &__btn {
-    cursor: pointer;
+    .header {
 
-    &:hover {
-      color: $accent;
+        &__background-image {
+            background: url('../../../assets/images/header.jpg') no-repeat center center;
+            background-size: cover;
+            height: 115px;
+        }
+
+        &__btn {
+            cursor: pointer;
+            &:hover {
+                color: $accent;
+            }
+
+            &--icon {
+                margin: 8px;
+            }
+        }
+
+        &__user {
+            display: flex;
+            align-items: center;
+        }
+
+        &__avatar {
+            &:hover {
+                color: $accent;
+                cursor: pointer;
+                text-decoration: none;
+                .header__avatar__name {
+                    margin-top: 1px;
+                    border-bottom: 2px solid $accent;
+                }
+            }
+
+            &__image {
+                height: 30px;
+                width: 30px;
+                border-radius: 50px;
+                margin: auto 10px;
+                vertical-align: middle;
+            }
+
+            &__name {
+                vertical-align: middle;
+                position: relative;
+                display: inline-block;
+            }
+        }
+
+        &__logo {
+            background: url('../../../assets/images/jworks-logo.png') no-repeat left top;
+            height: 50px;
+            width: 60px;
+            background-size: contain;
+            &__link {
+                text-decoration: none;
+                &:hover {
+                    text-decoration: none;
+                    color: $accent;
+                }
+            }
+        }
     }
-
-    &--icon {
-      margin: 8px;
-    }
-  }
-
-  &__user {
-    display: flex;
-    align-items: center;
-  }
-
-  &__avatar {
-
-    &:hover {
-      color: $accent;
-      cursor: pointer;
-      text-decoration: none;
-
-      .header__avatar__name {
-        margin-top: 1px;
-        border-bottom: 2px solid $accent;
-      }
-    }
-
-    &__image {
-      height: 30px;
-      width: 30px;
-      border-radius: 50px;
-      margin: auto 10px;
-      vertical-align: middle;
-    }
-
-    &__name {
-      vertical-align: middle;
-      position: relative;
-      display: inline-block;
-    }
-  }
-
-  &__logo {
-    background: url('../../../assets/images/jworks-logo.png') no-repeat left top;
-    height: 50px;
-    width: 60px;
-    background-size: contain;
-
-    &__link {
-
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: none;
-        color: $accent;
-      }
-    }
-  }
 }
-
