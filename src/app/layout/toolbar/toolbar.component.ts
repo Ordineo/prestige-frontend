@@ -4,6 +4,7 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { AuthService } from '../../providers/auth.service';
 import { AccountDetailComponent } from '../../account/account-detail/account-detail.component';
 import { AddPrestigeComponent } from '../../prestige/add-prestige/add-prestige.component';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
     selector: 'app-toolbar',
@@ -19,10 +20,11 @@ export class ToolbarComponent implements OnInit {
     constructor(private router: Router,
         private dialog: MdDialog,
         private viewContainerRef: ViewContainerRef,
+        private cookieService: CookieService,
         private authService: AuthService) { }
 
     ngOnInit() {
-        this.username = sessionStorage.getItem('username');
+        this.username = this.cookieService.get('username');
     }
 
     public isUserLoggedIn(): boolean {

@@ -1,17 +1,18 @@
-import {Injectable, Inject} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {Http, RequestOptions} from "@angular/http";
+import { Injectable, Inject } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs/Rx';
+import { Http, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/map';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
+import { CookieService } from 'ngx-cookie';
 
 const limit: BehaviorSubject<number> = new BehaviorSubject<number>(10); // import 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class PrestigeService {
 
-  constructor(private http: Http, private requestOptions: RequestOptions) {
-    requestOptions.headers.append('Authorization', sessionStorage.getItem('Authorization'));
+  constructor(private http: Http, private requestOptions: RequestOptions, private cookieService: CookieService) {
+    requestOptions.headers.append('Authorization', `Bearer ${this.cookieService.get('jwt')}`);
   }
 
   getPrestiges() {
