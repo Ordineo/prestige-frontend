@@ -1,4 +1,4 @@
-<md-toolbar *ngIf="isUserLoggedIn() && getLoggedInUsername()">
+<md-toolbar *ngIf="isUserLoggedIn() && getLoggedInUsername()" class="toolbar">
     <div class="header__logo"></div>
     <a class="header__logo__link" routerLink="/prestige-feed" routerLinkActive="active">
         <strong>JWorks</strong>
@@ -6,7 +6,7 @@
     </a>
 
     <span class="item-spacer"></span>
-    <search-employees class="col-md-6"></search-employees>
+    <app-search-employees></app-search-employees>
     <span class="item-spacer"></span>
 
     <div class="header__user">

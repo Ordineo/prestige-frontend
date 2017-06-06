@@ -1,7 +1,7 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'search-employees',
+  selector: 'app-search-employees',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   encapsulation: ViewEncapsulation.None
