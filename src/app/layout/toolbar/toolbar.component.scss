@@ -19,8 +19,12 @@
     }
   }
 
+  &__user {
+    display: flex;
+    align-items: center;
+  }
+
   &__avatar {
-    margin: 8px;
 
     &:hover {
       color: $accent;
@@ -38,11 +42,12 @@
       width: 30px;
       border-radius: 50px;
       margin: auto 10px;
+      vertical-align: middle;
     }
 
     &__name {
+      vertical-align: middle;
       position: relative;
-      top: 5px;
       display: inline-block;
     }
   }
