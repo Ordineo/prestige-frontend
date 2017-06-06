@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../providers/auth.service';
+import {RouterLinkActive} from '@angular/router';
 
 @Component({
     selector: 'app-navigationbar',
@@ -8,6 +9,8 @@ import { AuthService } from '../../providers/auth.service';
 })
 
 export class NavigationBarComponent implements OnInit {
+
+    // public rla: RouterLinkActive;
 
     constructor(private authService: AuthService) { }
 

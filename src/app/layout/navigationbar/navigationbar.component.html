@@ -1,19 +1,12 @@
-<md-toolbar>
-    <md-tab-group>
-        <md-tab>
-            <ng-template md-tab-label>
-                <a routerLink="/prestige-feed">Prestige</a>
-            </ng-template>
-        </md-tab>
-        <md-tab>
-            <ng-template md-tab-label>
-                <a routerLink="/employee-detail/{{ getLoggedInUsername() }}">My prestige</a>
-            </ng-template>
-        </md-tab>
-        <md-tab>
-            <ng-template md-tab-label>
-                <a routerLink="/employee-ranking">Ranking</a>
-            </ng-template>
-        </md-tab>
-    </md-tab-group>
-</md-toolbar>
+<nav md-tab-nav-bar class="navigation__tab_bar">
+    <a md-tab-link class="navigation__tab" routerLink="/prestige-feed" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
+        Feed
+    </a>
+    <a md-tab-link class="navigation__tab" routerLink="/employee-detail/{{getLoggedInUsername()}}" routerLinkActive #rla2="routerLinkActive"
+        [active]="rla2.isActive">
+        My prestige
+    </a>
+    <a md-tab-link class="navigation__tab" routerLink="/employee-ranking" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        Ranking
+    </a>
+</nav>
