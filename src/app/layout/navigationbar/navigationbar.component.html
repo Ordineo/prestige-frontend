@@ -1,0 +1,17 @@
+<md-tab-group>
+    <md-tab>
+        <ng-template md-tab-label>
+            <a routerLink="/prestige-feed">Prestige</a>
+        </ng-template>
+    </md-tab>
+    <md-tab>
+        <ng-template md-tab-label>
+            <a routerLink="/employee-detail/{{ getLoggedInUsername() }}">My prestige</a>
+        </ng-template>
+    </md-tab>
+    <md-tab>
+        <ng-template md-tab-label>
+            <a routerLink="/employee-ranking">Ranking</a>
+        </ng-template>
+    </md-tab>
+</md-tab-group>

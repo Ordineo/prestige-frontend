@@ -1,51 +1,7 @@
-<md-toolbar *ngIf="authService.userLoggedIn && authService.loggedInUser?.username" [color]="primary">
-  <div class="header__logo"></div>
-  <a class="header__logo__link"
-     (click)="switchToFirstTab()" routerLink="/prestige-feed" routerLinkActive="active">
-    <strong>JWorks</strong>
-    <span> Prestige</span>
-  </a>
-  <span class="item-spacer"></span>
-  <search-employees class="col-md-6"></search-employees>
-  <span class="item-spacer"></span>
+<app-toolbar>
+</app-toolbar>
 
-  <a class="header__avatar" (click)="openAccountDetail()">
-    <img class="header__avatar__image" src="{{authService.loggedInUser?.avatar }}" alt="">
-    <p class="header__avatar__name">{{ authService.loggedInUser?.username }}</p>
-  </a>
-
-  <a href="" (click)="logout()" [hidden]="!authService.userLoggedIn">
-    <md-icon class="header__btn header__btn--icon">cancel</md-icon>
-  </a>
-
-  <div class="">
-    <md-icon (click)="openAddPrestige()" class="header__btn header__btn--icon">plus_one</md-icon>
-  </div>
-
-  <md-toolbar-row class="header__background-image"></md-toolbar-row>
-
-  <md-toolbar-row>
-    <md-tab-group [(selectedIndex)]="activeTabIndex">
-      <md-tab>
-        <ng-template md-tab-label>
-          <a routerLink="/prestige-feed">Prestige</a>
-        </ng-template>
-      </md-tab>
-      <md-tab>
-        <ng-template md-tab-label>
-          <a routerLink="/employee-detail/{{ username }}">My prestige</a>
-        </ng-template>
-      </md-tab>
-      <md-tab>
-        <ng-template md-tab-label>
-          <a routerLink="/employee-ranking">Ranking</a>
-        </ng-template>
-      </md-tab>
-    </md-tab-group>
-  </md-toolbar-row>
-</md-toolbar>
-
-<div class="container-fluid no-padding" [ngClass]="{'loginBackground': !authService.userLoggedIn}">
+<div class="container-fluid no-padding" [ngClass]="{'loginBackground': !isUserLoggedIn()}">
   <div [ngClass]="{'transparentOverlay': !authService.userLoggedIn}"></div>
   <router-outlet></router-outlet>
 </div>
