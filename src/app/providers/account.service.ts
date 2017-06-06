@@ -15,7 +15,6 @@ export class AccountService {
       username: username,
       password: password
     };
-
     return this._http.post(environment.apiLoginEndpoint, body)
       .map(result => {
         sessionStorage.setItem('Authorization', 'Bearer ' + result.text());
