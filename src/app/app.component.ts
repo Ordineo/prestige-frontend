@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
-import { AuthService } from './providers/auth.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,13 @@ import { AuthService } from './providers/auth.service';
 
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
   public isUserLoggedIn(): boolean {
-    return this.authService.userLoggedIn;
+    return this.userService.isUserLoggedIn();
   }
 
 }

@@ -1,7 +1,8 @@
 <app-toolbar *ngIf="isUserLoggedIn()"></app-toolbar>
 <app-navigationbar *ngIf="isUserLoggedIn()"></app-navigationbar>
 
-<div class="container-fluid no-padding" [ngClass]="{'loginBackground': !isUserLoggedIn()}">
-  <div [ngClass]="{'transparentOverlay': !authService.userLoggedIn}"></div>
+<div class="container-fluid no-padding"
+  [ngClass]="{'loginBackground': !isUserLoggedIn()}">
+  <div [ngClass]="{'transparentOverlay': !isUserLoggedIn()}"></div>
   <router-outlet></router-outlet>
 </div>

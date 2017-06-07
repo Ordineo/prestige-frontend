@@ -5,19 +5,18 @@
 
 const protocol = 'http';
 const domain = 'prestige.westeurope.cloudapp.azure.com';
+const port = '9900';
 
-const url = protocol + '://' + domain;
+const url = `${protocol}://${domain}:${port}`;
 
 export const environment = {
   production: false,
+  endPoint: url,
 
-  apiUsersEndpoint: url + ':9900/employees-service/employees',
-  apiEndorsementsEndpoint: url + ':9900/endorsements-service/endorsements',
   apiRolesEndpoint: url + ':9900/employees-service/roles',
   apiPrestigeLikesEndpoint: url + ':9900/endorsements-service/likes',
-  apiCategoriesEndpoint: url + ':9900/endorsements-service/categories',
   // apiProfileEndpoint: url + ':8082/profile',
 
-  apiLoginEndpoint: url + ':9900/employees-service/login',
+
   apiRegisterEndpoint: url + ':9900/employees-service/register'
 };

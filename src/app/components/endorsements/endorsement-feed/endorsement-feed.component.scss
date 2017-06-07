@@ -1,0 +1,67 @@
+@import "../../../../styles/variables";
+
+md-card {
+    margin: 10px;
+}
+
+.flexContainer {
+    box-sizing: content-box !important;
+}
+
+.example-header-image {
+    background-size: cover;
+}
+
+.prestige {
+    padding: 10px;
+    border: 1px solid $secondary-color;
+    border-radius: 2px;
+    margin: 9px auto;
+
+    &__employee {
+        text-align: center;
+        &--bold {
+            font-weight: bold;
+        }
+        &__icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: $secondary-color;
+        }
+    }
+    &__text {
+        border-left: 1px dashed $secondary-color;
+    }
+    &__date {
+        font-size: 12px;
+        font-style: italic;
+    }
+    &__reason {
+        font-size: 20px;
+    }
+    &__category {
+        font-weight: bold;
+        color: #1b6d85;
+    }
+    &__url {
+        text-align: right;
+        md-icon {
+            top: 5px;
+            position: relative;
+            font-size: 20px;
+        }
+    }
+    &:before {
+        content: "|";
+        position: absolute;
+        top: -20px;
+        right: 50%;
+        color: $secondary-color;
+    }
+}
+
+.centered {
+    margin: 0 auto;
+    float: none;
+}

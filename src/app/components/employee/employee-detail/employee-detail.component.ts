@@ -1,0 +1,29 @@
+import { Endorsement } from '../../../models/endorsement';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
+import { EmployeeService } from '../../../services/employee.service';
+import { EndorsementService } from '../../../services/prestige.service';
+
+@Component({
+  selector: 'app-employee-detail',
+  templateUrl: './employee-detail.component.html',
+  styleUrls: ['./employee-detail.component.scss']
+})
+export class EmployeeDetailComponent implements OnInit {
+
+  employee: Observable<Account>;
+  grantedEndorsements: Observable<Endorsement[]>;
+  receivedEndorsements: Observable<Endorsement[]>;
+
+  constructor(private route: ActivatedRoute,
+    private employeeService: EmployeeService,
+    private endorsementsService: EndorsementService) {
+  }
+
+  ngOnInit() {
+    this.employee = this.employeeService.getByUsername(this.route.snapshot.params['id']).share();
+    this.grantedEndorsements = this.endorsementsService.findByGranter(this.route.snapshot.params['id']).share();
+    this.receivedEndorsements = this.endorsementsService.findByReceiver(this.route.snapshot.params['id']).share();
+  }
+}

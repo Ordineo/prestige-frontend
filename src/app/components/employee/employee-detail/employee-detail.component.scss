@@ -1,0 +1,22 @@
+md-card-header {
+    div {
+        background-size: contain;
+    }
+}
+
+.mat-card-avatar {
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+
+md-card-content {
+    .prestige {
+        margin-bottom: 2%;
+        md-progress-bar {
+            height: 10px;
+        }
+    }
+}
