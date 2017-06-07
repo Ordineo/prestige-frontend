@@ -1,5 +1,4 @@
-<md-card class="center-block center col-lg-8"
-  *ngIf="employee | async">
+<md-card *ngIf="employee | async">
   <md-card-header>
     <div md-card-avatar>
       <img src="{{(employee | async)?.avatar}}" />
@@ -15,8 +14,7 @@
   </md-card-content>
 </md-card>
 
-<md-card class="center-block center col-lg-8"
-  *ngIf="employee | async">
+<md-card *ngIf="employee | async">
   <md-card-content>
     <h2>Granted Prestiges</h2>
     <div class="prestige"
@@ -27,8 +25,7 @@
   </md-card-content>
 </md-card>
 
-<md-card class="center-block center col-lg-8"
-  *ngIf="employee">
+<md-card *ngIf="employee">
   <h2>Received Prestiges</h2>
   <md-card-content>
     <div class="prestige"
