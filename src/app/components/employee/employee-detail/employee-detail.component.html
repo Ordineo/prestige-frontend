@@ -1,0 +1,40 @@
+<md-card class="center-block center col-lg-8"
+  *ngIf="employee | async">
+  <md-card-header>
+    <div md-card-avatar>
+      <img src="{{(employee | async)?.avatar}}" />
+    </div>
+    <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
+    <md-card-subtitle>{{ employee.roles }}</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <p>
+      <!--{{ employee.summary }}-->
+      Summary needs to be implemented?
+    </p>
+  </md-card-content>
+</md-card>
+
+<md-card class="center-block center col-lg-8"
+  *ngIf="employee | async">
+  <md-card-content>
+    <h2>Granted Prestiges</h2>
+    <div class="prestige"
+      *ngFor="let endorsement of grantedEndorsements | async">
+      {{ endorsement.categories }}
+      <md-progress-bar [value]="endorsement.score"></md-progress-bar>
+    </div>
+  </md-card-content>
+</md-card>
+
+<md-card class="center-block center col-lg-8"
+  *ngIf="employee">
+  <h2>Received Prestiges</h2>
+  <md-card-content>
+    <div class="prestige"
+      *ngFor="let endorsement of receivedEndorsements | async">
+      {{ endorsement.categories }}
+      <md-progress-bar [value]="endorsement.score"></md-progress-bar>
+    </div>
+  </md-card-content>
+</md-card>

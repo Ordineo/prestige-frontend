@@ -1,0 +1,24 @@
+@import '../../../../styles/variables';
+
+.search-component {
+    padding-top: 15px;
+    width: 250px;
+}
+
+.search-component .md2-autocomplete-placeholder {
+    color: $primary-color;
+}
+
+.search-component .md2-autocomplete-trigger {
+    &.is-focused {
+        border-bottom-color: $accent;
+
+        .md2-autocomplete-placeholder {
+            color: $accent;
+        }
+    }
+
+    svg {
+        background: transparent;
+    }
+}

@@ -1,14 +1,10 @@
-/**
- * Created by ToVB on 2/02/2017.
- */
-
-export interface Account {
-    username: string,
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    unit: string;
-    gender: string;
-    avatar: string;
+export class Account {
+    public username: string;
+    public firstName: string;
+    public lastName: string;
+    public email: string;
+    public phone: string;
+    public unit: string;
+    public gender: string;
+    public avatar: string;
 }

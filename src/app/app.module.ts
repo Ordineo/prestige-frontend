@@ -1,3 +1,5 @@
+import { EndorsementDetailComponent } from './components/endorsements/endorsement-detail/endorsement-detail.component';
+import { EndorsementFeedComponent } from './components/endorsements/endorsement-feed/endorsement-feed.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -11,31 +13,29 @@ import { Md2Module } from 'md2';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { PrestigeFeedComponent } from './prestige/prestige-feed/prestige-feed.component';
-import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
-import { SearchComponent } from './shared/search/search.component';
-import { EmployeeRankingComponent } from './employee/employee-ranking/employee-ranking.component';
-import { PrestigeDetailComponent } from './prestige/prestige-detail/prestige-detail.component';
-import { EmployeeService } from './providers/employee.service';
-
-import { AccountDetailComponent } from './account/account-detail/account-detail.component';
-import { AccountService } from './providers/account.service';
-import { AddPrestigeComponent } from './prestige/add-prestige/add-prestige.component';
-import { CategoryService } from './providers/category.service';
-import { PrestigeService } from './providers/prestige.service';
-import { SortDatePipe } from './shared/sort/sort-date.pipe';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ListboxModule } from 'primeng/primeng';
-import { AuthComponent } from './shared/auth/auth.component';
-import { AuthService } from './providers/auth.service';
-import { ToolbarComponent } from './layout/toolbar/toolbar.component';
-import { NavigationBarComponent } from './layout/navigationbar/navigationbar.component';
-import { RegistrationFormComponent } from './authentication/registration-form/registration-form.component';
-import { LoginFormComponent } from './authentication/login-form/login-form.component';
-import { AuthenticationPageComponent } from './authentication/authentication-page/authentication-page.component';
-import { LoginGuard } from './providers/login.guard';
+import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
+import { EmployeeRankingComponent } from './components/employee/employee-ranking/employee-ranking.component';
+import { SearchComponent } from './components/shared/search/search.component';
+import { AccountDetailComponent } from './components/account/account-detail/account-detail.component';
+import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
+import { ToolbarComponent } from './components/layout/toolbar/toolbar.component';
+import { NavigationBarComponent } from './components/layout/navigationbar/navigationbar.component';
+import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
+import { RegistrationFormComponent } from './components/authentication/registration-form/registration-form.component';
+import { AuthenticationPageComponent } from './components/authentication/authentication-page/authentication-page.component';
+import { EmployeeService } from './services/employee.service';
+import { CategoryService } from './services/category.service';
+import { AuthService } from './services/auth.service';
+import { EndorsementService } from './services/prestige.service';
+import { BaseHttpClient } from './services/base-http-client.service';
+import { AddEndorsementComponent } from './components/endorsements/add-endorsement/add-endorsement.component';
+import { UserService } from './services/user.service';
+import { AuthenticatedGuard } from './services/guards/authenticated.guard';
+import { UnauthenticatedGuard } from './services/guards/unauthenticated.guard';
 
 @NgModule({
   imports: [
@@ -56,13 +56,13 @@ import { LoginGuard } from './providers/login.guard';
     AppComponent,
     EmployeeDetailComponent,
     EmployeeRankingComponent,
-    PrestigeDetailComponent,
-    PrestigeFeedComponent,
+    AddEndorsementComponent,
+    EndorsementFeedComponent,
+    EndorsementDetailComponent,
     SearchComponent,
     AccountDetailComponent,
-    AddPrestigeComponent,
+    AddEndorsementComponent,
     SortDatePipe,
-    AuthComponent,
     ToolbarComponent,
     NavigationBarComponent,
     LoginFormComponent,
@@ -71,15 +71,16 @@ import { LoginGuard } from './providers/login.guard';
   ],
   providers: [
     EmployeeService,
-    AccountService,
     CategoryService,
-    PrestigeService,
+    EndorsementService,
     AuthService,
-    LoginGuard,
+    UserService,
+    AuthenticatedGuard,
+    UnauthenticatedGuard,
     { provide: LOCALE_ID, useValue: 'nl-NL' }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AccountDetailComponent, AddPrestigeComponent]
+  entryComponents: [AccountDetailComponent, AddEndorsementComponent]
 })
 export class AppModule {
 }
