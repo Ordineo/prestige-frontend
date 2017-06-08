@@ -1,0 +1,67 @@
+import {EmployeeService} from '../../../services/employee.service';
+import {instance, mock, verify, when} from 'ts-mockito';
+import {Observable} from 'rxjs/Rx';
+import {Subject} from 'rxjs/Subject';
+import {AddEndorsementComponent} from './add-endorsement.component';
+import {MdDialogRef} from '@angular/material';
+import {EndorsementService} from '../../../services/prestige.service';
+import {CategoryService} from '../../../services/category.service';
+import {Endorsement} from '../../../models/endorsement';
+
+describe('AddEndorsementComponent', () => {
+
+  let componentUnderTest: AddEndorsementComponent;
+
+  let employeeService: EmployeeService;
+  let dialogRef: MdDialogRef<any>;
+  let endorsementService: EndorsementService;
+  let categoryService: CategoryService;
+
+  beforeEach(() => {
+    employeeService = mock(EmployeeService);
+    dialogRef = mock(MdDialogRef);
+    endorsementService = mock(EndorsementService);
+    categoryService = mock(CategoryService);
+
+    componentUnderTest = new AddEndorsementComponent(
+      instance(dialogRef),
+      instance(categoryService),
+      instance(employeeService),
+      instance(endorsementService));
+  });
+
+  describe('ngOnInit', () => {
+
+    it('should get all employees', () => {
+      const employeesSubject = new Subject();
+      const categoriesSubject = new Subject();
+
+      when(employeeService.getAllEmployees()).thenReturn(employeesSubject.asObservable());
+      when(categoryService.getCategories()).thenReturn(categoriesSubject.asObservable());
+
+      componentUnderTest.ngOnInit();
+
+      expect(componentUnderTest.employees).toEqual(jasmine.any(Observable));
+      expect(componentUnderTest.categories).toEqual(jasmine.any(Observable));
+    });
+
+  });
+
+  describe('addPrestige', () => {
+
+    it('should call the endorsementService and on success close the dialog and fire the updateEndorsementEvent', () => {
+      const prestige = new Endorsement();
+      const prestigeSubject = new Subject();
+      when(endorsementService.addPrestige(prestige)).thenReturn(prestigeSubject.asObservable());
+
+      componentUnderTest.prestige = prestige;
+      componentUnderTest.addPrestige();
+      prestigeSubject.next();
+
+      verify(dialogRef.close()).once();
+      verify(endorsementService.fireUpdateEndorsementsEvent()).once();
+    });
+
+  });
+
+});

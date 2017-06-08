@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { DatePipe } from '@angular/common';
-import { Http } from '@angular/http';
-import { EndorsementService } from '../../../services/prestige.service';
-import { AuthService } from '../../../services/auth.service';
-import { UserService } from '../../../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {Http} from '@angular/http';
+import {EndorsementService} from '../../../services/prestige.service';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-endorsement-feed',
@@ -13,13 +11,12 @@ import { UserService } from '../../../services/user.service';
 })
 export class EndorsementFeedComponent implements OnInit {
 
-  feed: any;
   prestiges: Observable<any>;
   currentUser: any;
   avatar = '';
 
-  constructor(private http: Http,
-    private prestigeService: EndorsementService,
+  constructor(
+    private endorsementService: EndorsementService,
     private userService: UserService) {
   }
 
@@ -34,9 +31,10 @@ export class EndorsementFeedComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
-    this.prestiges = this.prestigeService.getPrestiges().share();
-    this.prestigeService.subscribeToUpdateEndorsementsEvents(() => {
-      this.prestiges = this.prestigeService.getPrestiges().share();
+    this.prestiges = this.endorsementService.getPrestiges().share();
+
+    this.endorsementService.subscribeToUpdateEndorsementsEvents(() => {
+      this.prestiges = this.endorsementService.getPrestiges().share();
     });
 
     this.avatar = this.randomAvatar();
