@@ -11,13 +11,6 @@ import { EmployeeService } from '../../../services/employee.service';
 export class EmployeeRankingComponent implements OnInit {
 
   employees: Observable<Account[]>;
-  totalPrestige = 1;
-  availableColors = [
-    { name: 'none', color: '' },
-    { name: 'Primary', color: 'primary' },
-    { name: 'Accent', color: 'accent' },
-    { name: 'Warn', color: 'warn' }
-  ];
 
   constructor(private employeeService: EmployeeService) {
   }
