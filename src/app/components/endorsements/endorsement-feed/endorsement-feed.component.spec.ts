@@ -1,6 +1,6 @@
 import {capture, instance, mock, verify, when} from 'ts-mockito';
 import {Observable} from 'rxjs/Rx';
-import {EndorsementService} from '../../../services/prestige.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 import {EndorsementFeedComponent} from './endorsement-feed.component';
 import {UserService} from '../../../services/user.service';
 import {Account} from '../../../models/account';
@@ -24,7 +24,7 @@ describe('EndorsementFeedComponent', () => {
   describe('ngOnInit', () => {
 
     beforeEach(() => {
-      when(endorsementService.getPrestiges()).thenReturn(Observable.empty());
+      when(endorsementService.getEndorsements()).thenReturn(Observable.empty());
     });
 
     it('should get current user', () => {
@@ -36,10 +36,10 @@ describe('EndorsementFeedComponent', () => {
       expect(componentUnderTest.currentUser).toEqual(account);
     });
 
-    it('should get the prestiges', () => {
+    it('should get the endorsements', () => {
       componentUnderTest.ngOnInit();
 
-      expect(componentUnderTest.prestiges).toEqual(jasmine.any(Observable));
+      expect(componentUnderTest.endorsements).toEqual(jasmine.any(Observable));
     });
 
     it('should subscribe to the updateEndorsementsEvent', () => {
@@ -50,7 +50,7 @@ describe('EndorsementFeedComponent', () => {
       expect(firstArg).toEqual(jasmine.any(Function));
 
       firstArg();
-      verify(endorsementService.getPrestiges()).called();
+      verify(endorsementService.getEndorsements()).called();
     });
 
   });

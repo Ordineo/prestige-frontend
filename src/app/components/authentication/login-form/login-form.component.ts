@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit {
         .login(this.loginModel.handle, this.loginModel.password)
         .subscribe(
         () => {
-          this.router.navigate(['/prestige-feed'])
+          this.router.navigate(['/endorsement-feed'])
         }, (error) => {
           if (error.json().message === 'Authentication Failed: Cannot pass null or empty values to constructor') {
             this.notInCommunity = true;

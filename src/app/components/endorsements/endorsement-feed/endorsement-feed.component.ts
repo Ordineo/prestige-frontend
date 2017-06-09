@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
-import {Http} from '@angular/http';
-import {EndorsementService} from '../../../services/prestige.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 import {UserService} from '../../../services/user.service';
+import {Endorsement} from '../../../models/endorsement';
 
 @Component({
   selector: 'app-endorsement-feed',
@@ -11,7 +11,7 @@ import {UserService} from '../../../services/user.service';
 })
 export class EndorsementFeedComponent implements OnInit {
 
-  prestiges: Observable<any>;
+  endorsements: Observable<Endorsement[]>;
   currentUser: any;
   avatar = '';
 
@@ -31,10 +31,10 @@ export class EndorsementFeedComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
-    this.prestiges = this.endorsementService.getPrestiges().share();
+    this.endorsements = this.endorsementService.getEndorsements().share();
 
     this.endorsementService.subscribeToUpdateEndorsementsEvents(() => {
-      this.prestiges = this.endorsementService.getPrestiges().share();
+      this.endorsements = this.endorsementService.getEndorsements().share();
     });
 
     this.avatar = this.randomAvatar();

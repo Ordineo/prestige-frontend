@@ -1,4 +1,4 @@
-import {EndorsementService} from '../../../services/prestige.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 import {ActivatedRoute} from '@angular/router';
 import {EmployeeService} from '../../../services/employee.service';
 import {EmployeeDetailComponent} from './employee-detail.component';

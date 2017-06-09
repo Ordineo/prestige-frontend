@@ -37,7 +37,7 @@ describe('LoginFormComponent', () => {
       subject.next();
 
       const [firstArg] = capture(router.navigate).last();
-      expect(firstArg).toEqual(['/prestige-feed']);
+      expect(firstArg).toEqual(['/endorsement-feed']);
     });
 
     it('should call login on the authservice and set notInCommunity to true if message is "Cannot pass null or empty values to constructor"', () => {
@@ -89,7 +89,7 @@ describe('LoginFormComponent', () => {
       componentUnderTest.login();
       subject.error(error);
 
-      verify(router.navigate(['/prestige-feed'])).never();
+      verify(router.navigate(['/endorsement-feed'])).never();
       expect(componentUnderTest.error).toBeTruthy();
     });
 

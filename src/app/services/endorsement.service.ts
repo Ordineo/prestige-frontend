@@ -11,29 +11,30 @@ export class EndorsementService extends BaseHttpClient {
 
   @Output() private updateEndorsementsEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  private prestigesEndpoint = `${environment.endPoint}/endorsements-service/endorsements`;
+  private endorsementsEndpoint = `${environment.endPoint}/endorsements-service/endorsements`;
 
-  getPrestiges() {
-    return this.get(this.prestigesEndpoint, true)
+  getEndorsements(): Observable<Endorsement[]> {
+    return this.get(this.endorsementsEndpoint, true)
       .map(result => result.json())
-      .map(resultJson => resultJson._embedded.endorsements || []);
+      .map(resultJson => resultJson._embedded.endorsements || new Array<Endorsement>())
+      .map((endorsements: Endorsement[]) => endorsements.reverse());
   }
 
-  addPrestige(prestige: Endorsement): Observable<Response> {
+  addEndorsement(endorsement: Endorsement): Observable<Response> {
     return this
-      .post(this.prestigesEndpoint, prestige, true);
+      .post(this.endorsementsEndpoint, endorsement, true);
   }
 
   findByGranter(username: string): Observable<Endorsement[]> {
     return this
-      .get(`${this.prestigesEndpoint}/search/findByGranterUsername?username=${username}`, true)
+      .get(`${this.endorsementsEndpoint}/search/findByGranterUsername?username=${username}`, true)
       .map(result => result.json())
       .map(resultJson => resultJson._embedded ? resultJson._embedded.endorsements : []);
   }
 
   findByReceiver(username: string): Observable<Endorsement[]> {
     return this
-      .get(`${this.prestigesEndpoint}/search/findByReceiverUsername?username=${username}`, true)
+      .get(`${this.endorsementsEndpoint}/search/findByReceiverUsername?username=${username}`, true)
       .map(result => result.json())
       .map(resultJson => resultJson._embedded ? resultJson._embedded.endorsements : []);
   }

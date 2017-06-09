@@ -12,6 +12,7 @@ import {UserService} from './user.service';
 export class AuthService extends BaseHttpClient {
 
   private loginEndPoint = `${environment.endPoint}/employees-service/login`;
+  private registerEndpoint = `${environment.endPoint}/employees-service/register`;
 
   constructor(protected http: Http,
               protected userService: UserService,
@@ -39,7 +40,7 @@ export class AuthService extends BaseHttpClient {
   }
 
   register(username: string, password: string) {
-    return this.http.post(environment.apiRegisterEndpoint + '?username=' + username + '&password=' + password, '')
+    return this.http.post(this.registerEndpoint + '?username=' + username + '&password=' + password, '')
       .map(result => result)
       .catch((err) => {
         return Observable.throw(err);

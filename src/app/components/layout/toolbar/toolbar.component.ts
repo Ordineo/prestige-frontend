@@ -52,7 +52,7 @@ export class ToolbarComponent implements OnInit {
       });
   }
 
-  public openAddPrestige() {
+  public openAddEndorsement() {
     const config = new MdDialogConfig();
     config.width = '80%';
 

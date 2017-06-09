@@ -3,7 +3,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import {EmployeeService} from '../../../services/employee.service';
-import {EndorsementService} from '../../../services/prestige.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 
 @Component({
   selector: 'app-employee-detail',

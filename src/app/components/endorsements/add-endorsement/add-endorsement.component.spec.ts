@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import {Subject} from 'rxjs/Subject';
 import {AddEndorsementComponent} from './add-endorsement.component';
 import {MdDialogRef} from '@angular/material';
-import {EndorsementService} from '../../../services/prestige.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 import {CategoryService} from '../../../services/category.service';
 import {Endorsement} from '../../../models/endorsement';
 
@@ -47,16 +47,16 @@ describe('AddEndorsementComponent', () => {
 
   });
 
-  describe('addPrestige', () => {
+  describe('addEndorsement', () => {
 
     it('should call the endorsementService and on success close the dialog and fire the updateEndorsementEvent', () => {
-      const prestige = new Endorsement();
-      const prestigeSubject = new Subject();
-      when(endorsementService.addPrestige(prestige)).thenReturn(prestigeSubject.asObservable());
+      const endorsement = new Endorsement();
+      const endorsementSubject = new Subject();
+      when(endorsementService.addEndorsement(endorsement)).thenReturn(endorsementSubject.asObservable());
 
-      componentUnderTest.prestige = prestige;
-      componentUnderTest.addPrestige();
-      prestigeSubject.next();
+      componentUnderTest.endorsement = endorsement;
+      componentUnderTest.addEndorsement();
+      endorsementSubject.next();
 
       verify(dialogRef.close()).once();
       verify(endorsementService.fireUpdateEndorsementsEvent()).once();

@@ -1,19 +1,12 @@
-let protocol = 'http';
-let domain = 'localhost';
+const protocol = 'http';
+const domain = 'localhost';
 
 // Node-Red Config
-let port = '1880';
-let baseEndpoint = '';
-
-let url = protocol + '://' + domain + ':' + port + baseEndpoint;
+const port = '1880';
+const baseEndpoint = '';
 
 export const environment = {
   production: false,
-
-  apiUsersEndpoint: url + '/users',
-  apiEndorsementsEndpoint: url + '/prestiges',
-  apiRolesEndpoint: url + '/roles',
-  apiPrestigeLikesEndpoint: url + '/likes',
-  apiCategoriesEndpoint: url + '/categories',
-  // apiProfileEndpoint: url + '/profiles'
+  endPoint: `${protocol}://${domain}:${port}${baseEndpoint}`
 };
+

@@ -1,6 +1,6 @@
 import { PrestigeFrontendPage } from './app.po';
 
-describe('prestige-frontend App', () => {
+describe('endorsement-frontend App', () => {
   let page: PrestigeFrontendPage;
 
   beforeEach(() => {

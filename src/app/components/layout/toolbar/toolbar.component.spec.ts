@@ -109,14 +109,14 @@ describe('ToolbarComponent', () => {
 
   });
 
-  describe('openAddPrestige', () => {
+  describe('openAddEndorsement', () => {
 
     it('should open the dialog', () => {
       const dialogRef = mock(MdDialogRef);
       dialogRef.afterClosed = () => Observable.empty();
       when(dialog.open(anything(), anything())).thenReturn(dialogRef);
 
-      componentUnderTest.openAddPrestige();
+      componentUnderTest.openAddEndorsement();
 
       const args = capture(dialog.open).last();
       expect(args.length).toEqual(2);

@@ -4,7 +4,7 @@ import {MdDialogRef} from '@angular/material';
 import {Observable} from 'rxjs/Rx';
 import {CategoryService} from '../../../services/category.service';
 import {EmployeeService} from '../../../services/employee.service';
-import {EndorsementService} from '../../../services/prestige.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 import {Endorsement} from '../../../models/endorsement';
 
 @Component({
@@ -17,7 +17,7 @@ export class AddEndorsementComponent implements OnInit {
 
   public categories: Observable<string[]>;
   public employees: Observable<Account[]>;
-  prestige: Endorsement = new Endorsement();
+  endorsement: Endorsement = new Endorsement();
 
   constructor(public dialogRef: MdDialogRef<any>,
     private categoryService: CategoryService,
@@ -25,9 +25,9 @@ export class AddEndorsementComponent implements OnInit {
     private endorsementService: EndorsementService) {
   }
 
-  addPrestige() {
+  addEndorsement() {
     this.endorsementService
-      .addPrestige(this.prestige)
+      .addEndorsement(this.endorsement)
       .subscribe(() => {
         this.dialogRef.close();
         this.endorsementService.fireUpdateEndorsementsEvent();

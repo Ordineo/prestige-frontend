@@ -7,16 +7,7 @@ const protocol = 'http';
 const domain = 'prestige.westeurope.cloudapp.azure.com';
 const port = '9900';
 
-const url = `${protocol}://${domain}:${port}`;
-
 export const environment = {
   production: false,
-  endPoint: url,
-
-  apiRolesEndpoint: url + ':9900/employees-service/roles',
-  apiPrestigeLikesEndpoint: url + ':9900/endorsements-service/likes',
-  // apiProfileEndpoint: url + ':8082/profile',
-
-
-  apiRegisterEndpoint: url + ':9900/employees-service/register'
+  endPoint: `${protocol}://${domain}:${port}`
 };

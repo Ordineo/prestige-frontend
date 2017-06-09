@@ -1,17 +1,17 @@
-<div *ngIf="prestige"
-  class="prestige">
-  <h3>Add prestige</h3>
+<div *ngIf="endorsement"
+  class="endorsement">
+  <h3>Add Endorsement</h3>
 
-  <form (ngSubmit)="addPrestige()"
-    #prestigeForm="ngForm"
-    class="prestige__form">
+  <form (ngSubmit)="addEndorsement()"
+    #endorsementForm="ngForm"
+    class="endorsement__form">
 
     <md-grid-list cols="10"
       rowHeight="4em"
       gutterSize="5px">
       <md-grid-tile colspan="2">
         <md-select placeholder="Select co-worker"
-          [(ngModel)]="prestige.receiverUsername"
+          [(ngModel)]="endorsement.receiverUsername"
           name="Receiver">
           <md-option *ngFor="let employee of employees | async"
             [value]="employee.username">
@@ -22,7 +22,7 @@
 
       <md-grid-tile colspan="2">
         <md-select placeholder="Select a category"
-          [(ngModel)]="prestige.categories"
+          [(ngModel)]="endorsement.categories"
           name="Categories">
           <md-option *ngFor="let category of categories | async"
             [value]="[category.name]">
@@ -34,20 +34,20 @@
       <md-grid-tile colspan="4">
         <md-input-container>
           <input mdInput
-            [(ngModel)]="prestige.reason"
+            [(ngModel)]="endorsement.reason"
             name="Reason">
           <md-placeholder>Reason</md-placeholder>
-          <md-hint align="end">{{prestige.reason?.length || 0}} / 140</md-hint>
+          <md-hint align="end">{{endorsement.reason?.length || 0}} / 140</md-hint>
         </md-input-container>
       </md-grid-tile>
 
       <md-grid-tile colspan="2">
         <md-input-container>
           <input mdInput
-            [(ngModel)]="prestige.url"
+            [(ngModel)]="endorsement.url"
             name="Url">
           <md-placeholder>Url</md-placeholder>
-          <md-hint align="end">{{prestige.url?.length || 0}} / 50</md-hint>
+          <md-hint align="end">{{endorsement.url?.length || 0}} / 50</md-hint>
         </md-input-container>
       </md-grid-tile>
     </md-grid-list>

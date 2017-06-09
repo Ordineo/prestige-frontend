@@ -1,7 +1,7 @@
 <div class="flexContainer"
-  *ngIf="prestiges">
+  *ngIf="endorsements">
   <div fxLayout="{{even ? 'row' : 'row-reverse'}}"
-    *ngFor="let prestige of prestiges | async | reverse; let index = index; let even = even; let odd = odd;">
+    *ngFor="let endorsement of endorsements | async; let index = index; let even = even; let odd = odd;">
     <div fxFlex="50%"
       fxFlex.xs="100%"
       fxLayoutAlign="{{odd ? 'start' : 'end'}}"
@@ -11,9 +11,9 @@
           <div md-card-avatar
             class="example-header-image"
             [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
-          <md-card-title>{{ prestige.granterUsername }}</md-card-title>
+          <md-card-title>{{ endorsement.granterUsername }}</md-card-title>
           <md-card-subtitle class=""
-            style="text-align: right">{{ prestige.created | date: 'dd/MM/yyyy' }}
+            style="text-align: right">{{ endorsement.created | date: 'dd/MM/yyyy' }}
           </md-card-subtitle>
         </md-card-header>
       </md-card>
@@ -33,27 +33,27 @@
         <md-card-header>
           <md-card-title>
             <md-icon>plus_one</md-icon>
-            <a href="{{prestige.url}}"
+            <a href="{{endorsement.url}}"
               class="hop"
               target="_blank"
               style="position: absolute; right: 10%;">
               <md-icon>link</md-icon>
-              {{ prestige.url }}
+              {{ endorsement.url }}
             </a>
           </md-card-title>
           <md-card-subtitle>AWESOME JOB! (replace text)</md-card-subtitle>
         </md-card-header>
         <md-card-content>
-          <!--<div *ngFor="let receiver of prestige.receivers; let last = last;"
+          <!--<div *ngFor="let receiverendorsementtige.receivers; let last = last;"
                style="display: inline-block; margin: 0; padding: 10px;">-->
-          <div mdTooltip="@ '{{prestige.receiverUsername}}' "
+          <div mdTooltip="@ '{{endorsement.receiverUsername}}' "
             [mdTooltipPosition]="'below'"
             md-card-avatar
             class="example-header-image"
             [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
           <!--</div>-->
-          <p [ngStyle]="{'font-size': (prestige.reason?.length > 50) ? '1.5em' : '2em' }">{{ prestige.reason }}</p>
-          <md-card-subtitle>Category: {{ prestige.categories }}</md-card-subtitle>
+          <p [ngStyle]="{'font-size': (endorsement.reason?.length > 50) ? '1.5em' : '2em' }">{{ endorsement.reason }}</p>
+          <md-card-subtitle>Category: {{ endorsement.categories }}</md-card-subtitle>
         </md-card-content>
       </md-card>
     </div>
