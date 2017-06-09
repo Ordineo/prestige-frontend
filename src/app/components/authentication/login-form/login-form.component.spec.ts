@@ -28,7 +28,7 @@ describe('LoginFormComponent', () => {
   describe('login', () => {
 
     it('should call login on the authservice and navigate to the feed when successful', () => {
-      const subject = new Subject();
+      const subject = new Subject<void>();
       when(authService.login(username, password)).thenReturn(subject.asObservable());
       when(loginForm.valid).thenReturn(true);
       componentUnderTest.loginModel = { handle: username, password };
@@ -41,7 +41,7 @@ describe('LoginFormComponent', () => {
     });
 
     it('should call login on the authservice and set notInCommunity to true if message is "Cannot pass null or empty values to constructor"', () => {
-      const subject = new Subject();
+      const subject = new Subject<void>();
       const error = {
         message: 'Authentication Failed: Cannot pass null or empty values to constructor'
       };
@@ -57,7 +57,7 @@ describe('LoginFormComponent', () => {
     });
 
     it('should call login on the authservice and set error to true if message is "Authentication Failed: Bad credentials"', () => {
-      const subject = new Subject();
+      const subject = new Subject<void>();
       const error = {
         message: 'Authentication Failed: Bad credentials'
       };
@@ -75,7 +75,7 @@ describe('LoginFormComponent', () => {
     });
 
     it('should call login on the authservice and set error to true if status is 0', () => {
-      const subject = new Subject();
+      const subject = new Subject<void>();
       const errObj = {message: ''};
       const error = {
         status: 0,
