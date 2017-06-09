@@ -1,67 +1,178 @@
 @import "../../../../styles/variables";
 
-md-card {
-    margin: 10px;
-}
+.feedcontainer {
 
-.flexContainer {
-    box-sizing: content-box !important;
-}
+  .even-row {
+    flex-direction: row;
+  }
 
-.example-header-image {
-    background-size: cover;
-}
+  .uneven-row {
+    flex-direction: row-reverse;
+  }
 
-.endorsement {
-    padding: 10px;
-    border: 1px solid $secondary-color;
-    border-radius: 2px;
-    margin: 9px auto;
+  .endorsement-row {
 
-    &__employee {
-        text-align: center;
-        &--bold {
-            font-weight: bold;
-        }
-        &__icon {
-            position: absolute;
-            right: 0;
-            top: 0;
-            color: $secondary-color;
-        }
+    display: flex;
+    justify-content: center;
+
+    .employee-avatar {
+
+      margin-right: 10px;
+      display: inline-block;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
     }
-    &__text {
-        border-left: 1px dashed $secondary-color;
+
+    .small-endorsement-card {
+      display: flex;
+      max-width: 45%;
+      flex-grow: 1;
     }
-    &__date {
-        font-size: 12px;
-        font-style: italic;
-    }
-    &__reason {
-        font-size: 20px;
-    }
-    &__category {
-        font-weight: bold;
-        color: #1b6d85;
-    }
-    &__url {
-        text-align: right;
+
+    .feed-time-line {
+      display: flex;
+      min-width: 5%;
+      max-width: 10%;
+      flex-grow: 0;
+      align-content: stretch;
+      align-items: stretch;
+      justify-content: center;
+
+      .vertical-line {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 5%;
+        background: linear-gradient(0deg, #E98300, #ec971f, #E98300);
+
         md-icon {
-            top: 5px;
-            position: relative;
-            font-size: 20px;
+          background: #fff;
+          border-radius: 50%;
+          color: #E98300;
+          margin: 0 auto;
+          align-self: center;
         }
+      }
     }
-    &:before {
-        content: "|";
-        position: absolute;
-        top: -20px;
-        right: 50%;
-        color: $secondary-color;
+
+    .large-endorsement-card {
+      max-width: 45%;
+      flex-grow: 1;
+
+      .endorsement-reason {
+        font-size: 1.2em;
+      }
+
+      .endorsement-title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .endorsement-people {
+
+          display: flex;
+          align-items: center;
+
+          md-icon {
+            vertical-align: middle;
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+
+          .endorsement-receiver {
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .receiver-username {
+              line-height: 40px;
+              vertical-align: middle;
+            }
+          }
+
+          .endorsement-granter {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .granter-username {
+              line-height: 40px;
+              vertical-align: middle;
+              font-size: 16px;
+              color: black;
+            }
+          }
+        }
+
+      }
+
+      .endorsement-content {
+        padding: 15px;
+      }
+
     }
+  }
 }
 
-.centered {
-    margin: 0 auto;
-    float: none;
-}
+//.example-header-image {
+//  background-size: cover;
+//}
+//
+//.endorsement {
+//  padding: 10px;
+//  border: 1px solid $secondary-color;
+//  border-radius: 2px;
+//  margin: 9px auto;
+//
+//  &__employee {
+//    text-align: center;
+//    &--bold {
+//      font-weight: bold;
+//    }
+//    &__icon {
+//      position: absolute;
+//      right: 0;
+//      top: 0;
+//      color: $secondary-color;
+//    }
+//  }
+//  &__text {
+//    border-left: 1px dashed $secondary-color;
+//  }
+//  &__date {
+//    font-size: 12px;
+//    font-style: italic;
+//  }
+//  &__reason {
+//    font-size: 20px;
+//  }
+//  &__category {
+//    font-weight: bold;
+//    color: #1b6d85;
+//  }
+//  &__url {
+//    text-align: right;
+//    md-icon {
+//      top: 5px;
+//      position: relative;
+//      font-size: 20px;
+//    }
+//  }
+//  &:before {
+//    content: "|";
+//    position: absolute;
+//    top: -20px;
+//    right: 50%;
+//    color: $secondary-color;
+//  }
+//}
+//
+//.centered {
+//  margin: 0 auto;
+//  float: none;
+//}

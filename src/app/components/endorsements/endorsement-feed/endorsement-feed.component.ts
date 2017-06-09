@@ -20,15 +20,6 @@ export class EndorsementFeedComponent implements OnInit {
     private userService: UserService) {
   }
 
-  randomAvatar() {
-    const avatar = '';
-    const possible = 'ABC';
-    for (let i = 0; i < 5; i++) {
-      this.avatar += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return avatar;
-  }
-
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
     this.endorsements = this.endorsementService.getEndorsements().share();
@@ -36,7 +27,5 @@ export class EndorsementFeedComponent implements OnInit {
     this.endorsementService.subscribeToUpdateEndorsementsEvents(() => {
       this.endorsements = this.endorsementService.getEndorsements().share();
     });
-
-    this.avatar = this.randomAvatar();
   }
 }

@@ -1,58 +1,61 @@
-<div class="flexContainer"
-  *ngIf="endorsements">
-  <div fxLayout="{{even ? 'row' : 'row-reverse'}}"
-    *ngFor="let endorsement of endorsements | async; let index = index; let even = even; let odd = odd;">
-    <div fxFlex="50%"
-      fxFlex.xs="100%"
-      fxLayoutAlign="{{odd ? 'start' : 'end'}}"
-      fxFlexAlign="center">
-      <md-card class="example-card">
-        <md-card-header>
-          <div md-card-avatar
-            class="example-header-image"
-            [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
-          <md-card-title>{{ endorsement.granterUsername }}</md-card-title>
-          <md-card-subtitle class=""
-            style="text-align: right">{{ endorsement.created | date: 'dd/MM/yyyy' }}
-          </md-card-subtitle>
-        </md-card-header>
-      </md-card>
+<div class="feedcontainer" *ngIf="endorsements | async">
+
+  <div class="endorsement-row"
+       [ngClass]="{'even-row' : even, 'uneven-row': !even}"
+       *ngFor="let endorsement of endorsements | async; let index = index; let even = even; let odd = odd;">
+
+    <div
+      [ngClass]="{'small-endorsement-card__left': odd, 'small-endorsement-card__right': !odd}"
+      class="small-endorsement-card">
     </div>
-    <div fxFlex="10%"
-      fxLayoutAlign="center">
-      <div [ngStyle]="{'background': 'linear-gradient(0deg, #E98300, #ec971f, #E98300)'}"
-        fxFlex="5%"
-        fxLayoutAlign="center">
-        <md-icon fxFlexAlign="center"
-          style="background: #fff; border-radius: 50%; color: #E98300">radio_button_unchecked</md-icon>
+
+    <div class="feed-time-line">
+      <div class="vertical-line">
+        <md-icon>radio_button_unchecked</md-icon>
       </div>
     </div>
-    <div fxFlex="50%"
-      fxFlex.xs="100%">
-      <md-card class="example-card">
+
+    <div
+      class="large-endorsement-card"
+      [ngClass]="{'small-endorsement-card__left': odd, 'small-endorsement-card__right': !odd}">
+      <md-card>
         <md-card-header>
-          <md-card-title>
-            <md-icon>plus_one</md-icon>
-            <a href="{{endorsement.url}}"
-              class="hop"
-              target="_blank"
-              style="position: absolute; right: 10%;">
-              <md-icon>link</md-icon>
-              {{ endorsement.url }}
-            </a>
-          </md-card-title>
-          <md-card-subtitle>AWESOME JOB! (replace text)</md-card-subtitle>
+          <div class="endorsement-title">
+            <div class="endorsement-people">
+
+              <div class="endorsement-granter">
+                <div md-card-avatar class="employee-avatar">
+                  <img
+                    src="{{'https://api.adorable.io/avatars/285/' + endorsement.granterUsername + '@adorable.io.png'}}"/>
+                </div>
+                <span class="granter-username">{{ endorsement.granterUsername }}</span>
+              </div>
+
+              <md-icon>chevron_right</md-icon>
+
+              <div class="endorsement-receiver">
+                <div md-card-avatar class="employee-avatar">
+                  <img
+                    src="{{'https://api.adorable.io/avatars/285/' + endorsement.receiverUsername + '@adorable.io.png'}}"/>
+                </div>
+                <span class="receiver-username">{{endorsement.receiverUsername}}</span>
+              </div>
+            </div>
+
+            <div class="action-icons">
+              <md-icon>plus_one</md-icon>
+              <a href="{{endorsement.url}}"
+                 target="_blank">
+                <md-icon>link</md-icon>
+              </a>
+            </div>
+          </div>
+          <md-card-subtitle></md-card-subtitle>
         </md-card-header>
-        <md-card-content>
-          <!--<div *ngFor="let receiverendorsementtige.receivers; let last = last;"
-               style="display: inline-block; margin: 0; padding: 10px;">-->
-          <div mdTooltip="@ '{{endorsement.receiverUsername}}' "
-            [mdTooltipPosition]="'below'"
-            md-card-avatar
-            class="example-header-image"
-            [ngStyle]="{'background-image': 'url(https://api.adorable.io/avatars/285/' + avatar + '@adorable.io.png)'}"></div>
-          <!--</div>-->
-          <p [ngStyle]="{'font-size': (endorsement.reason?.length > 50) ? '1.5em' : '2em' }">{{ endorsement.reason }}</p>
+        <md-card-content class="endorsement-content">
+          <p class="endorsement-reason">
+            {{endorsement.reason}}
+          </p>
           <md-card-subtitle>Category: {{ endorsement.categories }}</md-card-subtitle>
         </md-card-content>
       </md-card>
