@@ -1,11 +1,10 @@
-import { BaseHttpClient } from './base-http-client.service';
-import { Injectable, Inject, EventEmitter, Output } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs/Rx';
-import { Http, RequestOptions, Response } from '@angular/http';
+import {BaseHttpClient} from './base-http-client.service';
+import {EventEmitter, Injectable, Output} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {Response} from '@angular/http';
 
-import { environment } from '../../environments/environment';
-import { CookieService } from 'ngx-cookie';
-import { Endorsement } from '../models/endorsement';
+import {environment} from '../../environments/environment';
+import {Endorsement} from '../models/endorsement';
 
 @Injectable()
 export class EndorsementService extends BaseHttpClient {
