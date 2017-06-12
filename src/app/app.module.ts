@@ -1,5 +1,3 @@
-import {EndorsementDetailComponent} from './components/endorsements/endorsement-detail/endorsement-detail.component';
-import {EndorsementFeedComponent} from './components/endorsements/endorsement-feed/endorsement-feed.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {LOCALE_ID, NgModule} from '@angular/core';
@@ -7,16 +5,24 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {CookieModule} from 'ngx-cookie';
+import {
+  MdButtonModule,
+  MdCheckboxModule,
+  MdDialogModule,
+  MdCardModule,
+  MdAutocompleteModule,
+  MdIconModule,
+  MdCoreModule,
+  MdCommonModule,
+  MdProgressBarModule,
+  MdInputModule,
+  MdTabsModule, MdToolbarModule, MdGridListModule, MdSelectModule
+} from '@angular/material';
+
 import {AppRoutingModule} from './app-routing.module';
-
-import {Md2Module} from 'md2';
-import {MaterialModule} from '@angular/material';
-
 import {AppComponent} from './app.component';
-
-import {FlexLayoutModule} from '@angular/flex-layout';
-
-import {ListboxModule} from 'primeng/primeng';
+import {EndorsementDetailComponent} from './components/endorsements/endorsement-detail/endorsement-detail.component';
+import {EndorsementFeedComponent} from './components/endorsements/endorsement-feed/endorsement-feed.component';
 import {EmployeeDetailComponent} from './components/employee/employee-detail/employee-detail.component';
 import {EmployeeRankingComponent} from './components/employee/employee-ranking/employee-ranking.component';
 import {SearchComponent} from './components/shared/search/search.component';
@@ -43,11 +49,21 @@ import {UnauthenticatedGuard} from './services/guards/unauthenticated.guard';
     NoopAnimationsModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
-    Md2Module.forRoot(),
+    MdButtonModule,
+    MdCheckboxModule,
+    MdDialogModule,
+    MdCardModule,
+    MdAutocompleteModule,
+    MdIconModule,
+    MdCoreModule,
+    MdCommonModule,
+    MdProgressBarModule,
+    MdInputModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdGridListModule,
+    MdSelectModule,
     AppRoutingModule,
-    ListboxModule,
-    FlexLayoutModule,
     ReactiveFormsModule,
     CookieModule.forRoot()
   ],
@@ -76,7 +92,7 @@ import {UnauthenticatedGuard} from './services/guards/unauthenticated.guard';
     UserService,
     AuthenticatedGuard,
     UnauthenticatedGuard,
-    { provide: LOCALE_ID, useValue: 'nl-NL' }
+    {provide: LOCALE_ID, useValue: 'nl-NL'}
   ],
   bootstrap: [AppComponent],
   entryComponents: [AccountDetailComponent, AddEndorsementComponent]
