@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {Account} from '../../../models/account';
@@ -34,8 +34,7 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  public
-  filter(filterText: string) {
+  public filter(filterText: string) {
     return this.employees
       .filter(employee =>
       `${employee.firstName} ${employee.lastName} ${employee.username}`.toLowerCase()
