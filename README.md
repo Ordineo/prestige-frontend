@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/Ordineo/prestige-frontend/badge.svg?branch=master)](https://coveralls.io/github/Ordineo/prestige-frontend?branch=master)
+
 # Prestige Frontend
 
 
