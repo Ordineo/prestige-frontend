@@ -13,7 +13,6 @@ export class EndorsementFeedComponent implements OnInit {
 
   endorsements: Observable<Endorsement[]>;
   currentUser: any;
-  avatar = '';
 
   constructor(
     private endorsementService: EndorsementService,
@@ -28,4 +27,5 @@ export class EndorsementFeedComponent implements OnInit {
       this.endorsements = this.endorsementService.getEndorsements().share();
     });
   }
+
 }
