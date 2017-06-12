@@ -16,8 +16,8 @@
 
 <md-card *ngIf="employee | async">
   <md-card-content>
-    <h2>Granted Prestiges</h2>
-    <div class="prestige"
+    <h2>Granted Endorsements</h2>
+    <div class="endorsement"
       *ngFor="let endorsement of grantedEndorsements | async">
       {{ endorsement.categories }}
       <md-progress-bar [value]="endorsement.score"></md-progress-bar>
@@ -26,9 +26,9 @@
 </md-card>
 
 <md-card *ngIf="employee">
-  <h2>Received Prestiges</h2>
+  <h2>Received Endorsements</h2>
   <md-card-content>
-    <div class="prestige"
+    <div class="endorsement"
       *ngFor="let endorsement of receivedEndorsements | async">
       {{ endorsement.categories }}
       <md-progress-bar [value]="endorsement.score"></md-progress-bar>

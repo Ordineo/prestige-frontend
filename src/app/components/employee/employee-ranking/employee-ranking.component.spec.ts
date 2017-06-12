@@ -1,28 +1,31 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-import { EmployeeRankingComponent } from './employee-ranking.component';
+import {EmployeeService} from '../../../services/employee.service';
+import {instance, mock, when} from 'ts-mockito';
+import {Observable} from 'rxjs/Rx';
+import {Subject} from 'rxjs/Subject';
+import {EmployeeRankingComponent} from './employee-ranking.component';
 
 describe('EmployeeRankingComponent', () => {
-  let component: EmployeeRankingComponent;
-  let fixture: ComponentFixture<EmployeeRankingComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ EmployeeRankingComponent ]
-    })
-    .compileComponents();
-  }));
+  let componentUnderTest: EmployeeRankingComponent;
+
+  let employeeService: EmployeeService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmployeeRankingComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    employeeService = mock(EmployeeService);
+    componentUnderTest = new EmployeeRankingComponent(instance(employeeService));
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  describe('ngOnInit', () => {
+
+    it('should get all employees', () => {
+      const employeesSubject = new Subject();
+
+      when(employeeService.getAllEmployees()).thenReturn(employeesSubject.asObservable());
+
+      componentUnderTest.ngOnInit();
+
+      expect(componentUnderTest.employees).toEqual(jasmine.any(Observable));
+    });
+  });
+
 });

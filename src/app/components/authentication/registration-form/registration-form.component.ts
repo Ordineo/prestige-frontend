@@ -32,15 +32,13 @@ export class RegistrationFormComponent implements OnInit {
 
             this.authService
                 .register(this.registrationModel.handle, this.registrationModel.password)
-                .subscribe((result) => {
+                .subscribe(() => {
                     this.router.navigate(['/login']);
                 }, (error) => {
                     if (error.status === 0) {
                         this.error = true;
                     }
                 });
-        } else {
-            this.registerForm.reset();
         }
     }
 }

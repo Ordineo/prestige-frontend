@@ -1,9 +1,9 @@
-import { Endorsement } from '../../../models/endorsement';
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
-import { EmployeeService } from '../../../services/employee.service';
-import { EndorsementService } from '../../../services/prestige.service';
+import {Endorsement} from '../../../models/endorsement';
+import {Component, OnInit, Input} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Rx';
+import {EmployeeService} from '../../../services/employee.service';
+import {EndorsementService} from '../../../services/endorsement.service';
 
 @Component({
   selector: 'app-employee-detail',
@@ -17,13 +17,17 @@ export class EmployeeDetailComponent implements OnInit {
   receivedEndorsements: Observable<Endorsement[]>;
 
   constructor(private route: ActivatedRoute,
-    private employeeService: EmployeeService,
-    private endorsementsService: EndorsementService) {
+              private employeeService: EmployeeService,
+              private endorsementsService: EndorsementService) {
   }
 
   ngOnInit() {
-    this.employee = this.employeeService.getByUsername(this.route.snapshot.params['id']).share();
-    this.grantedEndorsements = this.endorsementsService.findByGranter(this.route.snapshot.params['id']).share();
-    this.receivedEndorsements = this.endorsementsService.findByReceiver(this.route.snapshot.params['id']).share();
+    this.route.params.subscribe(
+      ({id}) => {
+        this.employee = this.employeeService.getByUsername(id).share();
+        this.grantedEndorsements = this.endorsementsService.findByGranter(id).share();
+        this.receivedEndorsements = this.endorsementsService.findByReceiver(id).share();
+      }
+    );
   }
 }

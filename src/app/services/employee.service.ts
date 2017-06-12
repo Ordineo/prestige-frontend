@@ -1,12 +1,8 @@
-import { AuthService } from './auth.service';
-import { CookieService } from 'ngx-cookie';
-import { Injectable, Inject } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { environment } from '../../environments/environment';
-import { Account } from '../models/account';
-import { BaseHttpClient } from './base-http-client.service';
-import { constants } from '../util/constants';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {environment} from '../../environments/environment';
+import {Account} from '../models/account';
+import {BaseHttpClient} from './base-http-client.service';
 
 @Injectable()
 export class EmployeeService extends BaseHttpClient {

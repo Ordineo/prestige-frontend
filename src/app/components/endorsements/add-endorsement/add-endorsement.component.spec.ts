@@ -1,28 +1,67 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {EmployeeService} from '../../../services/employee.service';
+import {instance, mock, verify, when} from 'ts-mockito';
+import {Observable} from 'rxjs/Rx';
+import {Subject} from 'rxjs/Subject';
+import {AddEndorsementComponent} from './add-endorsement.component';
+import {MdDialogRef} from '@angular/material';
+import {EndorsementService} from '../../../services/endorsement.service';
+import {CategoryService} from '../../../services/category.service';
+import {Endorsement} from '../../../models/endorsement';
 
-import { AddEndorsementComponent } from './add-prestige.component';
+describe('AddEndorsementComponent', () => {
 
-describe('AddPrestigeComponent', () => {
-  let component: AddEndorsementComponent;
-  let fixture: ComponentFixture<AddEndorsementComponent>;
+  let componentUnderTest: AddEndorsementComponent;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [AddEndorsementComponent]
-    })
-      .compileComponents();
-  }));
+  let employeeService: EmployeeService;
+  let dialogRef: MdDialogRef<any>;
+  let endorsementService: EndorsementService;
+  let categoryService: CategoryService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEndorsementComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    employeeService = mock(EmployeeService);
+    dialogRef = mock(MdDialogRef);
+    endorsementService = mock(EndorsementService);
+    categoryService = mock(CategoryService);
+
+    componentUnderTest = new AddEndorsementComponent(
+      instance(dialogRef),
+      instance(categoryService),
+      instance(employeeService),
+      instance(endorsementService));
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  describe('ngOnInit', () => {
+
+    it('should get all employees', () => {
+      const employeesSubject = new Subject();
+      const categoriesSubject = new Subject();
+
+      when(employeeService.getAllEmployees()).thenReturn(employeesSubject.asObservable());
+      when(categoryService.getCategories()).thenReturn(categoriesSubject.asObservable());
+
+      componentUnderTest.ngOnInit();
+
+      expect(componentUnderTest.employees).toEqual(jasmine.any(Observable));
+      expect(componentUnderTest.categories).toEqual(jasmine.any(Observable));
+    });
+
+  });
+
+  describe('addEndorsement', () => {
+
+    it('should call the endorsementService and on success close the dialog and fire the updateEndorsementEvent', () => {
+      const endorsement = new Endorsement();
+      const endorsementSubject = new Subject();
+      when(endorsementService.addEndorsement(endorsement)).thenReturn(endorsementSubject.asObservable());
+
+      componentUnderTest.endorsement = endorsement;
+      componentUnderTest.addEndorsement();
+      endorsementSubject.next();
+
+      verify(dialogRef.close()).once();
+      verify(endorsementService.fireUpdateEndorsementsEvent()).once();
+    });
+
+  });
+
 });

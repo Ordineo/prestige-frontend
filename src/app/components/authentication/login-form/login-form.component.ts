@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  // githubUrl: string = 'https://github.com/login/oauth/authorize?client_id=' + gatekeeperConfig.development.client_id + '&scope=user&redirect_uri=' + gatekeeperConfig.development.redirect_uri;
 
   @ViewChild('loginForm') loginForm: NgForm;
   public loginModel: { handle: string, password: string };
@@ -31,19 +30,16 @@ export class LoginFormComponent implements OnInit {
 
       this.authService
         .login(this.loginModel.handle, this.loginModel.password)
-        .subscribe((result) => {
-          this.router.navigate(['/prestige-feed'])
+        .subscribe(
+        () => {
+          this.router.navigate(['/endorsement-feed'])
         }, (error) => {
           if (error.json().message === 'Authentication Failed: Cannot pass null or empty values to constructor') {
             this.notInCommunity = true;
-          } else if (error.json().message === 'Authentication Failed: Bad credentials') {
-            this.error = true;
-          } else if (error.status === 0) {
+          } else if (error.status === 0 || error.json().message === 'Authentication Failed: Bad credentials') {
             this.error = true;
           }
         });
-    } else {
-      this.loginForm.reset();
     }
   }
 }

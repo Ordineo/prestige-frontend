@@ -23,12 +23,12 @@ const appRoutes: Routes = [
     canActivate: [AuthenticatedGuard]
   },
   {
-    path: 'prestige-detail',
+    path: 'endorsement-detail',
     component: EndorsementDetailComponent,
     canActivate: [AuthenticatedGuard]
   },
   {
-    path: 'prestige-feed',
+    path: 'endorsement-feed',
     component: EndorsementFeedComponent,
     canActivate: [AuthenticatedGuard]
   },
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'prestige-feed',
+    redirectTo: 'endorsement-feed',
     pathMatch: 'full'
   }
 ];

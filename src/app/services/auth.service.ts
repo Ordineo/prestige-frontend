@@ -1,31 +1,32 @@
-import { environment } from '../../environments/environment';
-import { BaseHttpClient } from './base-http-client.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { Injectable } from '@angular/core';
-import { EmployeeService } from './employee.service';
-import { CookieService } from 'ngx-cookie';
-import { Account } from '../models/account';
-import { constants } from '../util/constants';
-import { UserService } from './user.service';
+import {environment} from '../../environments/environment';
+import {BaseHttpClient} from './base-http-client.service';
+import {Router} from '@angular/router';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {EmployeeService} from './employee.service';
+import {Account} from '../models/account';
+import {UserService} from './user.service';
 
 @Injectable()
 export class AuthService extends BaseHttpClient {
 
   private loginEndPoint = `${environment.endPoint}/employees-service/login`;
+  private registerEndpoint = `${environment.endPoint}/employees-service/register`;
 
   constructor(protected http: Http,
-    protected userService: UserService,
-    private router: Router,
-    private employeeService: EmployeeService) {
+              protected userService: UserService,
+              private router: Router,
+              private employeeService: EmployeeService) {
     super(http, userService);
   }
 
   login(username: string, password: string) {
     return this
-      .post(this.loginEndPoint, { username, password }, true)
-      .map((response: Response) => response.text())
+      .post(this.loginEndPoint, {username, password}, true)
+      .map((response: Response) => {
+        return response.text();
+      })
       .map((token: string) => {
         this.userService.saveCurrentUserToken(token);
       })
@@ -39,7 +40,7 @@ export class AuthService extends BaseHttpClient {
   }
 
   register(username: string, password: string) {
-    return this.http.post(environment.apiRegisterEndpoint + '?username=' + username + '&password=' + password, '')
+    return this.http.post(this.registerEndpoint + '?username=' + username + '&password=' + password, '')
       .map(result => result)
       .catch((err) => {
         return Observable.throw(err);
@@ -49,10 +50,6 @@ export class AuthService extends BaseHttpClient {
   public logout() {
     this.userService.removeCurrentUserData();
     return this.router.navigate(['/login']);
-  }
-
-  private handleError(error: Response): Observable<any> {
-    return Observable.throw(error || 'Server error');
   }
 
 }

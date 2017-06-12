@@ -13,7 +13,7 @@ export class UnauthenticatedGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         const canActivate = !this.userService.isUserLoggedIn();
         if (!canActivate) {
-            this.router.navigate(['/prestige-feed']);
+            this.router.navigate(['/endorsement-feed']);
         }
         return canActivate;
     }

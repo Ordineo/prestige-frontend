@@ -6,18 +6,9 @@
 const protocol = 'http';
 const domain = '104.40.147.238';
 
-const url = protocol + '://' + domain;
-
 export const environment = {
   production: false,
-
-  apiUsersEndpoint: url + ':9900/employees-service/employees',
-  apiEndorsementsEndpoint: url + ':9900/endorsements-service/endorsements',
-  apiRolesEndpoint: url + ':9900/employees-service/roles',
-  apiPrestigeLikesEndpoint: url + ':9900/endorsements-service/likes',
-  apiCategoriesEndpoint: url + ':9900/endorsements-service/categories',
-  // apiProfileEndpoint: url + ':8082/profile',
-
-  apiLoginEndpoint: url + ':9900/employees-service/login',
-  apiRegisterEndpoint: url + ':9900/employees-service/register'
+  endPoint: `${protocol}://${domain}`
 };
+
+
