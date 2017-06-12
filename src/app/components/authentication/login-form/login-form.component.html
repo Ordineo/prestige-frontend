@@ -1,54 +1,56 @@
 <app-authentication-page>
 
   <form novalidate
-    #loginForm="ngForm"
-    (ngSubmit)="login()">
+        #loginForm="ngForm"
+        (ngSubmit)="login()">
 
     <p *ngIf="notInCommunity">
-      Please register if you are a member of the JWorks community otherwise please contact one of the admins to add you to the
+      Please register if you are a member of the JWorks community otherwise please contact one of the admins to add you
+      to the
       community.
     </p>
 
     <md-input-container [ngClass]="{'red': !handle.valid}">
       <input mdInput
-        required
-        #handle="ngModel"
-        [(ngModel)]="loginModel.handle"
-        class="login__input"
-        name="handle"
-        placeholder="Github handle">
+             required
+             #handle="ngModel"
+             [(ngModel)]="loginModel.handle"
+             class="login__input"
+             name="handle"
+             placeholder="Github handle">
       <md-hint [hidden]="handle.valid || handle.pristine"
-        class="hint red">Handle is required.
+               class="hint red">Handle is required.
       </md-hint>
     </md-input-container>
 
     <md-input-container [ngClass]="{'red': !password.valid}">
       <input mdInput
-        required
-        id="password"
-        name="password"
-        class="login__input"
-        [(ngModel)]="loginModel.password"
-        #password="ngModel"
-        placeholder="Password"
-        type="password">
+             required
+             id="password"
+             name="password"
+             class="login__input"
+             [(ngModel)]="loginModel.password"
+             #password="ngModel"
+             placeholder="Password"
+             type="password">
       <md-hint [hidden]="password.valid || password.pristine"
-        class="hint red">
+               class="hint red">
         Password is required.
       </md-hint>
     </md-input-container>
 
-    <button [disabled]="!loginForm.valid"
-      class="login__btn login__btn--full"
-      md-raised-button="primary">
-      Login
+    <div class="button-container">
+      <button [disabled]="!loginForm.valid"
+              class="login__btn login__btn--full"
+              md-raised-button="primary">
+        Login
       </button>
 
-    <a class="right register"
-      [routerLink]="['/registration']">
-      Register
-    </a>
-
+      <a md-button class="register-button"
+              routerLink="/registration">
+        Register
+      </a>
+    </div>
   </form>
 
 </app-authentication-page>
