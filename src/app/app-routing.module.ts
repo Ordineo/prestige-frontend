@@ -3,7 +3,6 @@ import { EndorsementDetailComponent } from './components/endorsements/endorsemen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
 import { EmployeeRankingComponent } from './components/employee/employee-ranking/employee-ranking.component';
 import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
