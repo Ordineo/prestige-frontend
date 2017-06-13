@@ -6,6 +6,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
+      require('karma-coverage'),
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
@@ -27,16 +28,10 @@ module.exports = function (config) {
     mime: {
       'text/x-typescript': ['ts','tsx']
     },
-    coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true
-    },
     angularCli: {
       environment: 'dev'
     },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['junit', 'coverage-istanbul', 'spec']
-                : ['junit', 'kjhtml', 'spec'],
+    reporters: ['junit', 'kjhtml', 'spec', 'coverage', 'coveralls'],
      junitReporter: {
       outputDir: 'results', // results will be saved as $outputDir/$browserName.xml 
       outputFile: 'unit-tests.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile 
@@ -45,6 +40,10 @@ module.exports = function (config) {
       nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element 
       classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element 
       properties: {} // key value pair of properties to add to the <properties> section of the report 
+    },
+    coverageReporter: {
+      dir: 'coverage/',
+      type: 'lcov'
     },
     port: 9876,
     colors: true,
