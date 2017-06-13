@@ -41,7 +41,6 @@ export class AuthService {
   register(username: string, password: string) {
     return this.http
       .post(`${this.registerEndpoint}?username=${username}&password=${password}`, null, false)
-      .map(result => result)
       .catch((err) => {
         return Observable.throw(err);
       });
