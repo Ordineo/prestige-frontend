@@ -22,7 +22,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.http
-      .post(this.loginEndPoint, {username, password}, true)
+      .post(this.loginEndPoint, {username, password}, false)
       .map((response: Response) => {
         return response.text();
       })

@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {UserService} from './user.service';
 
 @Injectable()
-export abstract class PrestigeHttp extends Http {
+export class PrestigeHttp extends Http {
 
   constructor(backend: XHRBackend,
               options: RequestOptions,
