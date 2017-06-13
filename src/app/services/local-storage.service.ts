@@ -5,7 +5,6 @@ export class LocalStorageService {
 
   getObject<T>(key: string): T {
     const value = localStorage.getItem(key);
-    console.log(value);
     return JSON.parse(value) as T;
   }
 

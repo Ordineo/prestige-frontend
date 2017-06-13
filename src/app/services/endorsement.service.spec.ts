@@ -27,8 +27,7 @@ describe('EndorsementService', () => {
       const responseMock = mock(Response);
       const endorsements = [new Endorsement(), new Endorsement()];
 
-      when(http.get(endorsementEndpoint, true))
-        .thenReturn(endorsementsSubject.asObservable());
+      when(http.get(endorsementEndpoint, true)).thenReturn(endorsementsSubject.asObservable());
       when(responseMock.json()).thenReturn({
         _embedded: {
           endorsements
