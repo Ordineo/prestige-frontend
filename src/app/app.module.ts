@@ -6,17 +6,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {CookieModule} from 'ngx-cookie';
 import {
-  MdButtonModule,
-  MdCheckboxModule,
-  MdDialogModule,
-  MdCardModule,
   MdAutocompleteModule,
-  MdIconModule,
-  MdCoreModule,
+  MdButtonModule,
+  MdCardModule,
+  MdCheckboxModule,
   MdCommonModule,
-  MdProgressBarModule,
+  MdCoreModule,
+  MdDialogModule,
+  MdGridListModule,
+  MdIconModule,
   MdInputModule,
-  MdTabsModule, MdToolbarModule, MdGridListModule, MdSelectModule
+  MdProgressBarModule,
+  MdSelectModule,
+  MdTabsModule,
+  MdToolbarModule
 } from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -41,6 +44,7 @@ import {AddEndorsementComponent} from './components/endorsements/add-endorsement
 import {UserService} from './services/user.service';
 import {AuthenticatedGuard} from './services/guards/authenticated.guard';
 import {UnauthenticatedGuard} from './services/guards/unauthenticated.guard';
+import {PrestigeHttp} from './services/prestige-http.service';
 
 @NgModule({
   imports: [
@@ -92,6 +96,7 @@ import {UnauthenticatedGuard} from './services/guards/unauthenticated.guard';
     UserService,
     AuthenticatedGuard,
     UnauthenticatedGuard,
+    PrestigeHttp,
     {provide: LOCALE_ID, useValue: 'nl-NL'}
   ],
   bootstrap: [AppComponent],
