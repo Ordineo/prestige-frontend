@@ -3,25 +3,30 @@ import {Http, Response, ResponseOptions} from '@angular/http';
 import {UserService} from './user.service';
 import {Router} from '@angular/router';
 import {EmployeeService} from './employee.service';
-import {anyString, anything, capture, instance, mock, verify, when} from 'ts-mockito';
+import {anyString, anything, instance, mock, verify, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Subject';
 import {Account} from '../models/account';
+import {PrestigeHttp} from './prestige-http.service';
 
 describe('AuthService', () => {
 
   let serviceUnderTest: AuthService;
-  let http: Http;
+  let http: PrestigeHttp;
   let userService: UserService;
   let router: Router;
   let employeeService: EmployeeService;
 
   beforeEach(() => {
-    http = mock(Http);
+    http = mock(PrestigeHttp);
     userService = mock(UserService);
     router = mock(Router);
     employeeService = mock(EmployeeService);
 
-    serviceUnderTest = new AuthService(instance(http), instance(userService), instance(router), instance(employeeService));
+    serviceUnderTest = new AuthService(
+      instance(http),
+      instance(userService),
+      instance(router),
+      instance(employeeService));
   });
 
   describe('login', () => {
@@ -34,7 +39,7 @@ describe('AuthService', () => {
       const currentUserSubject = new Subject<Account>();
       const loginObservable = loginSubject.asObservable();
       loginObservable['test'] = 'test';
-      when(http.post(anything(), anything(), anything())).thenReturn(loginObservable);
+      when(http.post(anyString(), anything(), false)).thenReturn(loginObservable);
       when(employeeService.getByUsername(username)).thenReturn(currentUserSubject.asObservable());
 
       serviceUnderTest
