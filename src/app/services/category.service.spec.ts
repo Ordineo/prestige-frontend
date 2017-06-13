@@ -1,102 +1,50 @@
 import {AuthService} from './auth.service';
-import {Response, ResponseOptions} from '@angular/http';
-import {UserService} from './user.service';
-import {Router} from '@angular/router';
-import {EmployeeService} from './employee.service';
-import {instance, mock, verify, when, deepEqual, capture} from 'ts-mockito';
+import {Response} from '@angular/http';
+import {instance, mock, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Subject';
-import {Account} from '../models/account';
 import {PrestigeHttp} from './prestige-http.service';
 import {environment} from '../../environments/environment';
+import {CategoryService} from './category.service';
 
-describe('AuthService', () => {
+describe('CategoryService', () => {
 
-  const loginEndPoint = `${environment.endPoint}/employees-service/login`;
-  const registerEndpoint = `${environment.endPoint}/employees-service/register`;
-  const username = 'username';
-  const password = 'password';
+  const categoriesEndpoint = `${environment.endPoint}/endorsements-service/categories`;
 
-  let serviceUnderTest: AuthService;
+  let serviceUnderTest: CategoryService;
   let http: PrestigeHttp;
-  let userService: UserService;
-  let router: Router;
-  let employeeService: EmployeeService;
 
   beforeEach(() => {
     http = mock(PrestigeHttp);
-    userService = mock(UserService);
-    router = mock(Router);
-    employeeService = mock(EmployeeService);
 
-    serviceUnderTest = new AuthService(
-      instance(http),
-      instance(userService),
-      instance(router),
-      instance(employeeService));
+    serviceUnderTest = new CategoryService(
+      instance(http));
   });
 
-  describe('login', () => {
+  describe('getCategories', () => {
 
-    it('should do the login and save the resulting data', (done) => {
-      const token = 'token';
-      const currentAccount = new Account();
-      const loginSubject = new Subject<Response>();
-      const currentUserSubject = new Subject<Account>();
+    it('should do a request to the categories endpoint', (done) => {
+      const categoriesSubject = new Subject();
+      const responseMock = mock(Response);
+      const categories = ['category1', 'category2'];
 
-      when(http.post(deepEqual(loginEndPoint), deepEqual({
-        username,
-        password
-      }), false)).thenReturn(loginSubject.asObservable());
-      when(employeeService.getByUsername(username)).thenReturn(currentUserSubject.asObservable());
+      when(http.get(categoriesEndpoint, true))
+        .thenReturn(categoriesSubject.asObservable());
+      when(responseMock.json()).thenReturn({
+        _embedded: {
+          categories: categories
+        }
+      });
 
       serviceUnderTest
-        .login(username, password)
-        .subscribe(() => {
-          verify(userService.saveCurrentUserToken(token)).once();
-          verify(userService.saveCurrentUser(currentAccount)).once();
+        .getCategories()
+        .subscribe((actual: string[]) => {
+          expect(actual).toEqual(categories);
           done();
         });
 
-      loginSubject.next(createResponseWithText(token));
-      currentUserSubject.next(currentAccount);
+      categoriesSubject.next(instance(responseMock));
     });
-
-  });
-
-  describe('register', () => {
-
-    it('should do a request to the register url', (done) => {
-      const registerSubject = new Subject();
-
-      when(http.post(`${registerEndpoint}?username=${username}&password=${password}`, null, false))
-        .thenReturn(registerSubject.asObservable());
-
-      serviceUnderTest.register(username, password)
-        .subscribe(() => {
-          done();
-        });
-
-      registerSubject.next();
-    });
-
-  });
-
-  describe('logout', () => {
-
-    it('should call the userservice and navigate to the login', () => {
-      serviceUnderTest.logout();
-
-      verify(userService.removeCurrentUserData()).called();
-
-      const [firstArg] = capture(router.navigate).last();
-      expect(firstArg).toEqual(['/login']);
-    })
 
   });
 
 });
-
-const createResponseWithText = (text: string): Response => {
-  const responseOptions = new ResponseOptions({body: text});
-  return new Response(responseOptions);
-}
