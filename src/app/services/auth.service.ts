@@ -1,7 +1,7 @@
 import {environment} from '../../environments/environment';
-import {BaseHttpClient} from './base-http-client.service';
+import {PrestigeHttp} from './prestige-http.service';
 import {Router} from '@angular/router';
-import {Http, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {EmployeeService} from './employee.service';
@@ -9,20 +9,19 @@ import {Account} from '../models/account';
 import {UserService} from './user.service';
 
 @Injectable()
-export class AuthService extends BaseHttpClient {
+export class AuthService {
 
   private loginEndPoint = `${environment.endPoint}/employees-service/login`;
   private registerEndpoint = `${environment.endPoint}/employees-service/register`;
 
-  constructor(protected http: Http,
+  constructor(protected http: PrestigeHttp,
               protected userService: UserService,
               private router: Router,
               private employeeService: EmployeeService) {
-    super(http, userService);
   }
 
   login(username: string, password: string) {
-    return this
+    return this.http
       .post(this.loginEndPoint, {username, password}, true)
       .map((response: Response) => {
         return response.text();
@@ -40,7 +39,8 @@ export class AuthService extends BaseHttpClient {
   }
 
   register(username: string, password: string) {
-    return this.http.post(this.registerEndpoint + '?username=' + username + '&password=' + password, '')
+    return this.http
+      .post(`${this.registerEndpoint}?username=${username}&password=${password}`, null, false)
       .map(result => result)
       .catch((err) => {
         return Observable.throw(err);
