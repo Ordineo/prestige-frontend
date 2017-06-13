@@ -10,7 +10,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-      require( 'karma-phantomjs-launcher' ),
+      require('karma-phantomjs-launcher' ),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma'),
       require('karma-junit-reporter'),
@@ -32,7 +32,7 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: ['junit', 'kjhtml', 'spec', 'coverage', 'coveralls'],
-     junitReporter: {
+    junitReporter: {
       outputDir: 'results', // results will be saved as $outputDir/$browserName.xml 
       outputFile: 'unit-tests.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile 
       suite: '', // suite will become the package name attribute in xml testsuite element 
