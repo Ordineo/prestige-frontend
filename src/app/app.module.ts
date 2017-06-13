@@ -4,7 +4,6 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {CookieModule} from 'ngx-cookie';
 import {
   MdAutocompleteModule,
   MdButtonModule,
@@ -45,6 +44,7 @@ import {UserService} from './services/user.service';
 import {AuthenticatedGuard} from './services/guards/authenticated.guard';
 import {UnauthenticatedGuard} from './services/guards/unauthenticated.guard';
 import {PrestigeHttp} from './services/prestige-http.service';
+import {LocalStorageService} from './services/local-storage.service';
 
 @NgModule({
   imports: [
@@ -68,8 +68,7 @@ import {PrestigeHttp} from './services/prestige-http.service';
     MdGridListModule,
     MdSelectModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    CookieModule.forRoot()
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -97,6 +96,7 @@ import {PrestigeHttp} from './services/prestige-http.service';
     AuthenticatedGuard,
     UnauthenticatedGuard,
     PrestigeHttp,
+    LocalStorageService,
     {provide: LOCALE_ID, useValue: 'nl-NL'}
   ],
   bootstrap: [AppComponent],

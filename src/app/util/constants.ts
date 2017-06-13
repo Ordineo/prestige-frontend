@@ -1,6 +1,6 @@
 export const constants = {
 
-    cookieKeys: {
+    storageKeys: {
         CURRENT_USER: 'currentUser',
         TOKEN: 'jwt'
     }
