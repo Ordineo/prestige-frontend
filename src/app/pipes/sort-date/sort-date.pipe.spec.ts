@@ -1,5 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
 import {SortDatePipe} from './sort-date.pipe';
 
 describe('SortDatePipe', () => {

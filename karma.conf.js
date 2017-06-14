@@ -1,37 +1,38 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
+var path = require('path');
+
 module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
-      require('karma-coverage'),
-      require('karma-coveralls'),
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-      require('karma-phantomjs-launcher' ),
+      require('karma-phantomjs-launcher'),
       require('@angular/cli/plugins/karma'),
+      require('karma-coverage-istanbul-reporter'),
       require('karma-junit-reporter'),
       require('karma-spec-reporter'),
     ],
-    client:{
+    client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     files: [
-      { pattern: './src/test.ts', watched: false }
+      {pattern: './src/test.ts', watched: false}
     ],
     preprocessors: {
       './src/test.ts': ['@angular/cli']
     },
     mime: {
-      'text/x-typescript': ['ts','tsx']
+      'text/x-typescript': ['ts', 'tsx']
     },
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['junit', 'kjhtml', 'spec', 'coverage', 'coveralls'],
+    reporters: ['junit', 'kjhtml', 'spec'],
     junitReporter: {
       outputDir: 'results', // results will be saved as $outputDir/$browserName.xml 
       outputFile: 'unit-tests.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile 
@@ -41,9 +42,10 @@ module.exports = function (config) {
       classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element 
       properties: {} // key value pair of properties to add to the <properties> section of the report 
     },
-    coverageReporter: {
-      dir: 'coverage/',
-      type: 'lcov'
+    coverageIstanbulReporter: {
+      dir: path.join(__dirname, 'coverage'),
+      reports: [ 'text-summary', 'lcovonly' ],
+      fixWebpackSourcePaths: true
     },
     port: 9876,
     colors: true,
