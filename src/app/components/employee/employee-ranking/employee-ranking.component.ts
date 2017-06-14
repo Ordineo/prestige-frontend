@@ -1,7 +1,7 @@
-import { Account } from '../../../models/account';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { EmployeeService } from '../../../services/employee.service';
+import {Account} from '../../../models/account';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {EmployeeService} from '../../../services/employee.service';
 
 @Component({
   selector: 'app-employee-ranking',

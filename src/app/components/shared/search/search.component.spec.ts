@@ -2,7 +2,7 @@ import {SearchComponent} from './search.component';
 import {EmployeeService} from '../../../services/employee.service';
 import {Router} from '@angular/router';
 import {instance, mock, when} from 'ts-mockito';
-import {Subject, Observable} from 'rxjs/Rx';
+import {Observable, Subject} from 'rxjs/Rx';
 import {Account} from '../../../models/account';
 describe('SearchComponent', () => {
 

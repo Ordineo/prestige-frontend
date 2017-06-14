@@ -3,7 +3,7 @@ import {Response, ResponseOptions} from '@angular/http';
 import {UserService} from './user.service';
 import {Router} from '@angular/router';
 import {EmployeeService} from './employee.service';
-import {instance, mock, verify, when, deepEqual, capture} from 'ts-mockito';
+import {capture, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Subject';
 import {Account} from '../models/account';
 import {PrestigeHttp} from './prestige-http.service';

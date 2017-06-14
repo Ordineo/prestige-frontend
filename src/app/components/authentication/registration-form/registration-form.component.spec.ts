@@ -1,11 +1,10 @@
-import { instance } from 'ts-mockito/lib/ts-mockito';
-import { RegistrationFormComponent } from './registration-form.component';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { mock, when, verify, anything, capture } from 'ts-mockito';
-import { Observable, Subject } from 'rxjs/Rx';
-import { NgForm } from '@angular/forms';
+import {instance} from 'ts-mockito/lib/ts-mockito';
+import {RegistrationFormComponent} from './registration-form.component';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../services/auth.service';
+import {capture, mock, when} from 'ts-mockito';
+import {Subject} from 'rxjs/Rx';
+import {NgForm} from '@angular/forms';
 
 describe('RegistrationFormComponent', () => {
 

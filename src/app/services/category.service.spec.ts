@@ -1,4 +1,3 @@
-import {AuthService} from './auth.service';
 import {Response} from '@angular/http';
 import {instance, mock, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Subject';

@@ -1,10 +1,9 @@
-import {BaseRequestOptions, Connection, Response, ResponseContentType, ResponseOptions} from '@angular/http';
+import {BaseRequestOptions, Response, ResponseOptions} from '@angular/http';
 import {instance, mock, when} from 'ts-mockito';
 import {PrestigeHttp} from './prestige-http.service';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {UserService} from './user.service';
-import {async, fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
-import {Mock} from 'protractor/built/driverProviders';
+import {async, inject, TestBed} from '@angular/core/testing';
 import getPrototypeOf = Reflect.getPrototypeOf;
 
 describe('PrestigeHttpService', () => {
