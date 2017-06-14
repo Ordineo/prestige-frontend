@@ -29,7 +29,7 @@ describe('LoginFormComponent', () => {
       const subject = new Subject<void>();
       when(authService.login(username, password)).thenReturn(subject.asObservable());
       when(loginForm.valid).thenReturn(true);
-      componentUnderTest.loginModel = { handle: username, password };
+      componentUnderTest.loginModel = {handle: username, password};
 
       componentUnderTest.login();
       subject.next();
@@ -38,57 +38,59 @@ describe('LoginFormComponent', () => {
       expect(firstArg).toEqual(['/endorsement-feed']);
     });
 
-    it('should call login on the authservice and set notInCommunity to true if message is "Cannot pass null or empty values to constructor"', () => {
+    it('should call login on the authservice and set error to correct message if status is 0', () => {
       const subject = new Subject<void>();
-      const error = {
-        message: 'Authentication Failed: Cannot pass null or empty values to constructor'
-      };
+
       when(authService.login(username, password))
         .thenReturn(subject.asObservable());
       when(loginForm.valid).thenReturn(true);
-      componentUnderTest.loginModel = { handle: username, password };
+      componentUnderTest.loginModel = {handle: username, password};
 
       componentUnderTest.login();
-      subject.error({ json: () => error });
+      subject.error({status: 0});
 
-      expect(componentUnderTest.notInCommunity).toBeTruthy();
+      expect(componentUnderTest.error).toEqual('No connection could be made to the backend.');
     });
 
-    it('should call login on the authservice and set error to true if message is "Authentication Failed: Bad credentials"', () => {
+    it('should call login on the authservice and set error to correct message if status is 401', () => {
       const subject = new Subject<void>();
-      const error = {
-        message: 'Authentication Failed: Bad credentials'
-      };
+
       when(authService.login(username, password))
         .thenReturn(subject.asObservable());
       when(loginForm.valid).thenReturn(true);
-      componentUnderTest.loginModel = { handle: username, password };
+      componentUnderTest.loginModel = {handle: username, password};
 
       componentUnderTest.login();
-      subject.error({
-        json: () => error
-      });
+      subject.error({status: 401});
 
-      expect(componentUnderTest.error).toBeTruthy();
+      expect(componentUnderTest.error).toEqual('There was something wrong with the credentials.');
     });
 
-    it('should call login on the authservice and set error to true if status is 0', () => {
+    it('should call login on the authservice and set error to correct message if status is 500', () => {
       const subject = new Subject<void>();
-      const errObj = {message: ''};
-      const error = {
-        status: 0,
-        json: () => errObj
-      };
+
       when(authService.login(username, password))
         .thenReturn(subject.asObservable());
       when(loginForm.valid).thenReturn(true);
-      componentUnderTest.loginModel = { handle: username, password };
+      componentUnderTest.loginModel = {handle: username, password};
 
       componentUnderTest.login();
-      subject.error(error);
+      subject.error({status: 500});
 
-      verify(router.navigate(['/endorsement-feed'])).never();
-      expect(componentUnderTest.error).toBeTruthy();
+      expect(componentUnderTest.error).toEqual('Something went wrong in the server.');
+    });
+
+    it('should call login on the authservice and set error to correct message if status is something else than 0, 401 or 500', () => {
+      const subject = new Subject<void>();
+      when(authService.login(username, password))
+        .thenReturn(subject.asObservable());
+      when(loginForm.valid).thenReturn(true);
+      componentUnderTest.loginModel = {handle: username, password};
+
+      componentUnderTest.login();
+      subject.error({status: 403});
+
+      expect(componentUnderTest.error).toEqual('Undetermined error.');
     });
 
   });

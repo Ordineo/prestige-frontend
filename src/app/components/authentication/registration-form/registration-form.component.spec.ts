@@ -39,7 +39,7 @@ describe('RegistrationFormComponent', () => {
       expect(firstArg).toEqual(['/login']);
     });
 
-    it('should call register on the authservice and set error to true if status is 0', () => {
+    it('should call register on the authservice and set error to correct message if status is 0', () => {
       const subject = new Subject();
       const error = { status: 0 };
       when(authService.register(username, password, password)).thenReturn(subject.asObservable());
@@ -49,7 +49,33 @@ describe('RegistrationFormComponent', () => {
       componentUnderTest.doRegister();
       subject.error(error);
 
-      expect(componentUnderTest.error).toBeTruthy();
+      expect(componentUnderTest.error).toEqual('No connection could be made to the backend.');
+    });
+
+    it('should call register on the authservice and set error to correct message if status is 400', () => {
+      const subject = new Subject();
+      const error = { status: 400 };
+      when(authService.register(username, password, password)).thenReturn(subject.asObservable());
+      when(registerForm.valid).thenReturn(true);
+      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+
+      componentUnderTest.doRegister();
+      subject.error(error);
+
+      expect(componentUnderTest.error).toEqual('Check if your github handle is in the Ordina Github organization.');
+    });
+
+    it('should call register on the authservice and set error to correct message if status is something else than 0 and 401', () => {
+      const subject = new Subject();
+      const error = { status: 500 };
+      when(authService.register(username, password, password)).thenReturn(subject.asObservable());
+      when(registerForm.valid).thenReturn(true);
+      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+
+      componentUnderTest.doRegister();
+      subject.error(error);
+
+      expect(componentUnderTest.error).toEqual('Something went wrong during registration.');
     });
   });
 

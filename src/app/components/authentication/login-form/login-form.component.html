@@ -4,10 +4,8 @@
         #loginForm="ngForm"
         (ngSubmit)="login()">
 
-    <p *ngIf="notInCommunity">
-      Please register if you are a member of the JWorks community otherwise please contact one of the admins to add you
-      to the
-      community.
+    <p *ngIf="error" class="error-message">
+      {{error}}
     </p>
 
     <md-input-container [ngClass]="{'red': !handle.valid}">

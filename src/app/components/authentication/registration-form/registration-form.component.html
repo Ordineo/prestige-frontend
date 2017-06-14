@@ -4,7 +4,9 @@
         #registerForm="ngForm"
         (submit)="doRegister()">
 
-    <p *ngIf="error">An unexpected error occured please contact one of the developers.</p>
+    <p *ngIf="error" class="error-message">
+      {{error}}
+    </p>
 
     <md-input-container>
       <input mdInput
