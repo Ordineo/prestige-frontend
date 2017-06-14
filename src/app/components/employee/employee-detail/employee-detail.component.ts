@@ -1,5 +1,5 @@
 import {Endorsement} from '../../../models/endorsement';
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import {EmployeeService} from '../../../services/employee.service';

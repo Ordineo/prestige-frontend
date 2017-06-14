@@ -1,7 +1,6 @@
-import { AuthService } from '../../../services/auth.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import {AuthService} from '../../../services/auth.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-registration-form',
@@ -31,7 +30,7 @@ export class RegistrationFormComponent implements OnInit {
             this.error = false;
 
             this.authService
-                .register(this.registrationModel.handle, this.registrationModel.password)
+                .register(this.registrationModel.handle, this.registrationModel.password, this.registrationModel.passwordCheck)
                 .subscribe(() => {
                     this.router.navigate(['/login']);
                 }, (error) => {

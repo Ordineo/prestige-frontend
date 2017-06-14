@@ -7,6 +7,7 @@
     "start": "ng serve -H 0.0.0.0 --port 4200",
     "build": "ng build",
     "test": "ng test",
+    "test:coverage": "ng test --code-coverage --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -31,7 +32,7 @@
     "zone.js": "0.8.10"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.3",
+    "@angular/cli": "^1.1.1",
     "@types/hammerjs": "2.0.34",
     "@types/jasmine": "2.5.47",
     "@types/node": "~7.0.11",
@@ -46,7 +47,7 @@
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
     "karma-coverage": "^1.1.1",
-    "karma-coverage-istanbul-reporter": "1.0.0",
+    "karma-coverage-istanbul-reporter": "^1.0.0",
     "karma-coveralls": "^1.1.2",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "0.2.2",

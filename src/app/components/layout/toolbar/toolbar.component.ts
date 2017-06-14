@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {AccountDetailComponent} from '../../account/account-detail/account-detail.component';
 import {AuthService} from '../../../services/auth.service';

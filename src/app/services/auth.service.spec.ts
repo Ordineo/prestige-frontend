@@ -3,7 +3,7 @@ import {Response, ResponseOptions} from '@angular/http';
 import {UserService} from './user.service';
 import {Router} from '@angular/router';
 import {EmployeeService} from './employee.service';
-import {instance, mock, verify, when, deepEqual, capture} from 'ts-mockito';
+import {capture, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Subject';
 import {Account} from '../models/account';
 import {PrestigeHttp} from './prestige-http.service';
@@ -68,10 +68,10 @@ describe('AuthService', () => {
     it('should do a request to the register url', (done) => {
       const registerSubject = new Subject();
 
-      when(http.post(`${registerEndpoint}?username=${username}&password=${password}`, null, false))
+      when(http.post(registerEndpoint, deepEqual({username, password, confirmPassword: password}), false))
         .thenReturn(registerSubject.asObservable());
 
-      serviceUnderTest.register(username, password)
+      serviceUnderTest.register(username, password, password)
         .subscribe(() => {
           done();
         });

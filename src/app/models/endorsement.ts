@@ -1,5 +1,5 @@
-import { EndorsementLike } from './endorsement-like';
-import { EndorsementLinks } from './endorsement-links';
+import {EndorsementLike} from './endorsement-like';
+import {EndorsementLinks} from './endorsement-links';
 
 export class Endorsement {
     public granterUsername: string;

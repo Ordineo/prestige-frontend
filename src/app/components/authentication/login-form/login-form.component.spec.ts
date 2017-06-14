@@ -1,11 +1,9 @@
-import { Subject } from 'rxjs/Subject';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
-import { LoginFormComponent } from './login-form.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {mock, when, verify, instance, capture} from 'ts-mockito';
-import { Observable } from 'rxjs/Rx';
-import { NgForm } from '@angular/forms';
+import {Subject} from 'rxjs/Subject';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../services/auth.service';
+import {LoginFormComponent} from './login-form.component';
+import {capture, instance, mock, verify, when} from 'ts-mockito';
+import {NgForm} from '@angular/forms';
 
 describe('LoginFormComponent', () => {
 

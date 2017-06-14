@@ -1,11 +1,10 @@
-import { instance } from 'ts-mockito/lib/ts-mockito';
-import { RegistrationFormComponent } from './registration-form.component';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { mock, when, verify, anything, capture } from 'ts-mockito';
-import { Observable, Subject } from 'rxjs/Rx';
-import { NgForm } from '@angular/forms';
+import {instance} from 'ts-mockito/lib/ts-mockito';
+import {RegistrationFormComponent} from './registration-form.component';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../services/auth.service';
+import {capture, mock, when} from 'ts-mockito';
+import {Subject} from 'rxjs/Rx';
+import {NgForm} from '@angular/forms';
 
 describe('RegistrationFormComponent', () => {
 
@@ -29,9 +28,9 @@ describe('RegistrationFormComponent', () => {
 
     it('should call registration on the authservice and navigate to the login when successful', () => {
       const subject = new Subject();
-      when(authService.register(username, password)).thenReturn(subject.asObservable());
+      when(authService.register(username, password, password)).thenReturn(subject.asObservable());
       when(registerForm.valid).thenReturn(true);
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: null };
+      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
 
       componentUnderTest.doRegister();
       subject.next();
@@ -43,9 +42,9 @@ describe('RegistrationFormComponent', () => {
     it('should call register on the authservice and set error to true if status is 0', () => {
       const subject = new Subject();
       const error = { status: 0 };
-      when(authService.register(username, password)).thenReturn(subject.asObservable());
+      when(authService.register(username, password, password)).thenReturn(subject.asObservable());
       when(registerForm.valid).thenReturn(true);
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: null };
+      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
 
       componentUnderTest.doRegister();
       subject.error(error);

@@ -1,4 +1,4 @@
-import { EndorsementLinks } from './endorsement-links';
+import {EndorsementLinks} from './endorsement-links';
 
 export class EndorsementLike {
 
