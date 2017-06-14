@@ -1,5 +1,4 @@
 import {Account} from '../models/account';
-import {CookieService} from 'ngx-cookie';
 import {Injectable} from '@angular/core';
 import {constants} from '../util/constants';
 import {LocalStorageService} from './local-storage.service';

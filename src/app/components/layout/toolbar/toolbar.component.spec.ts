@@ -2,8 +2,6 @@ import {anything, capture, instance, mock, verify, when} from 'ts-mockito';
 import {UserService} from '../../../services/user.service';
 import {ToolbarComponent} from './toolbar.component';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {ViewContainerRef} from '@angular/core';
-import {CookieService} from 'ngx-cookie';
 import {AuthService} from '../../../services/auth.service';
 import {Account} from '../../../models/account';
 import {AccountDetailComponent} from '../../account/account-detail/account-detail.component';
@@ -16,18 +14,15 @@ describe('ToolbarComponent', () => {
 
   let userService: UserService;
   let dialog: MdDialog;
-  let cookieService: CookieService;
   let authService: AuthService;
 
   beforeEach(() => {
     userService = mock(UserService);
     dialog = mock(MdDialog);
-    cookieService = mock(CookieService);
     authService = mock(AuthService);
 
     componentUnderTest = new ToolbarComponent(
       instance(dialog),
-      instance(cookieService),
       instance(authService),
       instance(userService));
   });
