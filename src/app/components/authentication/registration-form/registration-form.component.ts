@@ -30,7 +30,7 @@ export class RegistrationFormComponent implements OnInit {
             this.error = false;
 
             this.authService
-                .register(this.registrationModel.handle, this.registrationModel.password)
+                .register(this.registrationModel.handle, this.registrationModel.password, this.registrationModel.passwordCheck)
                 .subscribe(() => {
                     this.router.navigate(['/login']);
                 }, (error) => {

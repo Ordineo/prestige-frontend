@@ -13,6 +13,7 @@ export class PrestigeHttp extends Http {
   }
 
   public get(url: string, authenticated, options?: RequestOptionsArgs): Observable<Response> {
+    options = this.addContentTypeHeader(options);
     if (authenticated) {
       options = this.addAuthenticationHeader(options);
     }
@@ -20,6 +21,7 @@ export class PrestigeHttp extends Http {
   }
 
   public post(url: string, body: object, authenticated: boolean, options?: RequestOptionsArgs): Observable<Response> {
+    options = this.addContentTypeHeader(options);
     if (authenticated) {
       options = this.addAuthenticationHeader(options);
     }
@@ -27,6 +29,7 @@ export class PrestigeHttp extends Http {
   }
 
   public put(url: string, body: object, authenticated: boolean, options?: RequestOptionsArgs): Observable<Response> {
+    options = this.addContentTypeHeader(options);
     if (authenticated) {
       options = this.addAuthenticationHeader(options);
     }
@@ -34,6 +37,7 @@ export class PrestigeHttp extends Http {
   }
 
   public delete(url: string, authenticated: boolean, options?: RequestOptionsArgs): Observable<Response> {
+    options = this.addContentTypeHeader(options);
     if (authenticated) {
       options = this.addAuthenticationHeader(options);
     }
@@ -48,6 +52,17 @@ export class PrestigeHttp extends Http {
     if (!headers.has('Authorization')) {
       headers.append('Authorization', `Bearer ${this.userService.getCurrentUserToken()}`);
     }
+
+    return resultOptions;
+  }
+
+  private addContentTypeHeader(options: RequestOptionsArgs | undefined) {
+    const resultOptions: RequestOptionsArgs = options || {};
+    const headers: Headers = resultOptions.headers || new Headers();
+    resultOptions.headers = headers;
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
 
     return resultOptions;
   }

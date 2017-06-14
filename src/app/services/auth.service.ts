@@ -38,9 +38,9 @@ export class AuthService {
       });
   }
 
-  register(username: string, password: string) {
+  register(username: string, password: string, confirmPassword: string) {
     return this.http
-      .post(`${this.registerEndpoint}?username=${username}&password=${password}`, null, false)
+      .post(`${this.registerEndpoint}`, {username, password, confirmPassword}, false)
       .catch((err) => {
         return Observable.throw(err);
       });
