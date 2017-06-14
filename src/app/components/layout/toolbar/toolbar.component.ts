@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {AccountDetailComponent} from '../../account/account-detail/account-detail.component';
-import {CookieService} from 'ngx-cookie';
 import {AuthService} from '../../../services/auth.service';
 import {AddEndorsementComponent} from '../../endorsements/add-endorsement/add-endorsement.component';
 import {UserService} from '../../../services/user.service';
@@ -18,13 +17,12 @@ export class ToolbarComponent implements OnInit {
   username: string;
 
   constructor(private dialog: MdDialog,
-              private cookieService: CookieService,
               private authService: AuthService,
               private userService: UserService) {
   }
 
   ngOnInit() {
-    this.username = this.cookieService.get('username');
+    this.username = this.userService.getCurrentUsername();
   }
 
   public isUserLoggedIn(): boolean {
