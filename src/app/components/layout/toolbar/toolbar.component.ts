@@ -11,18 +11,13 @@ import {UserService} from '../../../services/user.service';
   styleUrls: ['./toolbar.component.scss']
 })
 
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
 
   dialogRef: MdDialogRef<any>;
-  username: string;
 
   constructor(private dialog: MdDialog,
               private authService: AuthService,
               private userService: UserService) {
-  }
-
-  ngOnInit() {
-    this.username = this.userService.getCurrentUsername();
   }
 
   public isUserLoggedIn(): boolean {
