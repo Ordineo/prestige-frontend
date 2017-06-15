@@ -1,4 +1,4 @@
-import {capture, instance, mock, verify, when} from 'ts-mockito';
+import {deepEqual, instance, mock, verify, when} from 'ts-mockito';
 import {LocalStorageService} from './local-storage.service';
 import {UserService} from './user.service';
 import {constants} from '../util/constants';
@@ -96,8 +96,7 @@ describe('UserService', () => {
     it('should call the localStorageService with the right tokens', () => {
       serviceUnderTest.removeCurrentUserData();
 
-      const [keys] = capture(localStorageService.removeAll).last();
-      expect(keys).toEqual([constants.storageKeys.CURRENT_USER, constants.storageKeys.TOKEN]);
+      verify(localStorageService.removeAll(deepEqual([constants.storageKeys.CURRENT_USER, constants.storageKeys.TOKEN]))).once();
     });
 
   });

@@ -1,8 +1,7 @@
-import {instance} from 'ts-mockito/lib/ts-mockito';
 import {RegistrationFormComponent} from './registration-form.component';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
-import {capture, mock, when} from 'ts-mockito';
+import {deepEqual, instance, mock, verify, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Rx';
 import {NgForm} from '@angular/forms';
 
@@ -35,8 +34,7 @@ describe('RegistrationFormComponent', () => {
       componentUnderTest.doRegister();
       subject.next();
 
-      const [firstArg] = capture(router.navigate).last();
-      expect(firstArg).toEqual(['/login']);
+      verify(router.navigate(deepEqual(['/login']))).once()
     });
 
     it('should call register on the authservice and set error to correct message if status is 0', () => {

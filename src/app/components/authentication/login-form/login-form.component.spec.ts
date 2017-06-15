@@ -2,7 +2,7 @@ import {Subject} from 'rxjs/Subject';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 import {LoginFormComponent} from './login-form.component';
-import {capture, instance, mock, verify, when} from 'ts-mockito';
+import { capture, instance, mock, verify, when, deepEqual } from 'ts-mockito';
 import {NgForm} from '@angular/forms';
 
 describe('LoginFormComponent', () => {
@@ -34,8 +34,7 @@ describe('LoginFormComponent', () => {
       componentUnderTest.login();
       subject.next();
 
-      const [firstArg] = capture(router.navigate).last();
-      expect(firstArg).toEqual(['/endorsement-feed']);
+      verify(router.navigate(deepEqual(['/endorsement-feed']))).once();
     });
 
     it('should call login on the authservice and set error to correct message if status is 0', () => {

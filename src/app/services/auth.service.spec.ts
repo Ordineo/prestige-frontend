@@ -3,7 +3,7 @@ import {Response, ResponseOptions} from '@angular/http';
 import {UserService} from './user.service';
 import {Router} from '@angular/router';
 import {EmployeeService} from './employee.service';
-import {capture, deepEqual, instance, mock, verify, when} from 'ts-mockito';
+import {deepEqual, instance, mock, verify, when} from 'ts-mockito';
 import {Subject} from 'rxjs/Subject';
 import {Account} from '../models/account';
 import {PrestigeHttp} from './prestige-http.service';
@@ -88,8 +88,7 @@ describe('AuthService', () => {
 
       verify(userService.removeCurrentUserData()).called();
 
-      const [firstArg] = capture(router.navigate).last();
-      expect(firstArg).toEqual(['/login']);
+      verify(router.navigate(deepEqual(['/login']))).once();
     })
 
   });

@@ -99,6 +99,10 @@ describe('ToolbarComponent', () => {
       expect(args[0]).toEqual(AccountDetailComponent);
       expect(args[1]).toEqual(jasmine.any(MdDialogConfig));
 
+      //TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
+      // https://github.com/NagRock/ts-mockito/pull/27
+      // verify(dialog.open(AccountDetailComponent, anyOfClass(MdDialogConfig))).once();
+
       expect(componentUnderTest.dialogRef).not.toBeNull();
     });
 
@@ -117,6 +121,10 @@ describe('ToolbarComponent', () => {
       expect(args.length).toEqual(2);
       expect(args[0]).toEqual(AddEndorsementComponent);
       expect(args[1]).toEqual(jasmine.any(MdDialogConfig));
+
+      //TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
+      // https://github.com/NagRock/ts-mockito/pull/27
+      // verify(dialog.open(AddEndorsementComponent, anyOfClass(MdDialogConfig))).once();
 
       expect(componentUnderTest.dialogRef).not.toBeNull();
     });
