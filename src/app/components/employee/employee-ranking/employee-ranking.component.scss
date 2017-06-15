@@ -1,49 +1,49 @@
 @import '../../../../styles/variables';
 
 .rank-item {
+  display: block;
+  font-size: 14px;
+
+  &__primary {
+    font-size: 20px;
+  }
+  &__secondary {
+    font-size: 18px;
+  }
+  &__thirstary {
+    font-size: 16px;
+  }
+  &__row {
+    border-left: 1px solid $white;
+    width: 50%;
+    display: inline-block;
+  }
+  &__img {
     display: block;
-    font-size: 14px;
+    margin: 0 auto;
+    &--small {
+      width: 60px;
+      height: 60px;
+    }
+  }
 
-    &__primary {
-        font-size: 20px;
-    }
-    &__secondary {
-        font-size: 18px;
-    }
-    &__thirstary {
-        font-size: 16px;
-    }
-    &__row {
-        border-left: 1px solid $white;
-        width: 50%;
-        display: inline-block;
-    }
-    &__img {
-        display: block;
-        margin: 0 auto;
-        &--small {
-            width: 60px;
-            height: 60px;
-        }
-    }
-
-    &__text {
-        display: block;
-        padding-top: 15px;
-        text-align: center;
-        font-size: 14pt;
-    }
+  &__text {
+    display: block;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 14pt;
+  }
 }
 
 .ranking-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-basis: 2;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  justify-content: center;
 
-    md-card {
-        width: 15%;
-        margin-right: 2%;
-    }
+  md-card {
+    width: 15%;
+    margin-right: 2%;
+  }
 }

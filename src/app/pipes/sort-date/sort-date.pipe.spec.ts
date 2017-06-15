@@ -1,4 +1,4 @@
-import {SortDatePipe} from './sort-date.pipe';
+import { SortDatePipe } from './sort-date.pipe';
 
 describe('SortDatePipe', () => {
   // it('create an instance', () => {

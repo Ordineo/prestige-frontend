@@ -1,7 +1,7 @@
 <md-card *ngIf="employee | async">
   <md-card-header>
     <div md-card-avatar>
-      <img src="{{(employee | async)?.avatar}}" />
+      <img src="{{(employee | async)?.avatar}}"/>
     </div>
     <md-card-title>{{ employee.firstName }} {{ employee.lastName }}</md-card-title>
     <md-card-subtitle>{{ employee.roles }}</md-card-subtitle>
@@ -18,7 +18,7 @@
   <md-card-content>
     <h2>Granted Endorsements</h2>
     <div class="endorsement"
-      *ngFor="let endorsement of grantedEndorsements | async">
+         *ngFor="let endorsement of grantedEndorsements | async">
       {{ endorsement.categories }}
       <md-progress-bar [value]="endorsement.score"></md-progress-bar>
     </div>
@@ -29,7 +29,7 @@
   <h2>Received Endorsements</h2>
   <md-card-content>
     <div class="endorsement"
-      *ngFor="let endorsement of receivedEndorsements | async">
+         *ngFor="let endorsement of receivedEndorsements | async">
       {{ endorsement.categories }}
       <md-progress-bar [value]="endorsement.score"></md-progress-bar>
     </div>

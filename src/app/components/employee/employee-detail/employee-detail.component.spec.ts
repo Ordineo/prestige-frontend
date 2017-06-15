@@ -1,10 +1,10 @@
-import {EndorsementService} from '../../../services/endorsement.service';
-import {ActivatedRoute} from '@angular/router';
-import {EmployeeService} from '../../../services/employee.service';
-import {EmployeeDetailComponent} from './employee-detail.component';
-import {instance, mock, when} from 'ts-mockito';
-import {Observable} from 'rxjs/Rx';
-import {Subject} from 'rxjs/Subject';
+import { EndorsementService } from '../../../services/endorsement.service';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeeService } from '../../../services/employee.service';
+import { EmployeeDetailComponent } from './employee-detail.component';
+import { instance, mock, when } from 'ts-mockito';
+import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
 
 describe('EmployeeDetailComponent', () => {
 

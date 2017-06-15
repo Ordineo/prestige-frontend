@@ -1,8 +1,8 @@
 export const constants = {
 
-    storageKeys: {
-        CURRENT_USER: 'currentUser',
-        TOKEN: 'jwt'
-    }
+  storageKeys: {
+    CURRENT_USER: 'currentUser',
+    TOKEN: 'jwt'
+  }
 
 };

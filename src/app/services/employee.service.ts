@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Rx';
-import {environment} from '../../environments/environment';
-import {Account} from '../models/account';
-import {PrestigeHttp} from './prestige-http.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { environment } from '../../environments/environment';
+import { Account } from '../models/account';
+import { PrestigeHttp } from './prestige-http.service';
 
 @Injectable()
 export class EmployeeService {

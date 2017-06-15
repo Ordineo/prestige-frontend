@@ -1,12 +1,12 @@
-import {anything, capture, instance, mock, verify, when} from 'ts-mockito';
-import {UserService} from '../../../services/user.service';
-import {ToolbarComponent} from './toolbar.component';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {AuthService} from '../../../services/auth.service';
-import {Account} from '../../../models/account';
-import {AccountDetailComponent} from '../../account/account-detail/account-detail.component';
-import {AddEndorsementComponent} from '../../endorsements/add-endorsement/add-endorsement.component';
-import {Observable} from 'rxjs/Observable';
+import { anything, capture, instance, mock, verify, when } from 'ts-mockito';
+import { UserService } from '../../../services/user.service';
+import { ToolbarComponent } from './toolbar.component';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { AuthService } from '../../../services/auth.service';
+import { Account } from '../../../models/account';
+import { AccountDetailComponent } from '../../account/account-detail/account-detail.component';
+import { AddEndorsementComponent } from '../../endorsements/add-endorsement/add-endorsement.component';
+import { Observable } from 'rxjs/Observable';
 
 describe('ToolbarComponent', () => {
 
@@ -99,7 +99,7 @@ describe('ToolbarComponent', () => {
       expect(args[0]).toEqual(AccountDetailComponent);
       expect(args[1]).toEqual(jasmine.any(MdDialogConfig));
 
-      //TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
+      // TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
       // https://github.com/NagRock/ts-mockito/pull/27
       // verify(dialog.open(AccountDetailComponent, anyOfClass(MdDialogConfig))).once();
 
@@ -122,7 +122,7 @@ describe('ToolbarComponent', () => {
       expect(args[0]).toEqual(AddEndorsementComponent);
       expect(args[1]).toEqual(jasmine.any(MdDialogConfig));
 
-      //TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
+      // TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
       // https://github.com/NagRock/ts-mockito/pull/27
       // verify(dialog.open(AddEndorsementComponent, anyOfClass(MdDialogConfig))).once();
 

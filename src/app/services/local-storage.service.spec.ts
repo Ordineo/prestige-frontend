@@ -1,5 +1,5 @@
-import {LocalStorageService} from './local-storage.service';
-import {Account} from '../models/account';
+import { LocalStorageService } from './local-storage.service';
+import { Account } from '../models/account';
 
 describe('LocalStorageService', () => {
 

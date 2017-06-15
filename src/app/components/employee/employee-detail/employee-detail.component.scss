@@ -1,27 +1,27 @@
 md-card-header {
-    div {
-        background-size: contain;
-    }
+  div {
+    background-size: contain;
+  }
 }
 
 md-card {
-    width: 90%;
-    margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .mat-card-avatar {
-    img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-    }
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
 }
 
 md-card-content {
-    .endorsement {
-        margin-bottom: 2%;
-        md-progress-bar {
-            height: 10px;
-        }
+  .endorsement {
+    margin-bottom: 2%;
+    md-progress-bar {
+      height: 10px;
     }
+  }
 }

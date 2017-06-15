@@ -1,10 +1,10 @@
-import {Response} from '@angular/http';
-import {instance, mock, when} from 'ts-mockito';
-import {Subject} from 'rxjs/Subject';
-import {PrestigeHttp} from './prestige-http.service';
-import {environment} from '../../environments/environment';
-import {EmployeeService} from './employee.service';
-import {Account} from '../models/account';
+import { Response } from '@angular/http';
+import { instance, mock, when } from 'ts-mockito';
+import { Subject } from 'rxjs/Subject';
+import { PrestigeHttp } from './prestige-http.service';
+import { environment } from '../../environments/environment';
+import { EmployeeService } from './employee.service';
+import { Account } from '../models/account';
 
 describe('EmployeeService', () => {
 

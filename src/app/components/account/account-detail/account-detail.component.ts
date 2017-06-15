@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
-import {EmployeeService} from '../../../services/employee.service';
-import {Account} from '../../../models/account';
-import {UserService} from '../../../services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { MdDialogRef } from '@angular/material';
+import { EmployeeService } from '../../../services/employee.service';
+import { Account } from '../../../models/account';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-account-detail',
@@ -13,10 +13,10 @@ export class AccountDetailComponent implements OnInit {
 
   public account: Account;
 
-  constructor(
-    private userService: UserService,
-    public dialogRef: MdDialogRef<any>,
-    private employeeService: EmployeeService) { }
+  constructor(private userService: UserService,
+              public dialogRef: MdDialogRef<any>,
+              private employeeService: EmployeeService) {
+  }
 
   ngOnInit() {
     this.employeeService
@@ -27,7 +27,8 @@ export class AccountDetailComponent implements OnInit {
   saveAccount() {
     this.employeeService
       .updateAccount(this.account)
-      .subscribe(() => this.dialogRef.close(), () => {});
+      .subscribe(() => this.dialogRef.close(), () => {
+      });
   }
 
 }

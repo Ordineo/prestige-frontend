@@ -1,8 +1,8 @@
-import {AuthService} from '../../../services/auth.service';
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-import {Response} from '@angular/http';
+import { AuthService } from '../../../services/auth.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-login',

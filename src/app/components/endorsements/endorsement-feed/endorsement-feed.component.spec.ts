@@ -1,9 +1,9 @@
-import {capture, instance, mock, verify, when, anyFunction} from 'ts-mockito';
-import {Observable} from 'rxjs/Rx';
-import {EndorsementService} from '../../../services/endorsement.service';
-import {EndorsementFeedComponent} from './endorsement-feed.component';
-import {UserService} from '../../../services/user.service';
-import {Account} from '../../../models/account';
+import { capture, instance, mock, verify, when } from 'ts-mockito';
+import { Observable } from 'rxjs/Rx';
+import { EndorsementService } from '../../../services/endorsement.service';
+import { EndorsementFeedComponent } from './endorsement-feed.component';
+import { UserService } from '../../../services/user.service';
+import { Account } from '../../../models/account';
 
 describe('EndorsementFeedComponent', () => {
 
@@ -49,7 +49,7 @@ describe('EndorsementFeedComponent', () => {
       const [firstArg] = capture(endorsementService.subscribeToUpdateEndorsementsEvents).last();
       expect(firstArg).toEqual(jasmine.any(Function));
 
-      //TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
+      // TODO: uncomment this and remove the capture checks when pull request on ts-mockito is merged.
       // https://github.com/NagRock/ts-mockito/pull/27
       // verify(endorsementService.subscribeToUpdateEndorsementsEvents(anyFunction())).once();
 

@@ -1,10 +1,10 @@
-import {PrestigeHttp} from './prestige-http.service';
-import {EventEmitter, Injectable, Output} from '@angular/core';
-import {Observable} from 'rxjs/Rx';
-import {Response} from '@angular/http';
+import { PrestigeHttp } from './prestige-http.service';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { Response } from '@angular/http';
 
-import {environment} from '../../environments/environment';
-import {Endorsement} from '../models/endorsement';
+import { environment } from '../../environments/environment';
+import { Endorsement } from '../models/endorsement';
 
 @Injectable()
 export class EndorsementService {

@@ -1,7 +1,7 @@
-import {Account} from '../models/account';
-import {Injectable} from '@angular/core';
-import {constants} from '../util/constants';
-import {LocalStorageService} from './local-storage.service';
+import { Account } from '../models/account';
+import { Injectable } from '@angular/core';
+import { constants } from '../util/constants';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class UserService {

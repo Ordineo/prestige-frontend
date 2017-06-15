@@ -1,9 +1,9 @@
-import {RegistrationFormComponent} from './registration-form.component';
-import {Router} from '@angular/router';
-import {AuthService} from '../../../services/auth.service';
-import {deepEqual, instance, mock, verify, when} from 'ts-mockito';
-import {Subject} from 'rxjs/Rx';
-import {NgForm} from '@angular/forms';
+import { RegistrationFormComponent } from './registration-form.component';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
+import { Subject } from 'rxjs/Rx';
+import { NgForm } from '@angular/forms';
 
 describe('RegistrationFormComponent', () => {
 
@@ -29,7 +29,7 @@ describe('RegistrationFormComponent', () => {
       const subject = new Subject();
       when(authService.register(username, password, password)).thenReturn(subject.asObservable());
       when(registerForm.valid).thenReturn(true);
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+      componentUnderTest.registrationModel = {handle: username, password, passwordCheck: password};
 
       componentUnderTest.doRegister();
       subject.next();
@@ -39,10 +39,10 @@ describe('RegistrationFormComponent', () => {
 
     it('should call register on the authservice and set error to correct message if status is 0', () => {
       const subject = new Subject();
-      const error = { status: 0 };
+      const error = {status: 0};
       when(authService.register(username, password, password)).thenReturn(subject.asObservable());
       when(registerForm.valid).thenReturn(true);
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+      componentUnderTest.registrationModel = {handle: username, password, passwordCheck: password};
 
       componentUnderTest.doRegister();
       subject.error(error);
@@ -52,10 +52,10 @@ describe('RegistrationFormComponent', () => {
 
     it('should call register on the authservice and set error to correct message if status is 400', () => {
       const subject = new Subject();
-      const error = { status: 400 };
+      const error = {status: 400};
       when(authService.register(username, password, password)).thenReturn(subject.asObservable());
       when(registerForm.valid).thenReturn(true);
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+      componentUnderTest.registrationModel = {handle: username, password, passwordCheck: password};
 
       componentUnderTest.doRegister();
       subject.error(error);
@@ -65,10 +65,10 @@ describe('RegistrationFormComponent', () => {
 
     it('should call register on the authservice and set error to correct message if status is something else than 0 and 401', () => {
       const subject = new Subject();
-      const error = { status: 500 };
+      const error = {status: 500};
       when(authService.register(username, password, password)).thenReturn(subject.asObservable());
       when(registerForm.valid).thenReturn(true);
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+      componentUnderTest.registrationModel = {handle: username, password, passwordCheck: password};
 
       componentUnderTest.doRegister();
       subject.error(error);
@@ -80,12 +80,12 @@ describe('RegistrationFormComponent', () => {
   describe('passwordsMatch', () => {
 
     it('should return true if the passwords match', () => {
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: password };
+      componentUnderTest.registrationModel = {handle: username, password, passwordCheck: password};
       expect(componentUnderTest.passwordsMatch()).toBeTruthy();
     });
 
     it('should return false if the passwords don\'t match', () => {
-      componentUnderTest.registrationModel = { handle: username, password, passwordCheck: 'something else' };
+      componentUnderTest.registrationModel = {handle: username, password, passwordCheck: 'something else'};
       expect(componentUnderTest.passwordsMatch()).toBeFalsy();
     });
 

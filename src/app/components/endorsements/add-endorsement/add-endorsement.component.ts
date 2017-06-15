@@ -1,11 +1,11 @@
-import {Account} from '../../../models/account';
-import {Component, OnInit} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
-import {Observable} from 'rxjs/Rx';
-import {CategoryService} from '../../../services/category.service';
-import {EmployeeService} from '../../../services/employee.service';
-import {EndorsementService} from '../../../services/endorsement.service';
-import {Endorsement} from '../../../models/endorsement';
+import { Account } from '../../../models/account';
+import { Component, OnInit } from '@angular/core';
+import { MdDialogRef } from '@angular/material';
+import { Observable } from 'rxjs/Rx';
+import { CategoryService } from '../../../services/category.service';
+import { EmployeeService } from '../../../services/employee.service';
+import { EndorsementService } from '../../../services/endorsement.service';
+import { Endorsement } from '../../../models/endorsement';
 
 @Component({
   selector: 'app-add-endorsement',
@@ -20,9 +20,9 @@ export class AddEndorsementComponent implements OnInit {
   endorsement: Endorsement = new Endorsement();
 
   constructor(public dialogRef: MdDialogRef<any>,
-    private categoryService: CategoryService,
-    private employeeService: EmployeeService,
-    private endorsementService: EndorsementService) {
+              private categoryService: CategoryService,
+              private employeeService: EmployeeService,
+              private endorsementService: EndorsementService) {
   }
 
   addEndorsement() {

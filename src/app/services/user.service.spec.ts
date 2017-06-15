@@ -1,8 +1,8 @@
-import {deepEqual, instance, mock, verify, when} from 'ts-mockito';
-import {LocalStorageService} from './local-storage.service';
-import {UserService} from './user.service';
-import {constants} from '../util/constants';
-import {Account} from '../models/account';
+import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
+import { LocalStorageService } from './local-storage.service';
+import { UserService } from './user.service';
+import { constants } from '../util/constants';
+import { Account } from '../models/account';
 
 describe('UserService', () => {
 

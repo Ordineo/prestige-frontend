@@ -1,8 +1,8 @@
-import {EmployeeService} from '../../../services/employee.service';
-import {instance, mock, when} from 'ts-mockito';
-import {Observable} from 'rxjs/Rx';
-import {Subject} from 'rxjs/Subject';
-import {EmployeeRankingComponent} from './employee-ranking.component';
+import { EmployeeService } from '../../../services/employee.service';
+import { instance, mock, when } from 'ts-mockito';
+import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
+import { EmployeeRankingComponent } from './employee-ranking.component';
 
 describe('EmployeeRankingComponent', () => {
 

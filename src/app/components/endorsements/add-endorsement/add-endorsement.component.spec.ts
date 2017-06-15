@@ -1,12 +1,12 @@
-import {EmployeeService} from '../../../services/employee.service';
-import {instance, mock, verify, when} from 'ts-mockito';
-import {Observable} from 'rxjs/Rx';
-import {Subject} from 'rxjs/Subject';
-import {AddEndorsementComponent} from './add-endorsement.component';
-import {MdDialogRef} from '@angular/material';
-import {EndorsementService} from '../../../services/endorsement.service';
-import {CategoryService} from '../../../services/category.service';
-import {Endorsement} from '../../../models/endorsement';
+import { EmployeeService } from '../../../services/employee.service';
+import { instance, mock, verify, when } from 'ts-mockito';
+import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
+import { AddEndorsementComponent } from './add-endorsement.component';
+import { MdDialogRef } from '@angular/material';
+import { EndorsementService } from '../../../services/endorsement.service';
+import { CategoryService } from '../../../services/category.service';
+import { Endorsement } from '../../../models/endorsement';
 
 describe('AddEndorsementComponent', () => {
 

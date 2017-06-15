@@ -1,6 +1,6 @@
-import {instance, mock, when} from 'ts-mockito';
-import {UserService} from '../../../services/user.service';
-import {NavigationBarComponent} from './navigationbar.component';
+import { instance, mock, when } from 'ts-mockito';
+import { UserService } from '../../../services/user.service';
+import { NavigationBarComponent } from './navigationbar.component';
 
 describe('NavigationBarComponent', () => {
 

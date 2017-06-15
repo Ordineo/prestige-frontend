@@ -1,11 +1,11 @@
-import {Account} from '../../../models/account';
-import {EmployeeService} from '../../../services/employee.service';
-import {UserService} from '../../../services/user.service';
-import {instance, mock, reset, verify, when} from 'ts-mockito';
+import { Account } from '../../../models/account';
+import { EmployeeService } from '../../../services/employee.service';
+import { UserService } from '../../../services/user.service';
+import { instance, mock, reset, verify, when } from 'ts-mockito';
 
-import {AccountDetailComponent} from './account-detail.component';
-import {MdDialogRef} from '@angular/material';
-import {Subject} from 'rxjs/Subject';
+import { AccountDetailComponent } from './account-detail.component';
+import { MdDialogRef } from '@angular/material';
+import { Subject } from 'rxjs/Subject';
 
 describe('AccountDetailComponent', () => {
 
@@ -22,9 +22,9 @@ describe('AccountDetailComponent', () => {
   });
 
   afterEach(() => {
-      reset(dialogRef);
-      reset(userService);
-      reset(employeeService);
+    reset(dialogRef);
+    reset(userService);
+    reset(employeeService);
   });
 
   describe('ngOnInit', () => {

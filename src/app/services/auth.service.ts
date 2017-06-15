@@ -1,12 +1,12 @@
-import {environment} from '../../environments/environment';
-import {PrestigeHttp} from './prestige-http.service';
-import {Router} from '@angular/router';
-import {Response} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import {Injectable} from '@angular/core';
-import {EmployeeService} from './employee.service';
-import {Account} from '../models/account';
-import {UserService} from './user.service';
+import { environment } from '../../environments/environment';
+import { PrestigeHttp } from './prestige-http.service';
+import { Router } from '@angular/router';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
+import { EmployeeService } from './employee.service';
+import { Account } from '../models/account';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthService {

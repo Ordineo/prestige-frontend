@@ -1,13 +1,13 @@
-import {AuthService} from './auth.service';
-import {Response, ResponseOptions} from '@angular/http';
-import {UserService} from './user.service';
-import {Router} from '@angular/router';
-import {EmployeeService} from './employee.service';
-import {deepEqual, instance, mock, verify, when} from 'ts-mockito';
-import {Subject} from 'rxjs/Subject';
-import {Account} from '../models/account';
-import {PrestigeHttp} from './prestige-http.service';
-import {environment} from '../../environments/environment';
+import { AuthService } from './auth.service';
+import { Response, ResponseOptions } from '@angular/http';
+import { UserService } from './user.service';
+import { Router } from '@angular/router';
+import { EmployeeService } from './employee.service';
+import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
+import { Subject } from 'rxjs/Subject';
+import { Account } from '../models/account';
+import { PrestigeHttp } from './prestige-http.service';
+import { environment } from '../../environments/environment';
 
 describe('AuthService', () => {
 

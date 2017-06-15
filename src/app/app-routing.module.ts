@@ -1,14 +1,14 @@
-import {EndorsementFeedComponent} from './components/endorsements/endorsement-feed/endorsement-feed.component';
-import {EndorsementDetailComponent} from './components/endorsements/endorsement-detail/endorsement-detail.component';
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { EndorsementFeedComponent } from './components/endorsements/endorsement-feed/endorsement-feed.component';
+import { EndorsementDetailComponent } from './components/endorsements/endorsement-detail/endorsement-detail.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {EmployeeDetailComponent} from './components/employee/employee-detail/employee-detail.component';
-import {EmployeeRankingComponent} from './components/employee/employee-ranking/employee-ranking.component';
-import {LoginFormComponent} from './components/authentication/login-form/login-form.component';
-import {RegistrationFormComponent} from './components/authentication/registration-form/registration-form.component';
-import {AuthenticatedGuard} from './services/guards/authenticated.guard';
-import {UnauthenticatedGuard} from './services/guards/unauthenticated.guard';
+import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
+import { EmployeeRankingComponent } from './components/employee/employee-ranking/employee-ranking.component';
+import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
+import { RegistrationFormComponent } from './components/authentication/registration-form/registration-form.component';
+import { AuthenticatedGuard } from './services/guards/authenticated.guard';
+import { UnauthenticatedGuard } from './services/guards/unauthenticated.guard';
 
 const appRoutes: Routes = [
   {

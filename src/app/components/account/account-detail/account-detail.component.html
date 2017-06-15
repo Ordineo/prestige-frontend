@@ -1,16 +1,16 @@
 <div *ngIf="account">
   <h3>Account</h3>
   <form (ngSubmit)="saveAccount()"
-    #accountForm="ngForm">
+        #accountForm="ngForm">
 
     <md-grid-list cols="6"
-      rowHeight="4em"
-      gutterSize="20px">
+                  rowHeight="4em"
+                  gutterSize="20px">
       <md-grid-tile colspan="2">
         <md-input-container>
           <input mdInput
-            [(ngModel)]="account.firstName"
-            name="firstName">
+                 [(ngModel)]="account.firstName"
+                 name="firstName">
           <md-placeholder>First Name</md-placeholder>
         </md-input-container>
       </md-grid-tile>
@@ -18,8 +18,8 @@
       <md-grid-tile colspan="4">
         <md-input-container>
           <input mdInput
-            [(ngModel)]="account.lastName"
-            name="lastName">
+                 [(ngModel)]="account.lastName"
+                 name="lastName">
           <md-placeholder>Last Name</md-placeholder>
         </md-input-container>
       </md-grid-tile>
@@ -27,8 +27,8 @@
       <md-grid-tile colspan="6">
         <md-input-container>
           <input mdInput
-            [(ngModel)]="account.email"
-            name="email">
+                 [(ngModel)]="account.email"
+                 name="email">
           <md-placeholder>Email</md-placeholder>
         </md-input-container>
       </md-grid-tile>
@@ -36,9 +36,9 @@
       <md-grid-tile colspan="3">
         <md-input-container>
           <input mdInput
-            type="tel"
-            [(ngModel)]="account.phone"
-            name="phone">
+                 type="tel"
+                 [(ngModel)]="account.phone"
+                 name="phone">
           <span md-prefix>+32&nbsp;</span>
           <md-placeholder>Phone</md-placeholder>
         </md-input-container>
@@ -47,8 +47,8 @@
       <md-grid-tile colspan="2">
         <md-input-container>
           <input mdInput
-            [(ngModel)]="account.unit"
-            name="unit">
+                 [(ngModel)]="account.unit"
+                 name="unit">
           <md-placeholder>Unit</md-placeholder>
         </md-input-container>
       </md-grid-tile>
@@ -56,8 +56,8 @@
       <md-grid-tile>
         <md-input-container>
           <input mdInput
-            [(ngModel)]="account.gender"
-            name="gender">
+                 [(ngModel)]="account.gender"
+                 name="gender">
           <md-placeholder>Gender</md-placeholder>
         </md-input-container>
       </md-grid-tile>

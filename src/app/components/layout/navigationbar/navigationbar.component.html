@@ -1,12 +1,15 @@
 <nav md-tab-nav-bar class="navigation__tab_bar">
-    <a md-tab-link class="navigation__tab" routerLink="/endorsement-feed" routerLinkActive #rla1="routerLinkActive" [active]="rla1.isActive">
-        Feed
-    </a>
-    <a md-tab-link class="navigation__tab" routerLink="/employee-detail/{{getLoggedInUsername()}}" routerLinkActive #rla2="routerLinkActive"
-        [active]="rla2.isActive">
-        My Prestige
-    </a>
-    <a md-tab-link class="navigation__tab" routerLink="/employee-ranking" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
-        Ranking
-    </a>
+  <a md-tab-link class="navigation__tab" routerLink="/endorsement-feed" routerLinkActive #rla1="routerLinkActive"
+     [active]="rla1.isActive">
+    Feed
+  </a>
+  <a md-tab-link class="navigation__tab" routerLink="/employee-detail/{{getLoggedInUsername()}}" routerLinkActive
+     #rla2="routerLinkActive"
+     [active]="rla2.isActive">
+    My Prestige
+  </a>
+  <a md-tab-link class="navigation__tab" routerLink="/employee-ranking" routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Ranking
+  </a>
 </nav>

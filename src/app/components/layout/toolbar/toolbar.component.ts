@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {AccountDetailComponent} from '../../account/account-detail/account-detail.component';
-import {AuthService} from '../../../services/auth.service';
-import {AddEndorsementComponent} from '../../endorsements/add-endorsement/add-endorsement.component';
-import {UserService} from '../../../services/user.service';
+import { Component } from '@angular/core';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { AccountDetailComponent } from '../../account/account-detail/account-detail.component';
+import { AuthService } from '../../../services/auth.service';
+import { AddEndorsementComponent } from '../../endorsements/add-endorsement/add-endorsement.component';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-toolbar',

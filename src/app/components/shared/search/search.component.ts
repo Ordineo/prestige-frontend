@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import {Account} from '../../../models/account';
-import {EmployeeService} from '../../../services/employee.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Account } from '../../../models/account';
+import { EmployeeService } from '../../../services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-employees',

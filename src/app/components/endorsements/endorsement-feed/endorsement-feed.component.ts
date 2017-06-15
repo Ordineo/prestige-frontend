@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Rx';
-import {EndorsementService} from '../../../services/endorsement.service';
-import {UserService} from '../../../services/user.service';
-import {Endorsement} from '../../../models/endorsement';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { EndorsementService } from '../../../services/endorsement.service';
+import { UserService } from '../../../services/user.service';
+import { Endorsement } from '../../../models/endorsement';
 
 @Component({
   selector: 'app-endorsement-feed',
@@ -14,9 +14,8 @@ export class EndorsementFeedComponent implements OnInit {
   endorsements: Observable<Endorsement[]>;
   currentUser: any;
 
-  constructor(
-    private endorsementService: EndorsementService,
-    private userService: UserService) {
+  constructor(private endorsementService: EndorsementService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
