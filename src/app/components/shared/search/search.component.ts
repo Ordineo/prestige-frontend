@@ -28,17 +28,14 @@ export class SearchComponent implements OnInit {
       });
 
     this.filteredOptions = this.searchTextControl.valueChanges
-      .startWith(null)
-      .map(text => {
-        return text && text.trim().length > 0 ? this.filter(text) : [];
-      });
+      .map(text => text && text.trim().length > 0 ? this.filter(text) : []);
   }
 
   public filter(filterText: string) {
     return this.employees
       .filter(employee =>
-      `${employee.firstName} ${employee.lastName} ${employee.username}`.toLowerCase()
-        .indexOf(filterText.toLowerCase()) > -1);
+        `${employee.firstName} ${employee.lastName} ${employee.username}`.toLowerCase().indexOf(filterText.toLowerCase()) > -1
+      );
   }
 
   public showEmployeeDetail(employee: Account) {

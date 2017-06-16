@@ -43,6 +43,14 @@ describe('UserService', () => {
       expect(actual).toEqual(username);
     });
 
+    it('should return undefined if the getCurrentUser returns undefined', () => {
+      when(localStorageService.getObject(constants.storageKeys.CURRENT_USER)).thenReturn(undefined);
+
+      const actual = serviceUnderTest.getCurrentUsername();
+
+      expect(actual).toBeUndefined();
+    });
+
   });
 
   describe('isUserLoggedIn', () => {
@@ -87,6 +95,18 @@ describe('UserService', () => {
       serviceUnderTest.saveCurrentUser(user);
 
       verify(localStorageService.setObject(constants.storageKeys.CURRENT_USER, user)).once();
+    });
+
+  });
+
+  describe('saveCurrentUserToken', () => {
+
+    it('should call the localStorageService with the right token', () => {
+      const token = 'token';
+
+      serviceUnderTest.saveCurrentUserToken(token);
+
+      verify(localStorageService.setString(constants.storageKeys.TOKEN, token)).once();
     });
 
   });

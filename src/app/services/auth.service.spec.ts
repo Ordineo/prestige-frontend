@@ -3,11 +3,12 @@ import { Response, ResponseOptions } from '@angular/http';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { EmployeeService } from './employee.service';
-import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
+import { anything, deepEqual, instance, mock, verify, when } from 'ts-mockito';
 import { Subject } from 'rxjs/Subject';
 import { Account } from '../models/account';
 import { PrestigeHttp } from './prestige-http.service';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 describe('AuthService', () => {
 
@@ -61,6 +62,52 @@ describe('AuthService', () => {
       currentUserSubject.next(currentAccount);
     });
 
+    it('should throw an error when http throws error', (done) => {
+      const token = 'token';
+      const loginSubject = new Subject<Response>();
+
+      when(http.post(anything(), anything(), anything())).thenReturn(loginSubject.asObservable());
+
+      serviceUnderTest
+        .login(username, password)
+        .catch(() => {
+          done();
+          return Observable.empty();
+        })
+        .subscribe(() => {
+          fail();
+        });
+
+      loginSubject.error({});
+    });
+
+    it('should throw an error when employeeService throws error', (done) => {
+      const token = 'token';
+      const currentAccount = new Account();
+      const loginSubject = new Subject<Response>();
+      const currentUserSubject = new Subject<Account>();
+
+      when(http.post(deepEqual(loginEndPoint), deepEqual({
+        username,
+        password
+      }), false)).thenReturn(loginSubject.asObservable());
+      when(employeeService.getByUsername(username)).thenReturn(currentUserSubject.asObservable());
+
+
+      serviceUnderTest
+        .login(username, password)
+        .catch(() => {
+          done();
+          return Observable.empty();
+        })
+        .subscribe(() => {
+          fail();
+        });
+
+      loginSubject.next(createResponseWithText(token));
+      currentUserSubject.error(new Error());
+    });
+
   });
 
   describe('register', () => {
@@ -77,6 +124,24 @@ describe('AuthService', () => {
         });
 
       registerSubject.next();
+    });
+
+    it('should throw error if error occurs', (done) => {
+      const registerSubject = new Subject();
+
+      when(http.post(registerEndpoint, deepEqual({username, password, confirmPassword: password}), false))
+        .thenReturn(registerSubject.asObservable());
+
+      serviceUnderTest.register(username, password, password)
+        .catch(() => {
+          done();
+          return Observable.empty();
+        })
+        .subscribe(() => {
+          fail();
+        });
+
+      registerSubject.error(new Error());
     });
 
   });

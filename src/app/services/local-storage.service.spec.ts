@@ -37,6 +37,12 @@ describe('LocalStorageService', () => {
       expect(localStorage.getItem).toHaveBeenCalledWith(key);
     });
 
+    it('should call the localStorage api to get the value under the given key', () => {
+      const actual = serviceUnderTest.getString(key);
+
+      expect(actual).toBeNull();
+    });
+
   });
 
   describe('setObject', () => {
@@ -46,6 +52,14 @@ describe('LocalStorageService', () => {
       serviceUnderTest.setObject(key, account);
 
       expect(localStorage.setItem).toHaveBeenCalledWith(key, JSON.stringify(account));
+    });
+
+    it('should throw error if value is not an object', () => {
+      try {
+        serviceUnderTest.setObject(key, 'not an object');
+      } catch (e) {
+        expect((<Error>e).message).toEqual('Value should be an object, otherwise use setString(value: string) function');
+      }
     });
 
   });
@@ -59,6 +73,12 @@ describe('LocalStorageService', () => {
       serviceUnderTest.getObject<Account>(key);
 
       expect(localStorage.getItem).toHaveBeenCalledWith(key);
+    });
+
+    it('should return null if the localstorage returns null', () => {
+      const actual = serviceUnderTest.getObject<Account>(key);
+
+      expect(actual).toBeNull();
     });
 
   });

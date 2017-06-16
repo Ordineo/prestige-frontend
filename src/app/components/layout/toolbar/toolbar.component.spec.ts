@@ -7,6 +7,7 @@ import { Account } from '../../../models/account';
 import { AccountDetailComponent } from '../../account/account-detail/account-detail.component';
 import { AddEndorsementComponent } from '../../endorsements/add-endorsement/add-endorsement.component';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 describe('ToolbarComponent', () => {
 
@@ -88,8 +89,9 @@ describe('ToolbarComponent', () => {
   describe('openAccountDetail', () => {
 
     it('should open the dialog', () => {
+      const dialogCloseSubject = new Subject();
       const dialogRef = mock(MdDialogRef);
-      dialogRef.afterClosed = () => Observable.empty();
+      dialogRef.afterClosed = () => dialogCloseSubject.asObservable();
       when(dialog.open(anything(), anything())).thenReturn(dialogRef);
 
       componentUnderTest.openAccountDetail();
@@ -104,6 +106,10 @@ describe('ToolbarComponent', () => {
       // verify(dialog.open(AccountDetailComponent, anyOfClass(MdDialogConfig))).once();
 
       expect(componentUnderTest.dialogRef).not.toBeNull();
+
+      dialogCloseSubject.next();
+
+      expect(componentUnderTest.dialogRef).toBeNull();
     });
 
   });
@@ -111,8 +117,9 @@ describe('ToolbarComponent', () => {
   describe('openAddEndorsement', () => {
 
     it('should open the dialog', () => {
+      const dialogCloseSubject = new Subject();
       const dialogRef = mock(MdDialogRef);
-      dialogRef.afterClosed = () => Observable.empty();
+      dialogRef.afterClosed = () => dialogCloseSubject.asObservable();
       when(dialog.open(anything(), anything())).thenReturn(dialogRef);
 
       componentUnderTest.openAddEndorsement();
@@ -127,6 +134,10 @@ describe('ToolbarComponent', () => {
       // verify(dialog.open(AddEndorsementComponent, anyOfClass(MdDialogConfig))).once();
 
       expect(componentUnderTest.dialogRef).not.toBeNull();
+
+      dialogCloseSubject.next();
+
+      expect(componentUnderTest.dialogRef).toBeNull();
     });
 
   });
