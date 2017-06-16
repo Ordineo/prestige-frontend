@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['registration-form.component.scss']
 })
 
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent {
 
   @ViewChild('registerForm') public registerForm;
   public registrationModel: { handle: string, password: string, passwordCheck: string };
@@ -16,9 +16,6 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {
     this.registrationModel = {handle: undefined, password: undefined, passwordCheck: undefined};
-  }
-
-  ngOnInit() {
   }
 
   public passwordsMatch(): boolean {

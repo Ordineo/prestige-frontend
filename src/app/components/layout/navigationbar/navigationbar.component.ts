@@ -8,12 +8,9 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./navigationbar.component.scss']
 })
 
-export class NavigationBarComponent implements OnInit {
+export class NavigationBarComponent {
 
   constructor(private userService: UserService) {
-  }
-
-  ngOnInit() {
   }
 
   getLoggedInUsername(): string | undefined {

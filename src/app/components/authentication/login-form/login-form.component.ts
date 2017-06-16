@@ -9,7 +9,7 @@ import { Response } from '@angular/http';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
 
   @ViewChild('loginForm') loginForm: NgForm;
   public loginModel: { handle: string, password: string };
@@ -17,9 +17,6 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {
     this.loginModel = {handle: undefined, password: undefined};
-  }
-
-  ngOnInit() {
   }
 
   public login() {
