@@ -38,11 +38,11 @@ export class PagingControlsComponent implements OnInit {
   }
 
   previousPageEnabled(): boolean {
-    return !this.pageInfo.isLastPage();
+    return this.currentPage !== 0;
   }
 
   nextPageEnabled(): boolean {
-    return !this.pageInfo.isFirstPage();
+    return this.currentPage < this.pageInfo.totalPages - 1;
   }
 
   goToSpecificPage(pageIndex: number) {
@@ -53,6 +53,11 @@ export class PagingControlsComponent implements OnInit {
     this.goToPage(pageIndex);
   }
 
+  goToSpecificPageSet(pageSetIndex: number) {
+    this.currentPageSet = pageSetIndex;
+    this.goToSpecificPage(this.maxNumberOfPageButtons * pageSetIndex);
+  }
+
   nextPage() {
     if (this.currentPage < this.pageInfo.totalPages - 1) {
       this.goToSpecificPage(this.currentPage + 1);
@@ -61,19 +66,19 @@ export class PagingControlsComponent implements OnInit {
 
   previousPage() {
     if (this.currentPage > 0) {
-      this.goToSpecificPage(this.currentPage - 1);
+      this.goToSpecificPage(this.currentPage -  1);
     }
   }
 
   previousPageSet() {
     if (this.currentPageSet > 0) {
-      this.currentPageSet--;
+      this.goToSpecificPageSet(this.currentPageSet - 1);
     }
   }
 
   nextPageSet() {
     if (this.currentPageSet < this.pageSets.length - 1) {
-      this.currentPageSet++;
+      this.goToSpecificPageSet(this.currentPageSet + 1);
     }
   }
 

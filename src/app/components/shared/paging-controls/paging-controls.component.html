@@ -1,41 +1,41 @@
 <div class="paging-controls">
 
-  <button [disabled]="!previousPageEnabled"
-          (click)="previousPage()"
-          class=""
-          md-raised-button="primary">
-    Previous
+  <button md-mini-fab
+          [disabled]="!previousPageEnabled()"
+          (click)="previousPage()">
+    <md-icon>keyboard_arrow_left</md-icon>
   </button>
 
   <div class="page-number-buttons" *ngIf="goToPage">
 
     <button
-      *ngIf="currentPageSet > 0 && pageSets.length > 0"
+      *ngIf="pageSets.length > 0"
+      [disabled]="currentPageSet === 0"
       (click)="previousPageSet()"
-      md-raised-button="primary">
+      md-mini-fab>
       ...
     </button>
 
     <button *ngFor="let value of pageSets[currentPageSet], let index = index"
             (click)="goToSpecificPage(calculatePageNumberFromIndex(index))"
             [ngClass]="{'active': currentPage === calculatePageNumberFromIndex(index)}"
-            md-raised-button="primary">
+            md-mini-fab>
       {{ calculatePageNumberFromIndex(index) + 1}}
     </button>
 
     <button
-      *ngIf="currentPageSet < pageSets.length - 1 && pageSets.length > 0"
+      *ngIf="pageSets.length > 0"
+      [disabled]="currentPageSet === pageSets.length - 1"
       (click)="nextPageSet()"
-      md-raised-button="primary">
+      md-mini-fab>
       ...
     </button>
   </div>
 
-  <button [disabled]="!nextPageEnabled"
-          class=""
-          (click)="nextPage()"
-          md-raised-button="primary">
-    Next
+  <button [disabled]="!nextPageEnabled()"
+          md-mini-fab
+          (click)="nextPage()">
+    <md-icon>keyboard_arrow_right</md-icon>
   </button>
 
 </div>
