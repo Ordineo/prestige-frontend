@@ -6,6 +6,7 @@ import { CategoryService } from '../../../services/category.service';
 import { EmployeeService } from '../../../services/employee.service';
 import { EndorsementService } from '../../../services/endorsement.service';
 import { Endorsement } from '../../../models/endorsement';
+import { Page } from '../../../models/page';
 
 @Component({
   selector: 'app-add-endorsement',
@@ -16,7 +17,7 @@ import { Endorsement } from '../../../models/endorsement';
 export class AddEndorsementComponent implements OnInit {
 
   public categories: Observable<string[]>;
-  public employees: Observable<Account[]>;
+  public employees: Observable<Page<Account>>;
   endorsement: Endorsement = new Endorsement();
 
   constructor(public dialogRef: MdDialogRef<any>,
@@ -36,7 +37,7 @@ export class AddEndorsementComponent implements OnInit {
 
   ngOnInit() {
     this.categories = this.categoryService.getCategories().share();
-    this.employees = this.employeeService.getAllEmployees().share();
+    this.employees = this.employeeService.getAllEmployees(0, 1000).share();
   }
 
 }

@@ -32,7 +32,7 @@ describe('AddEndorsementComponent', () => {
 
   describe('ngOnInit', () => {
 
-    it('should get all employees', () => {
+    it('should get all employeesPage', () => {
       const employeesSubject = new Subject();
       const categoriesSubject = new Subject();
 

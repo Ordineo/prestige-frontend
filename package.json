@@ -38,6 +38,7 @@
     "@types/jasmine": "2.5.47",
     "@types/node": "~7.0.11",
     "@types/selenium-webdriver": "3.0.1",
+    "assert": "^1.4.1",
     "codelyzer": "~3.0.0-beta.4",
     "jasmine-core": "~2.6.1",
     "jasmine-reporters": "2.2.1",

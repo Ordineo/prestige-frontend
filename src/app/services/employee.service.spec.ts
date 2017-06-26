@@ -22,7 +22,7 @@ describe('EmployeeService', () => {
 
   describe('getAllEmployees', () => {
 
-    it('should do a GET request to the employees endpoint', (done) => {
+    it('should do a GET request to the employeesPage endpoint', (done) => {
       const employeesSubject = new Subject();
       const responseMock = mock(Response);
       const employees = [new Account(), new Account()];
@@ -45,7 +45,7 @@ describe('EmployeeService', () => {
       employeesSubject.next(instance(responseMock));
     });
 
-    it('if the response does not contain employees, returns an empty array', (done) => {
+    it('if the response does not contain employeesPage, returns an empty array', (done) => {
       const employeesSubject = new Subject();
       const responseMock = mock(Response);
 
@@ -67,9 +67,56 @@ describe('EmployeeService', () => {
 
   });
 
+  describe('searchEmployees', () => {
+
+    it('should do a GET request to the employeesPage endpoint', (done) => {
+      const employeesSubject = new Subject();
+      const responseMock = mock(Response);
+      const employees = [new Account(), new Account()];
+
+      when(http.get(`${employeesEndpoint}?search=username:username,firstName:firstName,lastName:lastName&page=0&size=5`, true))
+        .thenReturn(employeesSubject.asObservable());
+      when(responseMock.json()).thenReturn({
+        _embedded: {
+          employees: employees
+        }
+      });
+
+      serviceUnderTest
+        .searchEmployees({ username: 'username', firstName: 'firstName', lastName: 'lastName' })
+        .subscribe((actual: Account[]) => {
+          expect(actual).toEqual(employees);
+          done();
+        });
+
+      employeesSubject.next(instance(responseMock));
+    });
+
+    it('if the response does not contain employeesPage, returns an empty array', (done) => {
+      const employeesSubject = new Subject();
+      const responseMock = mock(Response);
+
+      when(http.get(`${employeesEndpoint}?search=username:username,firstName:firstName,lastName:lastName&page=0&size=5`, true))
+        .thenReturn(employeesSubject.asObservable());
+      when(responseMock.json()).thenReturn({
+        _embedded: {}
+      });
+
+      serviceUnderTest
+        .searchEmployees({ username: 'username', firstName: 'firstName', lastName: 'lastName' })
+        .subscribe((actual: Account[]) => {
+          expect(actual).toEqual([]);
+          done();
+        });
+
+      employeesSubject.next(instance(responseMock));
+    });
+
+  });
+
   describe('getByUsername', () => {
 
-    it('should do a GET request to the employees/username endpoint', (done) => {
+    it('should do a GET request to the employeesPage/username endpoint', (done) => {
       const employeeSubject = new Subject();
       const responseMock = mock(Response);
       const employee = new Account();
@@ -91,9 +138,10 @@ describe('EmployeeService', () => {
 
   });
 
+
   describe('updateAccount', () => {
 
-    it('should do a GET request to the employees/username endpoint', (done) => {
+    it('should do a GET request to the employeesPage/username endpoint', (done) => {
       const employeeSubject = new Subject();
       const responseMock = mock(Response);
       const employee = new Account();

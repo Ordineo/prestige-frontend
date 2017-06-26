@@ -1,8 +1,11 @@
+import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Account } from '../models/account';
 import { PrestigeHttp } from './prestige-http.service';
+import { PageInfo } from "../models/pageinfo";
+import { Page } from "../models/page";
 
 @Injectable()
 export class EmployeeService {
@@ -12,11 +15,18 @@ export class EmployeeService {
   constructor(private http: PrestigeHttp) {
   }
 
-  getAllEmployees(): Observable<Account[]> {
+  getAllEmployees(page: number, size: number): Observable<Page<Account>> {
     return this.http
-      .get(this.apiUsersEndpoint, true)
+      .get(`${this.apiUsersEndpoint}?page=${page}&size=${size}`, true)
       .map(result => result.json())
-      .map(resJson => resJson._embedded.employees || []);
+      .map(resultJson => Page.createPage<Account>(resultJson._embedded ? resultJson._embedded.employees : [], PageInfo.createPageInfo(resultJson.page)));
+  }
+
+  searchEmployees(options: { username: string, firstName: string, lastName: string }): Observable<Account[]> {
+    return this.http
+      .get(`${this.apiUsersEndpoint}?search=username:${options.username},firstName:${options.firstName},lastName:${options.lastName}&page=0&size=5`, true)
+      .map((response: Response) => response.json())
+      .map(responseJson => responseJson._embedded && responseJson._embedded.employees ? responseJson._embedded.employees : []);
   }
 
   getByUsername(username: string): Observable<Account> {

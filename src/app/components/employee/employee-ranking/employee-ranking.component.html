@@ -1,16 +1,24 @@
-<div class="ranking-container">
-  <md-card *ngFor="let employee of employees | async, let index=index">
-    <md-card-header>
-      <md-card-title>
-        {{index + 1}}
-      </md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <div class="rank-item">
-        <img class="rank-item__img rank-item__img--small"
-             src="{{employee.avatar}}">
-        <span class="rank-item__text">{{employee.username}}</span>
-      </div>
-    </md-card-content>
-  </md-card>
+<div class="ranking-page">
+  <div class="ranking-container" *ngIf="employeesPage">
+    <md-card *ngFor="let employee of employeesPage, let index=index">
+      <md-card-header>
+        <md-card-title>
+          {{employeesPage.pageInfo.number * itemsPerPage + index + 1}}
+        </md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <div class="rank-item">
+          <img class="rank-item__img rank-item__img--small"
+               src="{{employee.avatar}}">
+          <span class="rank-item__text">{{employee.username}}</span>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+  <app-paging-controls
+    *ngIf="employeesPage"
+    [pageInfo]="employeesPage.pageInfo"
+    [goToPage]="goToPage.bind(this)">
+  </app-paging-controls>
 </div>
+

@@ -1,8 +1,8 @@
 import { SearchComponent } from './search.component';
 import { EmployeeService } from '../../../services/employee.service';
 import { Router } from '@angular/router';
-import { anyString, anything, instance, mock, verify, when } from 'ts-mockito';
-import { Observable, Subject } from 'rxjs/Rx';
+import { anyString, anything, instance, mock, verify, when, deepEqual } from 'ts-mockito';
+import { Observable, Subject, TestScheduler } from 'rxjs/Rx';
 import { Account } from '../../../models/account';
 import { FormControl } from '@angular/forms';
 import { fakeAsync, tick } from '@angular/core/testing';
@@ -34,19 +34,7 @@ describe('SearchComponent', () => {
 
   describe('ngOnInit', () => {
 
-    it('should retrieve the employees from the employeeService', () => {
-      const employeesSubject = new Subject();
-      when(employeeService.getAllEmployees()).thenReturn(employeesSubject.asObservable());
-
-      componentUnderTest.ngOnInit();
-      employeesSubject.next(employees)
-
-      expect(componentUnderTest.employees).toEqual(employees);
-    });
-
     it('should initialize the filteredOptions field', () => {
-      when(employeeService.getAllEmployees()).thenReturn(Observable.empty());
-
       componentUnderTest.ngOnInit();
 
       expect(componentUnderTest.filteredOptions).not.toBeNull()
@@ -56,80 +44,28 @@ describe('SearchComponent', () => {
 
   describe('filteredOptions', () => {
 
-    beforeEach(() => {
-      when(employeeService.getAllEmployees()).thenReturn(Observable.of(employees));
-    });
-
-    it('should return an empty array if the searchText is empty', () => {
-      componentUnderTest.ngOnInit();
-
-      componentUnderTest.filteredOptions.subscribe((data: Account[]) => {
-        expect(data).toEqual([]);
-      });
-
-      componentUnderTest.searchTextControl.setValue('');
-    });
-
-    it('should return an empty array if the searchText is only whitespace', () => {
-
-      componentUnderTest.ngOnInit();
-
-      componentUnderTest.filteredOptions.subscribe((data: Account[]) => {
-        expect(data).toEqual([]);
-      });
-
-      componentUnderTest.searchTextControl.setValue('  ');
-    });
-
-    it('should return an empty array if the searchText is not blank', () => {
-      componentUnderTest.ngOnInit();
-
-      componentUnderTest.filteredOptions.subscribe((data: Account[]) => {
-        expect(data).toEqual([usernameAccount]);
-      });
-
-
-      componentUnderTest.searchTextControl.setValue('user');
-    });
-
-  });
-
-  describe('filter', () => {
+    const searchText = 'searchText';
+    const formControlMock = mock(FormControl);
+    let valueSubject: Subject<string>;
 
     beforeEach(() => {
-      componentUnderTest.employees = employees;
+      valueSubject = new Subject();
+      componentUnderTest.searchTextControl = instance(formControlMock);
+      when(formControlMock.valueChanges).thenReturn(valueSubject.asObservable());
     });
 
-    it('when the searchText appears in the firstname of an account, it should be returned', () => {
-      const actual = componentUnderTest.filter('fir');
+    it('should assign the filteredOptions when the valueChanges fires.',
+      (done) => {
+        when(employeeService.searchEmployees(deepEqual({ username: searchText, firstName: '', lastName: '' }))).thenReturn(Observable.of(employees));
+        componentUnderTest.ngOnInit();
 
-      expect(actual).toEqual([firstNameAccount]);
-    });
+        componentUnderTest.filteredOptions.subscribe((actual: Account[]) => {
+          expect(actual).toEqual(employees);
+          done();
+        });
 
-    it('when the searchText appears in the lastname of an account, it should be returned', () => {
-      const actual = componentUnderTest.filter('las');
-
-      expect(actual).toEqual([lastNameAccount]);
-    });
-
-    it('when the searchText appears in the username of an account, it should be returned', () => {
-      const actual = componentUnderTest.filter('use');
-
-      expect(actual).toEqual([usernameAccount]);
-    });
-
-    it('when the searchText does not appear in the username, lastName or firstName of an account, it should return an empty array', () => {
-      const actual = componentUnderTest.filter('xsxhuiw');
-
-      expect(actual).toEqual([]);
-    });
-
-    it('should search case insensitive', () => {
-      const actual = componentUnderTest.filter('nAmE');
-
-      expect(actual).toEqual(employees);
-    });
-
+        valueSubject.next(searchText);
+      });
   });
 
   describe('showEmployeeDetail', () => {

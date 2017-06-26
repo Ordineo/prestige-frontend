@@ -45,6 +45,7 @@ import { AuthenticatedGuard } from './services/guards/authenticated.guard';
 import { UnauthenticatedGuard } from './services/guards/unauthenticated.guard';
 import { PrestigeHttp } from './services/prestige-http.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { PagingControlsComponent } from './components/shared/paging-controls/paging-controls.component';
 
 @NgModule({
   imports: [
@@ -85,7 +86,8 @@ import { LocalStorageService } from './services/local-storage.service';
     NavigationBarComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    AuthenticationPageComponent
+    AuthenticationPageComponent,
+    PagingControlsComponent
   ],
   providers: [
     EmployeeService,

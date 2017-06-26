@@ -17,14 +17,14 @@ describe('EmployeeRankingComponent', () => {
 
   describe('ngOnInit', () => {
 
-    it('should get all employees', () => {
+    it('should get all employeesPage', () => {
       const employeesSubject = new Subject();
 
       when(employeeService.getAllEmployees()).thenReturn(employeesSubject.asObservable());
 
       componentUnderTest.ngOnInit();
 
-      expect(componentUnderTest.employees).toEqual(jasmine.any(Observable));
+      expect(componentUnderTest.employeesPage).toEqual(jasmine.any(Observable));
     });
   });
 

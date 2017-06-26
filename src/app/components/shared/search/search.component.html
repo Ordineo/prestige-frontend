@@ -1,18 +1,18 @@
 <div class="search-employees">
   <md-input-container>
     <input type="text"
-           placeholder="Search Employees"
-           mdInput [mdAutocomplete]="auto"
-           [formControl]="searchTextControl"/>
+      placeholder="Search Employees"
+      mdInput
+      [mdAutocomplete]="auto"
+      [formControl]="searchTextControl" />
   </md-input-container>
 
   <md-autocomplete #auto="mdAutocomplete">
-    <md-option
-      *ngFor="let employee of filteredOptions | async">
+    <md-option *ngFor="let employee of filteredOptions | async">
       <div class="employee-search-option"
-           (click)="showEmployeeDetail(employee)">
+        (click)="showEmployeeDetail(employee)">
         <div class="employee-search-option__avatar">
-          <img src="{{employee.avatar}}"/>
+          <img src="{{employee.avatar}}" />
         </div>
         <div class="employee-search-option__name">
           <span>{{employee.firstName}} {{employee.lastName}}</span>
