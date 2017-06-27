@@ -27,7 +27,7 @@ import { EndorsementDetailComponent } from './components/endorsements/endorsemen
 import { EndorsementFeedComponent } from './components/endorsements/endorsement-feed/endorsement-feed.component';
 import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
 import { EmployeeRankingComponent } from './components/employee/employee-ranking/employee-ranking.component';
-import { SearchComponent } from './components/shared/search/search.component';
+import { EmployeeSearchComponent } from './components/shared/employee-search/employee-search.component';
 import { AccountDetailComponent } from './components/account/account-detail/account-detail.component';
 import { SortDatePipe } from './pipes/sort-date/sort-date.pipe';
 import { ToolbarComponent } from './components/layout/toolbar/toolbar.component';
@@ -78,7 +78,7 @@ import { PagingControlsComponent } from './components/shared/paging-controls/pag
     AddEndorsementComponent,
     EndorsementFeedComponent,
     EndorsementDetailComponent,
-    SearchComponent,
+    EmployeeSearchComponent,
     AccountDetailComponent,
     AddEndorsementComponent,
     SortDatePipe,

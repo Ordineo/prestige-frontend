@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { AccountDetailComponent } from '../../account/account-detail/account-detail.component';
 import { AuthService } from '../../../services/auth.service';
 import { AddEndorsementComponent } from '../../endorsements/add-endorsement/add-endorsement.component';
 import { UserService } from '../../../services/user.service';
+import { EmployeeSearchComponent } from '../../shared/employee-search/employee-search.component';
+import { Router } from '@angular/router';
+import { Account } from '../../../models/account';
 
 @Component({
   selector: 'app-toolbar',
@@ -13,11 +16,13 @@ import { UserService } from '../../../services/user.service';
 
 export class ToolbarComponent {
 
+  @ViewChild('employeeSearch') employeeSearch: EmployeeSearchComponent;
   dialogRef: MdDialogRef<any>;
 
   constructor(private dialog: MdDialog,
               private authService: AuthService,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   public isUserLoggedIn(): boolean {
@@ -58,7 +63,12 @@ export class ToolbarComponent {
       });
   }
 
-  public logout() {
-    this.authService.logout();
+  public showEmployeeDetail(employee: Account) {
+    this.router.navigate(['/employee-detail', employee.username])
+      .then(() => this.employeeSearch.reset());
+  }
+
+  public logout(): Promise<boolean> {
+    return this.authService.logout();
   }
 }

@@ -1,15 +1,14 @@
-import { SearchComponent } from './search.component';
+import { EmployeeSearchComponent } from './employee-search.component';
 import { EmployeeService } from '../../../services/employee.service';
 import { Router } from '@angular/router';
-import { anyString, anything, instance, mock, verify, when, deepEqual } from 'ts-mockito';
-import { Observable, Subject, TestScheduler } from 'rxjs/Rx';
+import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
+import { Observable, Subject } from 'rxjs/Rx';
 import { Account } from '../../../models/account';
 import { FormControl } from '@angular/forms';
-import { fakeAsync, tick } from '@angular/core/testing';
 
-describe('SearchComponent', () => {
+describe('EmployeeSearchComponent', () => {
 
-  let componentUnderTest: SearchComponent;
+  let componentUnderTest: EmployeeSearchComponent;
 
   let employeeService: EmployeeService;
   let router: Router;
@@ -18,6 +17,7 @@ describe('SearchComponent', () => {
   const firstNameAccount = new Account();
   const lastNameAccount = new Account();
   const employees: Account[] = [usernameAccount, firstNameAccount, lastNameAccount];
+  const formControlMock = mock(FormControl);
 
   beforeEach(() => {
     usernameAccount.username = 'username';
@@ -29,7 +29,7 @@ describe('SearchComponent', () => {
     employeeService = mock(EmployeeService);
     router = mock(Router);
 
-    componentUnderTest = new SearchComponent(instance(employeeService), instance(router));
+    componentUnderTest = new EmployeeSearchComponent(instance(employeeService));
   });
 
   describe('ngOnInit', () => {
@@ -45,7 +45,6 @@ describe('SearchComponent', () => {
   describe('filteredOptions', () => {
 
     const searchText = 'searchText';
-    const formControlMock = mock(FormControl);
     let valueSubject: Subject<string>;
 
     beforeEach(() => {
@@ -56,7 +55,11 @@ describe('SearchComponent', () => {
 
     it('should assign the filteredOptions when the valueChanges fires.',
       (done) => {
-        when(employeeService.searchEmployees(deepEqual({ username: searchText, firstName: '', lastName: '' }))).thenReturn(Observable.of(employees));
+        when(employeeService.searchEmployees(deepEqual({
+          username: searchText,
+          firstName: '',
+          lastName: ''
+        }))).thenReturn(Observable.of(employees));
         componentUnderTest.ngOnInit();
 
         componentUnderTest.filteredOptions.subscribe((actual: Account[]) => {
@@ -68,22 +71,13 @@ describe('SearchComponent', () => {
       });
   });
 
-  describe('showEmployeeDetail', () => {
+  describe('reset', () => {
 
-    it('navigates to the correct page', fakeAsync(() => {
-      const employee = new Account();
-      const username = 'username';
-      employee.username = username;
-
-      const formControlMock = mock(FormControl);
+    it('should call reset on the textControl', () => {
       componentUnderTest.searchTextControl = instance(formControlMock);
-
-      when(router.navigate(anything(), anyString())).thenReturn(Promise.resolve(true));
-
-      componentUnderTest.showEmployeeDetail(employee);
-      tick();
+      componentUnderTest.reset();
       verify(formControlMock.reset()).once();
-    }));
+    });
 
   });
 

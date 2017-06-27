@@ -10,7 +10,7 @@
   <md-autocomplete #auto="mdAutocomplete">
     <md-option *ngFor="let employee of filteredOptions | async">
       <div class="employee-search-option"
-        (click)="showEmployeeDetail(employee)">
+        (click)="onEmployeeSelect(employee)">
         <div class="employee-search-option__avatar">
           <img src="{{employee.avatar}}" />
         </div>

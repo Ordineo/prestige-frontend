@@ -6,7 +6,11 @@
   </a>
 
   <span class="item-spacer"></span>
-  <app-search-employees class="app-search-employees"></app-search-employees>
+  <app-search-employees
+    #employeeSearch
+    class="app-search-employees"
+    [onEmployeeSelect]="showEmployeeDetail.bind(this)"
+  ></app-search-employees>
   <span class="item-spacer"></span>
 
   <div class="header__user">

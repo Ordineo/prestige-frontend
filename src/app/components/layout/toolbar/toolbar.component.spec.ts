@@ -1,4 +1,4 @@
-import { anything, capture, instance, mock, verify, when } from 'ts-mockito';
+import { anyString, anything, capture, instance, mock, verify, when } from 'ts-mockito';
 import { UserService } from '../../../services/user.service';
 import { ToolbarComponent } from './toolbar.component';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
@@ -6,8 +6,10 @@ import { AuthService } from '../../../services/auth.service';
 import { Account } from '../../../models/account';
 import { AccountDetailComponent } from '../../account/account-detail/account-detail.component';
 import { AddEndorsementComponent } from '../../endorsements/add-endorsement/add-endorsement.component';
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { EmployeeSearchComponent } from '../../shared/employee-search/employee-search.component';
+import { Router } from '@angular/router';
 
 describe('ToolbarComponent', () => {
 
@@ -16,16 +18,19 @@ describe('ToolbarComponent', () => {
   let userService: UserService;
   let dialog: MdDialog;
   let authService: AuthService;
+  let router: Router;
 
   beforeEach(() => {
     userService = mock(UserService);
     dialog = mock(MdDialog);
     authService = mock(AuthService);
+    router = mock(Router);
 
     componentUnderTest = new ToolbarComponent(
       instance(dialog),
       instance(authService),
-      instance(userService));
+      instance(userService),
+      instance(router));
   });
 
   describe('getLoggedInUsername', () => {
@@ -151,4 +156,20 @@ describe('ToolbarComponent', () => {
     });
 
   });
+
+  describe('showEmployeeDetail', () => {
+
+    it('navigates to the correct page', fakeAsync(() => {
+      const employeeSearchComponent = mock(EmployeeSearchComponent);
+      componentUnderTest.employeeSearch = instance(employeeSearchComponent);
+
+      when(router.navigate(anything(), anyString())).thenReturn(Promise.resolve(true));
+
+      componentUnderTest.showEmployeeDetail(new Account());
+      tick();
+      verify(employeeSearchComponent.reset()).once();
+    }));
+
+  });
+
 });
