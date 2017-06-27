@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Account } from '../models/account';
 import { PrestigeHttp } from './prestige-http.service';
-import { PageInfo } from "../models/pageinfo";
-import { Page } from "../models/page";
+import { PageInfo } from '../models/pageinfo';
+import { Page } from '../models/page';
 
 @Injectable()
 export class EmployeeService {
@@ -15,11 +15,13 @@ export class EmployeeService {
   constructor(private http: PrestigeHttp) {
   }
 
-  getAllEmployees(page: number, size: number): Observable<Page<Account>> {
+  getEmployees(page: number, size: number): Observable<Page<Account>> {
     return this.http
       .get(`${this.apiUsersEndpoint}?page=${page}&size=${size}`, true)
       .map(result => result.json())
-      .map(resultJson => Page.createPage<Account>(resultJson._embedded ? resultJson._embedded.employees : [], PageInfo.createPageInfo(resultJson.page)));
+      .map(resultJson => Page.createPage<Account>(
+        (resultJson._embedded || {}).employees || [],
+        resultJson.page ? PageInfo.createPageInfo(resultJson.page) : new PageInfo()));
   }
 
   searchEmployees(options: { username: string, firstName: string, lastName: string }): Observable<Account[]> {

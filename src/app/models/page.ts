@@ -2,8 +2,8 @@ import { PageInfo } from './pageinfo';
 
 export class Page<T> implements Iterable<T> {
 
-  public items: T[];
   public pageInfo: PageInfo;
+  public items: T[];
 
   public static createPage<T>(items: T[], pageInfo: PageInfo): Page<T> {
     const result = new Page<T>();
@@ -12,15 +12,7 @@ export class Page<T> implements Iterable<T> {
     return result;
   }
 
-  public isLastPage(): boolean {
-    return this.pageInfo.isLastPage();
-  }
-
-  public isFirstPage(): boolean {
-    return this.pageInfo.isFirstPage();
-  }
-
-  [Symbol.iterator]() {
+  [Symbol.iterator](): Iterator<T> {
 
     let pointer = 0;
     const items = this.items;

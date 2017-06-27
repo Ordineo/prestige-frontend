@@ -14,12 +14,4 @@ export class PageInfo {
     return result;
   }
 
-  public isLastPage(): boolean {
-    return this.totalPages === this.number + 1;
-  }
-
-  public isFirstPage(): boolean {
-    return this.number === 0;
-  }
-
 }

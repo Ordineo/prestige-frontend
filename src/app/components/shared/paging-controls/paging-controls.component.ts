@@ -11,12 +11,12 @@ export class PagingControlsComponent implements OnInit {
   @Input()
   pageInfo: PageInfo;
   @Input()
-  goToPage: (pageNumber: number) => void;
+  public goToPage: (pageNumber: number) => void;
 
   public currentPage = 0;
   public currentPageSet = 0;
-  public pageSets: Array<Array<number>>;
-  public maxNumberOfPageButtons = 2;
+  public pageSets: Array<Array<boolean>>;
+  public readonly maxNumberOfPageButtons = 5;
 
   constructor() {
   }
@@ -46,10 +46,8 @@ export class PagingControlsComponent implements OnInit {
   }
 
   goToSpecificPage(pageIndex: number) {
-    console.log(`Going to page ${pageIndex}`);
-    console.log(`Going to pageSet ${Math.ceil(pageIndex / this.maxNumberOfPageButtons)}, calculating Math.ceil(${pageIndex} / ${this.maxNumberOfPageButtons})`);
     this.currentPage = pageIndex;
-    this.currentPageSet = Math.ceil(((pageIndex + 1) / this.maxNumberOfPageButtons) - 1);
+    this.currentPageSet = Math.abs(Math.ceil(((pageIndex + 1) / this.maxNumberOfPageButtons) - 1));
     this.goToPage(pageIndex);
   }
 

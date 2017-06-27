@@ -5,6 +5,8 @@ import { PrestigeHttp } from './prestige-http.service';
 import { environment } from '../../environments/environment';
 import { EmployeeService } from './employee.service';
 import { Account } from '../models/account';
+import { Page } from '../models/page';
+import { PageInfo } from '../models/pageinfo';
 
 describe('EmployeeService', () => {
 
@@ -20,25 +22,29 @@ describe('EmployeeService', () => {
       instance(http));
   });
 
-  describe('getAllEmployees', () => {
+  describe('getEmployees', () => {
+
+    const page = 0;
+    const size = 20;
 
     it('should do a GET request to the employeesPage endpoint', (done) => {
       const employeesSubject = new Subject();
       const responseMock = mock(Response);
       const employees = [new Account(), new Account()];
 
-      when(http.get(employeesEndpoint, true))
+      when(http.get(`${employeesEndpoint}?page=${page}&size=${size}`, true))
         .thenReturn(employeesSubject.asObservable());
       when(responseMock.json()).thenReturn({
         _embedded: {
-          employees: employees
+          employees: employees,
+          pageInfo: PageInfo.createPageInfo({size, totalElements: size, totalPages: 5, number: page})
         }
       });
 
       serviceUnderTest
-        .getAllEmployees()
-        .subscribe((actual: Account[]) => {
-          expect(actual).toEqual(employees);
+        .getEmployees(page, size)
+        .subscribe((actual: Page<Account>) => {
+          expect(actual.items).toEqual(employees);
           done();
         });
 
@@ -49,16 +55,17 @@ describe('EmployeeService', () => {
       const employeesSubject = new Subject();
       const responseMock = mock(Response);
 
-      when(http.get(employeesEndpoint, true))
+      when(http.get(`${employeesEndpoint}?page=${page}&size=${size}`, true))
         .thenReturn(employeesSubject.asObservable());
       when(responseMock.json()).thenReturn({
-        _embedded: {}
+        _embedded: {},
+        pageInfo: PageInfo.createPageInfo({size, totalElements: size, totalPages: 5, number: page})
       });
 
       serviceUnderTest
-        .getAllEmployees()
-        .subscribe((actual: Account[]) => {
-          expect(actual).toEqual([]);
+        .getEmployees(page, size)
+        .subscribe((actual: Page<Account>) => {
+          expect(actual.items).toEqual([]);
           done();
         });
 
@@ -83,7 +90,7 @@ describe('EmployeeService', () => {
       });
 
       serviceUnderTest
-        .searchEmployees({ username: 'username', firstName: 'firstName', lastName: 'lastName' })
+        .searchEmployees({username: 'username', firstName: 'firstName', lastName: 'lastName'})
         .subscribe((actual: Account[]) => {
           expect(actual).toEqual(employees);
           done();
@@ -103,7 +110,7 @@ describe('EmployeeService', () => {
       });
 
       serviceUnderTest
-        .searchEmployees({ username: 'username', firstName: 'firstName', lastName: 'lastName' })
+        .searchEmployees({username: 'username', firstName: 'firstName', lastName: 'lastName'})
         .subscribe((actual: Account[]) => {
           expect(actual).toEqual([]);
           done();
@@ -137,7 +144,6 @@ describe('EmployeeService', () => {
     });
 
   });
-
 
   describe('updateAccount', () => {
 

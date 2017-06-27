@@ -6,6 +6,7 @@ var path = require('path');
 module.exports = function (config) {
   config.set({
     basePath: '',
+    colors: false,
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
       require('karma-jasmine'),
@@ -39,7 +40,6 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     port: 9876,
-    colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['PhantomJS'],

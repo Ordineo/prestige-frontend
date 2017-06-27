@@ -36,7 +36,7 @@ describe('AddEndorsementComponent', () => {
       const employeesSubject = new Subject();
       const categoriesSubject = new Subject();
 
-      when(employeeService.getAllEmployees()).thenReturn(employeesSubject.asObservable());
+      when(employeeService.getEmployees(0, 1000)).thenReturn(employeesSubject.asObservable());
       when(categoryService.getCategories()).thenReturn(categoriesSubject.asObservable());
 
       componentUnderTest.ngOnInit();

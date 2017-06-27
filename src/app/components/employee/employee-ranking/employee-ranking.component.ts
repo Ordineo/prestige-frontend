@@ -2,6 +2,7 @@ import { Account } from '../../../models/account';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../services/employee.service';
 import { Page } from '../../../models/page';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-employee-ranking',
@@ -10,47 +11,27 @@ import { Page } from '../../../models/page';
 })
 export class EmployeeRankingComponent implements OnInit {
 
-  currentPage = 0;
   readonly itemsPerPage = 20;
   employeesPage: Page<Account>;
-  nextPageEnabled: boolean;
-  previousPageEnabled: boolean;
 
   constructor(private employeeService: EmployeeService) {
   }
 
   ngOnInit() {
-    this.loadEmployeesPage();
-  }
-
-  nextPage() {
-    if (this.nextPageEnabled) {
-      this.currentPage++;
-      this.loadEmployeesPage();
-    }
-  }
-
-  previousPage() {
-    if (this.previousPageEnabled) {
-      this.currentPage--;
-      this.loadEmployeesPage();
-    }
+    this.loadEmployeesPage(0);
   }
 
   goToPage(pageIndex: number) {
-    if (pageIndex < this.employeesPage.pageInfo.totalPages) {
-      this.currentPage = pageIndex;
-      this.loadEmployeesPage();
+    if (this.employeesPage && pageIndex < this.employeesPage.pageInfo.totalPages) {
+      this.loadEmployeesPage(pageIndex);
     }
   }
 
-  private loadEmployeesPage(): void {
+  private loadEmployeesPage(pageIndex: number): void {
     this.employeeService
-      .getAllEmployees(this.currentPage, this.itemsPerPage)
-      .subscribe((page: Page<Account>) => {
-        this.employeesPage = page;
-        this.nextPageEnabled = !this.employeesPage.isLastPage();
-        this.previousPageEnabled = !this.employeesPage.isFirstPage();
+      .getEmployees(pageIndex, this.itemsPerPage)
+      .subscribe((employeesPage: Page<Account>) => {
+        this.employeesPage = employeesPage;
       });
   }
 

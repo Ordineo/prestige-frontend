@@ -37,7 +37,7 @@ export class AddEndorsementComponent implements OnInit {
 
   ngOnInit() {
     this.categories = this.categoryService.getCategories().share();
-    this.employees = this.employeeService.getAllEmployees(0, 1000).share();
+    this.employees = this.employeeService.getEmployees(0, 1000).share();
   }
 
 }

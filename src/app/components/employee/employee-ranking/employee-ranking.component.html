@@ -1,5 +1,5 @@
-<div class="ranking-page">
-  <div class="ranking-container" *ngIf="employeesPage">
+<div class="ranking-page" *ngIf="employeesPage">
+  <div class="ranking-container">
     <md-card *ngFor="let employee of employeesPage, let index=index">
       <md-card-header>
         <md-card-title>
@@ -16,7 +16,6 @@
     </md-card>
   </div>
   <app-paging-controls
-    *ngIf="employeesPage"
     [pageInfo]="employeesPage.pageInfo"
     [goToPage]="goToPage.bind(this)">
   </app-paging-controls>
