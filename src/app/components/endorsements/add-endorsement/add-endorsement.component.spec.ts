@@ -7,6 +7,7 @@ import { MdDialogRef } from '@angular/material';
 import { EndorsementService } from '../../../services/endorsement.service';
 import { CategoryService } from '../../../services/category.service';
 import { Endorsement } from '../../../models/endorsement';
+import { describe } from 'selenium-webdriver/testing';
 
 describe('AddEndorsementComponent', () => {
 
@@ -63,5 +64,7 @@ describe('AddEndorsementComponent', () => {
     });
 
   });
+
+  describe('selectEmpl', () => {})
 
 });

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { Account } from '../../../models/account';
 import { EmployeeService } from '../../../services/employee.service';
@@ -14,7 +14,7 @@ export class EmployeeSearchComponent implements OnInit {
   public searchTextControl: FormControl = new FormControl();
   public filteredOptions: Observable<Account[]>;
   @Input() public onEmployeeSelect: (employee: Account) => void;
-  public optionSelected: boolean;
+  private inputResettable: boolean;
 
   constructor(private employeeService: EmployeeService) {
   }
@@ -24,9 +24,9 @@ export class EmployeeSearchComponent implements OnInit {
       .valueChanges
       .debounceTime(400)
       .flatMap((text: string) => {
-        if (this.optionSelected) {
-          this.reset();
-          this.optionSelected = false;
+        if (this.inputResettable) {
+          this.doResetInput();
+          this.inputResettable = false;
           return Observable.of([]);
         } else {
           return this.employeeService.searchEmployees({username: text, firstName: '', lastName: ''});
@@ -34,12 +34,12 @@ export class EmployeeSearchComponent implements OnInit {
       });
   }
 
-  employeeSelectAction(employee: Account) {
-    this.optionSelected = true;
-    this.onEmployeeSelect(employee);
+  makeInputResettable() {
+    this.inputResettable = true;
   }
 
-  reset() {
+  doResetInput() {
     this.searchTextControl.reset();
   }
+
 }

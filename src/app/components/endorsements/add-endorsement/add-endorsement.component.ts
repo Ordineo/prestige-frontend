@@ -1,5 +1,5 @@
 import { Account } from '../../../models/account';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
 import { CategoryService } from '../../../services/category.service';
@@ -26,6 +26,11 @@ export class AddEndorsementComponent implements OnInit {
               private endorsementService: EndorsementService) {
   }
 
+  ngOnInit() {
+    this.categories = this.categoryService.getCategories().share();
+    this.employees = this.employeeService.getEmployees(0, 1000).share();
+  }
+
   addEndorsement() {
     this.endorsementService
       .addEndorsement(this.endorsement)
@@ -37,11 +42,6 @@ export class AddEndorsementComponent implements OnInit {
 
   selectEmployee(employee: Account) {
     this.endorsement.receiverUsername = employee.username;
-  }
-
-  ngOnInit() {
-    this.categories = this.categoryService.getCategories().share();
-    this.employees = this.employeeService.getEmployees(0, 1000).share();
   }
 
 }

@@ -64,8 +64,9 @@ export class ToolbarComponent {
   }
 
   public showEmployeeDetail(employee: Account) {
+    this.employeeSearch.makeInputResettable();
     this.router.navigate(['/employee-detail', employee.username])
-      .then(() => this.employeeSearch.reset());
+      .then(() => this.employeeSearch.doResetInput());
   }
 
   public logout(): Promise<boolean> {

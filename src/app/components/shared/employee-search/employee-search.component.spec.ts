@@ -70,7 +70,7 @@ describe('EmployeeSearchComponent', () => {
         valueSubject.next(searchText);
       });
 
-    it('should reset the value if itemSelected is true.',
+    it('should reset the value if inputResettable is true.',
       (done) => {
         componentUnderTest.onEmployeeSelect = employee => {
         };
@@ -93,7 +93,7 @@ describe('EmployeeSearchComponent', () => {
             }
           );
 
-        componentUnderTest.employeeSelectAction(null); // set itemSelected to true
+        componentUnderTest.makeInputResettable(); // set itemSelected to true
         valueSubject.next(searchText);
       });
   });
@@ -102,7 +102,7 @@ describe('EmployeeSearchComponent', () => {
 
     it('should call reset on the textControl', () => {
       componentUnderTest.searchTextControl = instance(formControlMock);
-      componentUnderTest.reset();
+      componentUnderTest.doResetInput();
       verify(formControlMock.reset()).atLeast(1);
     });
 

@@ -167,7 +167,8 @@ describe('ToolbarComponent', () => {
 
       componentUnderTest.showEmployeeDetail(new Account());
       tick();
-      verify(employeeSearchComponent.reset()).once();
+      verify(employeeSearchComponent.makeInputResettable()).once();
+      verify(employeeSearchComponent.doResetInput()).once();
     }));
 
   });
