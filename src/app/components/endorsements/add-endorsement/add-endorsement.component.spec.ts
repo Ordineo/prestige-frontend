@@ -7,7 +7,7 @@ import { MdDialogRef } from '@angular/material';
 import { EndorsementService } from '../../../services/endorsement.service';
 import { CategoryService } from '../../../services/category.service';
 import { Endorsement } from '../../../models/endorsement';
-import { describe } from 'selenium-webdriver/testing';
+import { Account } from '../../../models/account';
 
 describe('AddEndorsementComponent', () => {
 
@@ -65,6 +65,16 @@ describe('AddEndorsementComponent', () => {
 
   });
 
-  describe('selectEmpl', () => {})
+  describe('selectEmployee', () => {
+
+    it('should set the receiverUsername on the model', () => {
+      const account = new Account();
+      account.username = 'username';
+
+      componentUnderTest.selectEmployee(account);
+
+      expect(componentUnderTest.endorsement.receiverUsername).toEqual(account.username);
+    });
+  });
 
 });
