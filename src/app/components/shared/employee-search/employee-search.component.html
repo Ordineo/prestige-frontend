@@ -8,9 +8,9 @@
   </md-input-container>
 
   <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let employee of filteredOptions | async">
+    <md-option *ngFor="let employee of filteredOptions | async" [value]="employee.username">
       <div class="employee-search-option"
-        (click)="onEmployeeSelect(employee)">
+        (click)="employeeSelectAction(employee)">
         <div class="employee-search-option__avatar">
           <img src="{{employee.avatar}}" />
         </div>

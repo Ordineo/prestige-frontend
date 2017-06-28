@@ -35,6 +35,10 @@ export class AddEndorsementComponent implements OnInit {
       });
   }
 
+  selectEmployee(employee: Account) {
+    this.endorsement.receiverUsername = employee.username;
+  }
+
   ngOnInit() {
     this.categories = this.categoryService.getCategories().share();
     this.employees = this.employeeService.getEmployees(0, 1000).share();

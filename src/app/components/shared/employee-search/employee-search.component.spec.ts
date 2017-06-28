@@ -69,6 +69,18 @@ describe('EmployeeSearchComponent', () => {
 
         valueSubject.next(searchText);
       });
+
+    it('should reset the value if itemSelected is true.',
+      () => {
+        componentUnderTest.onEmployeeSelect = employee => {
+        };
+        componentUnderTest.ngOnInit();
+
+        componentUnderTest.employeeSelectAction(null); // set itemSelected to true
+        valueSubject.next(searchText);
+
+        expect(componentUnderTest.filteredOptions.isEmpty()).toBeTruthy();
+      });
   });
 
   describe('reset', () => {
@@ -76,7 +88,7 @@ describe('EmployeeSearchComponent', () => {
     it('should call reset on the textControl', () => {
       componentUnderTest.searchTextControl = instance(formControlMock);
       componentUnderTest.reset();
-      verify(formControlMock.reset()).once();
+      verify(formControlMock.reset()).atLeast(1);
     });
 
   });

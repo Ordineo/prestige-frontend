@@ -10,14 +10,9 @@
                   rowHeight="4em"
                   gutterSize="5px">
       <md-grid-tile colspan="2">
-        <md-select placeholder="Select co-worker"
-                   [(ngModel)]="endorsement.receiverUsername"
-                   name="Receiver">
-          <md-option *ngFor="let employee of employees | async"
-                     [value]="employee.username">
-            {{employee.username}}
-          </md-option>
-        </md-select>
+        <app-employees-search
+          [onEmployeeSelect]="selectEmployee.bind(this)">
+        </app-employees-search>
       </md-grid-tile>
 
       <md-grid-tile colspan="2">
