@@ -71,15 +71,30 @@ describe('EmployeeSearchComponent', () => {
       });
 
     it('should reset the value if itemSelected is true.',
-      () => {
+      (done) => {
         componentUnderTest.onEmployeeSelect = employee => {
         };
         componentUnderTest.ngOnInit();
 
+        componentUnderTest.filteredOptions
+          .subscribe(
+            (value: any) => {
+              expect(value).toEqual([]);
+              verify(formControlMock.reset()).called();
+              done();
+            },
+            (value: any) => {
+              fail(value);
+              done();
+            },
+            () => {
+              fail();
+              done();
+            }
+          );
+
         componentUnderTest.employeeSelectAction(null); // set itemSelected to true
         valueSubject.next(searchText);
-
-        expect(componentUnderTest.filteredOptions.isEmpty()).toBeTruthy();
       });
   });
 
